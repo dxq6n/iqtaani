@@ -555,6 +555,66 @@
     </div>
   </section>
 
+  <!-- ===== Onboarding walkthrough (auto-playing "how to sign up") ===== -->
+  <section class="section onb" id="get-started" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="ابدأ الآن">Get started</span>
+        <h2 data-ar="أنشئ حسابك المجاني بـ 30 ثانية">Create your free account in 30 seconds</h2>
+        <p data-ar="شوف كم سهل تسجّل وتبدأ التعلّم — ثلاث خطوات بس.">See how easy it is to join and start learning — just three steps.</p>
+      </div>
+
+      <div class="onb-demo reveal">
+        <input class="onb-radio" type="radio" name="onb" id="onb1" checked />
+        <input class="onb-radio" type="radio" name="onb" id="onb2" />
+        <input class="onb-radio" type="radio" name="onb" id="onb3" />
+
+        <div class="onb-steps" role="tablist">
+          <label for="onb1" class="onb-step"><span class="onb-n">1</span><b data-ar="افتح الموقع">Open the site</b></label>
+          <label for="onb2" class="onb-step"><span class="onb-n">2</span><b data-ar="عبّي النموذج">Fill the form</b></label>
+          <label for="onb3" class="onb-step"><span class="onb-n">3</span><b data-ar="ابدأ التعلّم">Start learning</b></label>
+        </div>
+
+        <div class="onb-screen">
+          <div class="onb-bar"><span class="onb-dot r"></span><span class="onb-dot y"></span><span class="onb-dot g"></span><span class="onb-url">iqtaani.netlify.app</span></div>
+
+          <!-- Frame 1: click Get started -->
+          <div class="onb-frame f1">
+            <div class="onb-mocknav"><span class="onb-brand">IQ<b>.</b>T3ani</span><span class="onb-getbtn" data-ar="ابدأ مجانًا">Get started</span></div>
+            <div class="onb-hero"><b data-ar="تعلّم البرمجة بذكاء">Learn to code the smart way</b><small data-ar="اضغط «ابدأ مجانًا» فوق">Click “Get started” above ↑</small></div>
+            <span class="onb-cursor c1">🖱️</span>
+          </div>
+
+          <!-- Frame 2: fill the form -->
+          <div class="onb-frame f2">
+            <div class="onb-form">
+              <b data-ar="أنشئ حسابك">Create your account</b>
+              <span class="onb-field"><i data-ar="الاسم">Name</i><em>Sara</em></span>
+              <span class="onb-field"><i data-ar="البريد">Email</i><em>sara@email.com</em></span>
+              <span class="onb-field"><i data-ar="كلمة السر">Password</i><em>••••••••</em></span>
+              <span class="onb-submit" data-ar="إنشاء حساب">Sign up</span>
+            </div>
+            <span class="onb-cursor c2">🖱️</span>
+          </div>
+
+          <!-- Frame 3: welcome / dashboard -->
+          <div class="onb-frame f3">
+            <div class="onb-welcome">
+              <span class="onb-check">✅</span>
+              <b data-ar="أهلًا بيك، Sara!">Welcome, Sara!</b>
+              <small data-ar="حسابك جاهز — ابدأ أول كورس 🎉">Your account is ready — start your first course 🎉</small>
+              <div class="onb-xp"><span data-ar="0 نقطة خبرة">0 XP</span><span data-ar="اليوم 1 🔥">Day 1 🔥</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center" style="margin-top:26px">
+        <a href="register.html" class="btn btn-primary btn-lg" data-ar="أنشئ حسابك المجاني الآن">Create your free account now</a>
+      </p>
+    </div>
+  </section>
+
   <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="container">
@@ -587,35 +647,39 @@
     </div>
   </footer>
 
-  <!-- Auto-play the "How it works" steps (pauses on hover / focus / when tab hidden) -->
+  <!-- Auto-play the "How it works" steps and the sign-up walkthrough
+       (each pauses on hover / focus / when the tab is hidden) -->
   <script>
   (function () {
-    var how = document.querySelector('.how');
-    if (!how) return;
-    var radios = [].slice.call(how.querySelectorAll('.how-radio'));
-    if (radios.length < 2) return;
-    var DWELL = 6000, timer = null;
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function currentIndex() {
-      for (var i = 0; i < radios.length; i++) if (radios[i].checked) return i;
-      return 0;
+    function autoplay(el, radioSel, dwell) {
+      if (!el) return;
+      var radios = [].slice.call(el.querySelectorAll(radioSel));
+      if (radios.length < 2) return;
+      var timer = null;
+      function currentIndex() {
+        for (var i = 0; i < radios.length; i++) if (radios[i].checked) return i;
+        return 0;
+      }
+      function clear() { if (timer) { clearTimeout(timer); timer = null; } }
+      function schedule() {
+        clear();
+        if (reduce || el.classList.contains('is-paused') || document.hidden) return;
+        timer = setTimeout(function () {
+          radios[(currentIndex() + 1) % radios.length].checked = true;
+          schedule();
+        }, dwell);
+      }
+      radios.forEach(function (r) { r.addEventListener('change', schedule); });
+      el.addEventListener('mouseenter', function () { el.classList.add('is-paused'); clear(); });
+      el.addEventListener('mouseleave', function () { el.classList.remove('is-paused'); schedule(); });
+      el.addEventListener('focusin', function () { el.classList.add('is-paused'); clear(); });
+      el.addEventListener('focusout', function () { el.classList.remove('is-paused'); schedule(); });
+      document.addEventListener('visibilitychange', function () { document.hidden ? clear() : schedule(); });
+      schedule();
     }
-    function clear() { if (timer) { clearTimeout(timer); timer = null; } }
-    function schedule() {
-      clear();
-      if (reduce || how.classList.contains('is-paused') || document.hidden) return;
-      timer = setTimeout(function () {
-        radios[(currentIndex() + 1) % radios.length].checked = true;
-        schedule();
-      }, DWELL);
-    }
-    radios.forEach(function (r) { r.addEventListener('change', schedule); });
-    how.addEventListener('mouseenter', function () { how.classList.add('is-paused'); clear(); });
-    how.addEventListener('mouseleave', function () { how.classList.remove('is-paused'); schedule(); });
-    how.addEventListener('focusin', function () { how.classList.add('is-paused'); clear(); });
-    how.addEventListener('focusout', function () { how.classList.remove('is-paused'); schedule(); });
-    document.addEventListener('visibilitychange', function () { document.hidden ? clear() : schedule(); });
-    schedule();
+    autoplay(document.querySelector('.how'), '.how-radio', 6000);
+    autoplay(document.querySelector('.onb-demo'), '.onb-radio', 4000);
   })();
   </script>
 

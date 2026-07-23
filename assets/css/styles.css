@@ -9,3 +9,57 @@
 .how.is-paused .how-tab::after{animation-play-state:paused}
 @keyframes howBar{from{width:0}to{width:100%}}
 @media (prefers-reduced-motion:reduce){.how-tab::after{animation:none!important;width:0!important}}
+
+/* ===== Onboarding walkthrough (auto-playing sign-up guide) ===== */
+.onb-demo{--onb-dwell:4s;max-width:820px;margin-inline:auto}
+.onb-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.onb-step{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;border:1px solid var(--border);border-radius:14px;background:var(--surface);cursor:pointer;font-size:.9rem;transition:border-color .2s,background .2s}
+.onb-step .onb-n{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800;background:var(--grad-soft);color:var(--primary)}
+.onb-radio{position:absolute;opacity:0;pointer-events:none}
+#onb1:checked~.onb-steps label[for=onb1],#onb2:checked~.onb-steps label[for=onb2],#onb3:checked~.onb-steps label[for=onb3]{background:var(--grad);border-color:transparent}
+#onb1:checked~.onb-steps label[for=onb1] *,#onb2:checked~.onb-steps label[for=onb2] *,#onb3:checked~.onb-steps label[for=onb3] *{color:#fff}
+#onb1:checked~.onb-steps label[for=onb1] .onb-n,#onb2:checked~.onb-steps label[for=onb2] .onb-n,#onb3:checked~.onb-steps label[for=onb3] .onb-n{background:#ffffff40}
+.onb-step::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;border-radius:0 3px 3px 0}
+[dir=rtl] .onb-step::after{left:auto;right:0;border-radius:3px 0 0 3px}
+#onb1:checked~.onb-steps label[for=onb1]::after,#onb2:checked~.onb-steps label[for=onb2]::after,#onb3:checked~.onb-steps label[for=onb3]::after{animation:onbBar var(--onb-dwell) linear forwards}
+.onb-demo.is-paused .onb-step::after{animation-play-state:paused}
+@keyframes onbBar{from{width:0}to{width:100%}}
+.onb-screen{position:relative;border:1px solid var(--border);border-radius:18px;background:var(--bg-2);box-shadow:var(--shadow-lg);overflow:hidden;min-height:300px}
+.onb-bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
+.onb-bar .onb-dot{width:11px;height:11px;border-radius:50%;background:var(--border)}
+.onb-bar .onb-dot.r{background:#ff5f56}.onb-bar .onb-dot.y{background:#ffbd2e}.onb-bar .onb-dot.g{background:#27c93f}
+.onb-url{margin-inline-start:10px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted);background:var(--bg);padding:4px 12px;border-radius:20px;flex:1;text-align:center}
+.onb-frame{display:none;padding:30px;position:relative;min-height:250px;animation:onbIn .45s var(--ease)}
+#onb1:checked~.onb-screen .f1,#onb2:checked~.onb-screen .f2,#onb3:checked~.onb-screen .f3{display:block}
+@keyframes onbIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* Frame 1 */
+.onb-mocknav{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.onb-brand{font-weight:800}.onb-brand b{color:var(--primary)}
+.onb-getbtn{background:var(--grad);color:#fff;padding:8px 16px;border-radius:10px;font-weight:700;font-size:.85rem;animation:onbPulse 1.4s var(--ease) infinite}
+@keyframes onbPulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{box-shadow:0 0 0 10px rgba(52,211,153,0)}}
+.onb-hero{text-align:center;padding:44px 16px 10px}
+.onb-hero b{display:block;font-size:1.5rem;margin-bottom:8px}
+.onb-hero small{color:var(--muted)}
+/* Frame 2 */
+.onb-form{max-width:360px;margin-inline:auto;display:grid;gap:12px;padding:22px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+.onb-form>b{font-size:1.15rem;text-align:center;margin-bottom:4px}
+.onb-field{display:grid;gap:4px}
+.onb-field i{font-style:normal;font-size:.76rem;color:var(--muted)}
+.onb-field em{font-style:normal;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-size:.9rem}
+.onb-submit{background:var(--grad);color:#fff;text-align:center;padding:11px;border-radius:10px;font-weight:700;margin-top:4px;animation:onbPulse 1.4s var(--ease) infinite}
+/* Frame 3 */
+.onb-welcome{text-align:center;padding:26px 16px;display:grid;gap:10px;place-items:center}
+.onb-check{font-size:3rem;animation:onbPop .5s var(--ease)}
+@keyframes onbPop{0%{transform:scale(0)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+.onb-welcome b{font-size:1.5rem}
+.onb-welcome small{color:var(--muted)}
+.onb-xp{display:flex;gap:12px;margin-top:8px}
+.onb-xp span{background:var(--grad-soft);color:var(--primary);padding:7px 16px;border-radius:20px;font-weight:700;font-size:.85rem}
+/* Cursor */
+.onb-cursor{position:absolute;font-size:1.5rem;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4))}
+.onb-cursor.c1{right:40px;top:34px;animation:onbClick1 var(--onb-dwell) var(--ease) infinite}
+.onb-cursor.c2{left:50%;bottom:44px;animation:onbClick2 var(--onb-dwell) var(--ease) infinite}
+@keyframes onbClick1{0%{transform:translate(30px,30px);opacity:0}40%{transform:translate(0,0);opacity:1}55%{transform:scale(.8)}70%,100%{transform:scale(1);opacity:1}}
+@keyframes onbClick2{0%{transform:translate(-30px,30px);opacity:0}40%{transform:translate(-50%,0);opacity:1}55%{transform:translate(-50%,0) scale(.8)}70%,100%{transform:translate(-50%,0) scale(1);opacity:1}}
+@media (max-width:560px){.onb-hero b,.onb-welcome b{font-size:1.2rem}.onb-frame{padding:20px}}
+@media (prefers-reduced-motion:reduce){.onb-step::after,.onb-getbtn,.onb-submit,.onb-cursor,.onb-check{animation:none!important}.onb-cursor{opacity:1}}
