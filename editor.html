@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Playground — IQ.T3ani</title>
+  <meta name="description" content="Free in-browser code playground — write and run HTML, CSS, JavaScript and Python instantly. No setup, no signup." />
+  <link rel="canonical" href="https://iqtaani.netlify.app/editor.html" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IQ.T3ani" />
+  <meta property="og:title" content="Code Playground — IQ.T3ani" />
+  <meta property="og:description" content="Free in-browser code playground — write and run HTML, CSS, JavaScript and Python instantly. No setup, no signup." />
+  <meta property="og:url" content="https://iqtaani.netlify.app/editor.html" />
+  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Code Playground — IQ.T3ani" />
+  <meta name="twitter:description" content="Free in-browser code playground — write and run HTML, CSS, JavaScript and Python instantly. No setup, no signup." />
+  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=39" />
+  <link rel="stylesheet" href="assets/css/editor.css?v=39" />
+  <!-- CodeMirror 5 from CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/theme/material-darker.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/closetag.min.js"></script>
+  <!-- Skulpt for Python -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/1.2.0/skulpt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skulpt/1.2.0/skulpt-stdlib.js"></script>
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <script src="assets/js/editor.js?v=39" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=39" />
+  <script src="assets/js/app.js?v=39" defer></script>
+  <script src="assets/js/iq-engine.js?v=39" defer></script>
+  <script src="assets/js/iq-widget.js?v=39" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر" class="active">Playground</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="ide-wrap" id="ideWrap" role="main">
+
+    <!-- Toolbar -->
+    <div class="ide-toolbar">
+      <div class="ide-title">
+        <span>💻</span>
+        <span data-ar="محرر الأكواد">Code Playground</span>
+      </div>
+      <button class="ide-tbtn" data-action="templates" title="Templates">📋 <span data-ar="قوالب">Templates</span></button>
+      <button class="ide-tbtn" data-action="format" title="Format (Auto-indent)">✨ <span data-ar="تنسيق">Format</span></button>
+      <button class="ide-tbtn" data-action="split" title="Toggle split direction">⬒ <span data-ar="تقسيم">Split</span></button>
+      <button class="ide-tbtn" data-action="save" title="Save (Ctrl+S)">💾 <span data-ar="حفظ">Save</span></button>
+      <button class="ide-tbtn" data-action="download" title="Download ZIP">📦 <span data-ar="تحميل">Download</span></button>
+      <button class="ide-tbtn primary" data-action="run" title="Run (Ctrl+Enter)">▶ <span data-ar="شغّل">Run</span></button>
+    </div>
+
+    <!-- Main split area -->
+    <div class="ide-main">
+
+      <!-- Editor pane -->
+      <div class="ide-editor-pane">
+        <div class="ide-tabs">
+          <!-- Tabs are built dynamically -->
+          <button class="ide-tab-add" title="New file">+</button>
+        </div>
+        <div class="ide-cm-wrap"></div>
+      </div>
+
+      <!-- Resizer -->
+      <div class="ide-resizer"></div>
+
+      <!-- Output pane -->
+      <div class="ide-output-pane">
+        <div class="ide-output-tabs">
+          <button class="ide-out-tab active" data-out="preview" data-ar="معاينة">Preview</button>
+          <button class="ide-out-tab" data-out="console">Console</button>
+          <button class="ide-tbtn" data-action="clear" style="margin-inline-start:auto;padding:4px 10px;font-size:.75rem" data-ar="مسح">Clear</button>
+        </div>
+        <iframe class="ide-preview" sandbox="allow-scripts allow-same-origin" title="Preview"></iframe>
+        <div class="ide-console hidden"></div>
+        <div class="ide-console-input" style="display:none">
+          <input type="text" placeholder="> type JS here..." data-ar-ph="> اكتب JS هنا..." />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Status bar -->
+    <div class="ide-status">
+      <span class="ide-status-cur">Ln 1, Col 1</span>
+      <div class="ide-status-right">
+        <span class="ide-status-lang">HTML</span>
+        <span>IQ.T3ani Playground</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Templates dialog -->
+  <div class="ide-tpl-overlay">
+    <div class="ide-tpl-dialog">
+      <h3 data-ar="اختر قالب">Choose a template</h3>
+      <div class="ide-tpl-list"></div>
+    </div>
+  </div>
+
+</body>
+</html>

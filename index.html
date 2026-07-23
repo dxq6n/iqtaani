@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Search Console ownership verification -->
+  <meta name="google-site-verification" content="mpT4hccKcJIX8ZO5iZvxvYTplxvMFO-9aUrPc6LVHAg" />
+  <title>IQ.T3ani — Learn to code, the smart way</title>
+  <meta name="description" content="IQ.T3ani is a free bilingual (Arabic/English) programming education platform: interactive lessons, an in-browser code editor, video courses and a helpful community." />
+  <link rel="canonical" href="https://iqtaani.netlify.app/" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IQ.T3ani" />
+  <meta property="og:title" content="IQ.T3ani — Learn to code, the smart way" />
+  <meta property="og:description" content="IQ.T3ani is a free bilingual (Arabic/English) programming education platform: interactive lessons, an in-browser code editor, video courses and a helpful community." />
+  <meta property="og:url" content="https://iqtaani.netlify.app/" />
+  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IQ.T3ani — Learn to code, the smart way" />
+  <meta name="twitter:description" content="IQ.T3ani is a free bilingual (Arabic/English) programming education platform: interactive lessons, an in-browser code editor, video courses and a helpful community." />
+  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=39" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {}
+        var r = document.documentElement; r.classList.add('js');
+        r.setAttribute('data-theme', t); r.setAttribute('data-lang', l);
+        r.setAttribute('lang', l); r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=39" />
+  <script src="assets/js/app.js?v=39" defer></script>
+  <script src="assets/js/iq-engine.js?v=39" defer></script>
+  <script src="assets/js/iq-widget.js?v=39" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://iqtaani.netlify.app/#org",
+        "name": "IQ.T3ani",
+        "url": "https://iqtaani.netlify.app/",
+        "logo": "https://iqtaani.netlify.app/assets/img/logo-512.png",
+        "sameAs": ["https://www.instagram.com/dxq6n/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://iqtaani.netlify.app/#website",
+        "url": "https://iqtaani.netlify.app/",
+        "name": "IQ.T3ani",
+        "description": "Free bilingual (Arabic/English) interactive programming education platform",
+        "publisher": {"@id": "https://iqtaani.netlify.app/#org"},
+        "inLanguage": ["en", "ar"]
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "IQ.T3ani",
+        "url": "https://iqtaani.netlify.app/",
+        "description": "Interactive programming courses in Arabic and English — Python, JavaScript, Web development and more, free with certificates."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="pricing.html" data-ar="الأسعار">Pricing</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <a href="register.html" class="btn btn-primary" data-ar="ابدأ مجانًا">Get started</a>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="main" role="main">
+    <div class="hero-glow"></div>
+    <div class="hero-glow two"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow" data-ar="منصة تعلم البرمجة رقم 1">★ #1 Coding education platform</span>
+        <h1 data-ar="تعلّم البرمجة <span class='gradient-text'>بذكاء وسرعة</span>">Learn to code <span class="gradient-text">the smart way</span></h1>
+        <p class="lead" data-ar="دروس تفاعلية، ومحرّر أكواد حقيقي داخل المتصفح، ومجتمع يجاوب على أسئلتك — كل اللي بتحتاجه عشان تنتقل من الصفر إلى الاحتراف.">
+          Interactive lessons, a real in-browser code editor, and a community that answers your questions — everything you need to go from zero to job-ready.
+        </p>
+        <form class="hero-search" action="search.html" method="get" role="search">
+          <input type="search" name="q" placeholder="What do you want to learn? Python, JavaScript…" data-ar-ph="شو بدك تتعلم؟ بايثون، جافاسكريبت…" aria-label="Search courses / ابحث في الكورسات" />
+          <button type="submit" class="btn btn-primary" data-ar="🔎 ابحث">🔎 Search</button>
+        </form>
+        <div class="hero-cta">
+          <a href="register.html" class="btn btn-primary btn-lg" data-ar="ابدأ التعلّم مجانًا">Start learning free</a>
+          <a href="courses.html" class="btn btn-ghost btn-lg" data-ar="تصفّح الكورسات">Browse courses</a>
+        </div>
+        <div class="hero-meta">
+          <div class="m"><b>25</b><span data-ar="كورس">Courses</span></div>
+          <div class="m"><b>750</b><span data-ar="درس تفاعلي">Interactive lessons</span></div>
+          <div class="m"><b>100%</b><span data-ar="مجاني">Free</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="code-window">
+          <div class="code-top">
+            <span class="code-dot r"></span><span class="code-dot y"></span><span class="code-dot g"></span>
+            <span class="code-file">hello.py</span>
+          </div>
+<pre class="code-body"><span class="ln">1</span><span class="tok-com"># Your first program 🚀</span>
+<span class="ln">2</span><span class="tok-key">def</span> <span class="tok-fn">greet</span>(name):
+<span class="ln">3</span>    <span class="tok-key">return</span> <span class="tok-str">f"Hello, {name}!"</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="tok-fn">print</span>(<span class="tok-fn">greet</span>(<span class="tok-str">"IQ.T3ani"</span>))
+<span class="ln">6</span><span class="tok-com"># → Hello, IQ.T3ani! ✅</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Marquee ===== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Python</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>SQL</span><span>TypeScript</span><span>Go</span><span>Docker</span>
+      <span>Python</span><span>JavaScript</span><span>React</span><span>Node.js</span><span>SQL</span><span>TypeScript</span><span>Go</span><span>Docker</span>
+    </div>
+  </div>
+
+  <!-- ===== Features ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="ليش IQ.T3ani؟">Why IQ.T3ani</span>
+        <h2 data-ar="كل اللي بتحتاجه عشان تتعلّم فعليًا">Everything you need to actually learn</h2>
+        <p data-ar="مش بس فيديوهات — تجربة تعلّم كاملة مبنية على الممارسة.">Not just videos — a complete, practice-first learning experience.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="feature-ic">💻</div>
+          <h3 data-ar="محرّر أكواد تفاعلي">Interactive code editor</h3>
+          <p data-ar="اكتب وشغّل الكود مباشرة من المتصفح، بدون أي إعداد أو تثبيت.">Write and run code right in your browser — zero setup, instant feedback.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ic">🧭</div>
+          <h3 data-ar="مسارات تعليمية مرتّبة">Structured learning tracks</h3>
+          <p data-ar="مسارات موجّهة تاخدك خطوة بخطوة من المبتدئ حتى المتقدّم.">Guided paths that take you step-by-step from beginner to advanced.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ic">💬</div>
+          <h3 data-ar="مجتمع أسئلة وأجوبة">Q&amp;A community</h3>
+          <p data-ar="اسأل أي سؤال واحصل على إجابات من المعلّمين والزملاء بسرعة.">Ask anything and get answers from mentors and peers, fast.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ic">🛠️</div>
+          <h3 data-ar="مشاريع حقيقية">Real-world projects</h3>
+          <p data-ar="ابنِ مشاريع حقيقية تقدر تضيفها لمعرض أعمالك (portfolio).">Build portfolio-ready projects you can actually show off.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ic">📈</div>
+          <h3 data-ar="تتبّع تقدّمك">Progress tracking</h3>
+          <p data-ar="تابع سلسلة أيامك (streak) ونقاطك وشهاداتك أول بأول.">Track your streak, XP, and certificates as you go.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ic">🔒</div>
+          <h3 data-ar="خصوصيّتك أولًا">Privacy first</h3>
+          <p data-ar="تقدّمك محفوظ على جهازك أنت — بدون تتبّع، وبدون إعلانات.">Your progress is stored on your own device — no tracking, and no ads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="كيف تبدأ">How it works</span>
+        <h2 data-ar="ثلاث خطوات وبتصير مبرمج">Three steps to start coding</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal text-center">
+          <div class="feature-ic" style="margin-inline:auto">1️⃣</div>
+          <h3 data-ar="اختَر مسارك">Choose your path</h3>
+          <p data-ar="اختَر لغة أو مجال — تطوير ويب، بايثون، أو علم البيانات.">Pick a language or field — web dev, Python, or data science.</p>
+        </div>
+        <div class="card reveal text-center">
+          <div class="feature-ic" style="margin-inline:auto">2️⃣</div>
+          <h3 data-ar="تعلّم بالممارسة">Learn by doing</h3>
+          <p data-ar="حلّ تمارين حقيقية داخل المحرّر واحصل على تقييم فوري.">Solve real exercises inside the editor with instant grading.</p>
+        </div>
+        <div class="card reveal text-center">
+          <div class="feature-ic" style="margin-inline:auto">3️⃣</div>
+          <h3 data-ar="ابنِ واحصل على شهادة">Build &amp; get certified</h3>
+          <p data-ar="أنهِ مشاريعك واحصل على شهادة تثبت مهاراتك.">Finish projects and earn a certificate that proves your skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Stats ===== -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="stats reveal">
+        <div class="stat"><b class="gradient-text">25</b><span data-ar="كورس ومسار">Courses &amp; tracks</span></div>
+        <div class="stat"><b class="gradient-text">750</b><span data-ar="درس تفاعلي">Interactive lessons</span></div>
+        <div class="stat"><b class="gradient-text">20+</b><span data-ar="لغة وتقنية">Languages &amp; tools</span></div>
+        <div class="stat"><b class="gradient-text">100%</b><span data-ar="مجاني بدون إعلانات">Free · no ads</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Browse by subject (Scrimba-style grid) ===== -->
+  <section class="section" id="subjects">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="تصفّح حسب الموضوع">Browse by subject</span>
+        <h2 data-ar="ابنِ مهارات تتميّز فيها">Build skills that stand out</h2>
+        <p data-ar="اختر موضوعك وابدأ فورًا — 20+ لغة وتقنية، كلها مجانية.">Pick your subject and start right away — 20+ languages and tools, all free.</p>
+      </div>
+
+      <div class="subjects-grid reveal">
+        <a class="subject-card" href="courses.html"><span class="subject-ic"><span class="s-emoji">🎓</span></span><b data-ar="أساسيات البرمجة">Code foundations</b></a>
+        <a class="subject-card" href="course.html?c=python"><span class="subject-ic"><img src="assets/img/lang/python.svg" alt="" width="24" height="24" loading="lazy"></span><b>Python</b></a>
+        <a class="subject-card" href="course.html?c=web"><span class="subject-ic"><img src="assets/img/lang/html5.svg" alt="" width="24" height="24" loading="lazy"></span><b data-ar="HTML و CSS">HTML &amp; CSS</b></a>
+        <a class="subject-card" href="course.html?c=data"><span class="subject-ic"><img src="assets/img/lang/pandas.svg" alt="" width="24" height="24" loading="lazy"></span><b data-ar="علم البيانات">Data science</b></a>
+
+        <a class="subject-card" href="course.html?c=java"><span class="subject-ic"><img src="assets/img/lang/java.svg" alt="" width="24" height="24" loading="lazy"></span><b>Java</b></a>
+        <a class="subject-card" href="course.html?c=react"><span class="subject-ic"><img src="assets/img/lang/react.svg" alt="" width="24" height="24" loading="lazy"></span><b data-ar="تطوير الويب">Web development</b></a>
+        <a class="subject-card" href="course.html?c=javascript"><span class="subject-ic"><img src="assets/img/lang/javascript.svg" alt="" width="24" height="24" loading="lazy"></span><b>JavaScript</b></a>
+        <a class="subject-card" href="course.html?c=sql"><span class="subject-ic"><img src="assets/img/lang/mysql.svg" alt="" width="24" height="24" loading="lazy"></span><b data-ar="قواعد البيانات">Databases</b></a>
+
+        <a class="subject-card" href="course.html?c=cpp"><span class="subject-ic"><img src="assets/img/lang/cplusplus.svg" alt="" width="24" height="24" loading="lazy"></span><b>C++</b></a>
+        <a class="subject-card" href="course.html?c=mobile"><span class="subject-ic"><img src="assets/img/lang/flutter.svg" alt="" width="24" height="24" loading="lazy"></span><b data-ar="تطبيقات الموبايل">Mobile development</b></a>
+        <a class="subject-card" href="course.html?c=csharp"><span class="subject-ic"><img src="assets/img/lang/csharp.svg" alt="" width="24" height="24" loading="lazy"></span><b>C#</b></a>
+        <a class="subject-card" href="course.html?c=dsa"><span class="subject-ic"><span class="s-emoji">🧠</span></span><b data-ar="الخوارزميات">Algorithms</b></a>
+
+        <a class="subject-card" href="course.html?c=go"><span class="subject-ic"><img src="assets/img/lang/go.svg" alt="" width="24" height="24" loading="lazy"></span><b>Go</b></a>
+        <a class="subject-card" href="qi.html"><span class="subject-ic"><span class="s-emoji">🤖</span></span><b data-ar="الذكاء الاصطناعي">AI &amp; IQ assistant</b></a>
+        <a class="subject-card" href="course.html?c=typescript"><span class="subject-ic"><img src="assets/img/lang/typescript.svg" alt="" width="24" height="24" loading="lazy"></span><b>TypeScript</b></a>
+        <a class="subject-card" href="course.html?c=node"><span class="subject-ic"><img src="assets/img/lang/nodejs.svg" alt="" width="24" height="24" loading="lazy"></span><b>Node.js</b></a>
+
+        <a class="subject-card" href="course.html?c=rust"><span class="subject-ic"><img src="assets/img/lang/rust.svg" alt="" width="24" height="24" loading="lazy"></span><b>Rust</b></a>
+        <a class="subject-card" href="course.html?c=git"><span class="subject-ic"><img src="assets/img/lang/git.svg" alt="" width="24" height="24" loading="lazy"></span><b>Git</b></a>
+        <a class="subject-card" href="course.html?c=ruby"><span class="subject-ic"><img src="assets/img/lang/ruby.svg" alt="" width="24" height="24" loading="lazy"></span><b>Ruby</b></a>
+        <a class="subject-card" href="course.html?c=bash"><span class="subject-ic"><img src="assets/img/lang/bash.svg" alt="" width="24" height="24" loading="lazy"></span><b>Bash</b></a>
+      </div>
+
+      <a class="subjects-banner reveal" href="qi.html">
+        <span class="sb-chevrons">»</span>
+        <span class="sb-txt">
+          <b data-ar="تعلّم مع مساعد IQ الذكي">Learn with the IQ AI assistant</b>
+          <small data-ar="عالق بأي درس؟ اسأل IQ بالعربي أو الإنجليزي واحصل على جواب فورًا.">Stuck on any lesson? Ask IQ in Arabic or English and get an instant answer.</small>
+        </span>
+        <span class="sb-arrow">→</span>
+      </a>
+
+      <p class="text-center" style="margin-top:20px">
+        <a href="courses.html" class="link" style="font-weight:700" data-ar="تدوّر على إشي ثاني؟ تصفّح الكل ←">Looking for something else? Explore all →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== How it works (interactive) ===== -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="كيف يشتغل">How it works</span>
+        <h2 data-ar="من أول كليك حتى الشهادة">From your first click to your certificate</h2>
+        <p data-ar="خمس خطوات بسيطة — اضغط على أي خطوة تشوف تفاصيلها.">Five simple steps — tap any step to see the details.</p>
+      </div>
+
+      <div class="how reveal">
+        <input class="how-radio" type="radio" name="how" id="how1" checked />
+        <input class="how-radio" type="radio" name="how" id="how2" />
+        <input class="how-radio" type="radio" name="how" id="how3" />
+        <input class="how-radio" type="radio" name="how" id="how4" />
+        <input class="how-radio" type="radio" name="how" id="how5" />
+
+        <div class="how-tabs" role="tablist">
+          <label for="how1" class="how-tab"><span class="how-n">1</span><span class="how-ic">📚</span><b data-ar="اختر كورسك">Pick a course</b></label>
+          <label for="how2" class="how-tab"><span class="how-n">2</span><span class="how-ic">✍️</span><b data-ar="اتعلّم بالممارسة">Learn by doing</b></label>
+          <label for="how3" class="how-tab"><span class="how-n">3</span><span class="how-ic">💻</span><b data-ar="شغّل الكود">Run the code</b></label>
+          <label for="how4" class="how-tab"><span class="how-n">4</span><span class="how-ic">🤖</span><b data-ar="اسأل IQ">Ask IQ</b></label>
+          <label for="how5" class="how-tab"><span class="how-n">5</span><span class="how-ic">🏆</span><b data-ar="خذ شهادتك">Get certified</b></label>
+        </div>
+
+        <div class="how-panels">
+          <div class="how-panel p1">
+            <div class="how-txt">
+              <h3 data-ar="📚 اختر من 25 كورس">📚 Choose from 25 courses</h3>
+              <p data-ar="من بايثون وجافاسكربت وتطوير الويب حتى قواعد البيانات والذكاء الاصطناعي — 750 درس مرتّبة من الصفر حتى الاحتراف، كلها مجانية.">From Python, JavaScript and web dev to databases and AI — 750 lessons ordered from zero to job-ready, all free.</p>
+              <a href="courses.html" class="btn btn-primary" data-ar="تصفّح الكورسات">Browse courses</a>
+            </div>
+            <div class="how-visual"><div class="how-card-demo"><span class="how-demo-ic">🐍</span><b>Python</b><small data-ar="30 درس · مبتدئ">30 lessons · Beginner</small></div></div>
+          </div>
+
+          <div class="how-panel p2">
+            <div class="how-txt">
+              <h3 data-ar="✍️ دروس تفاعلية بلغتك">✍️ Interactive lessons in your language</h3>
+              <p data-ar="كل درس مكتوب بالعربي والإنجليزي مع أمثلة كود حقيقية. تقرأ، تفهم، وتجرّب على طول — مش مجرّد مشاهدة.">Every lesson is written in Arabic and English with real code examples. Read, understand, and try immediately — not just watch.</p>
+            </div>
+            <div class="how-visual"><div class="how-lesson-demo"><span class="ld-dot"></span><span class="ld-dot"></span><span class="ld-dot"></span><p data-ar="المتغيّرات تخزّن بيانات…">Variables store data…</p><code>name = "Sara"</code></div></div>
+          </div>
+
+          <div class="how-panel p3">
+            <div class="how-txt">
+              <h3 data-ar="💻 اكتب وشغّل الكود فورًا">💻 Write &amp; run code instantly</h3>
+              <p data-ar="محرّر أكواد حقيقي داخل المتصفح: بايثون يشتغل بـ Skulpt، وجافاسكربت مباشرة، وHTML بمعاينة حيّة — بدون ما تنزّل أي برنامج.">A real in-browser editor: Python runs via Skulpt, JavaScript natively, and HTML with a live preview — nothing to install.</p>
+              <a href="editor.html" class="btn btn-primary" data-ar="جرّب المحرّر">Try the editor</a>
+            </div>
+            <div class="how-visual"><div class="how-code-demo"><div class="hcd-top"><span></span><span></span><span></span></div><pre>print("Hello!")
+<span class="hcd-out">▶ Hello!</span></pre></div></div>
+          </div>
+
+          <div class="how-panel p4">
+            <div class="how-txt">
+              <h3 data-ar="🤖 اسأل مساعد IQ الذكي">🤖 Ask the IQ AI assistant</h3>
+              <p data-ar="عالق بدرس؟ اسأل IQ بالعربي أو الإنجليزي. بيشرحلك، بيكتبلك كود، وبيصلّح أخطاءك — مساعد ذكاء اصطناعي حقيقي مربوط.">Stuck on a lesson? Ask IQ in Arabic or English. It explains, writes code, and fixes your bugs — a genuinely connected AI assistant.</p>
+              <a href="qi.html" class="btn btn-primary" data-ar="جرّب IQ">Try IQ</a>
+            </div>
+            <div class="how-visual"><div class="how-chat-demo"><div class="hc-q" data-ar="شو يعني دالة؟">What is a function?</div><div class="hc-a" data-ar="الدالة كتلة كود قابلة لإعادة الاستخدام… 🤖">A function is a reusable block of code… 🤖</div></div></div>
+          </div>
+
+          <div class="how-panel p5">
+            <div class="how-txt">
+              <h3 data-ar="🏆 انجح بالاختبار وخذ شهادتك">🏆 Pass the quiz &amp; earn your certificate</h3>
+              <p data-ar="بنهاية كل كورس في اختبار حقيقي ومشروع. تنجح، بتاخد شهادة إتمام باسمك تقدر تحطها بسيرتك الذاتية.">Each course ends with a real quiz and a project. Pass, and you get a completion certificate with your name for your résumé.</p>
+              <a href="register.html" class="btn btn-primary" data-ar="ابدأ مجانًا">Start free</a>
+            </div>
+            <div class="how-visual"><div class="how-cert-demo"><span class="hcert-ic">🏆</span><b data-ar="شهادة إتمام">Certificate of Completion</b><small>IQ.T3ani</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Language code switcher (Supabase-style) ===== -->
+  <section class="section" id="langs">
+    <div class="container">
+      <div class="switcher reveal">
+        <div class="switcher-side">
+          <span class="eyebrow" data-ar="اكتب بأي لغة">Write in any language</span>
+          <h2 data-ar="لغتك المفضّلة، <span class='gradient-text'>تشتغل فورًا</span>">Your favorite language, <span class="gradient-text">running instantly</span></h2>
+          <p data-ar="اضغط على أي لغة تشوف مثالها. المحرّر داخل موقعنا بيشغّل بايثون وجافاسكربت وHTML مباشرة في متصفّحك — بدون تنصيب.">Tap any language to see its example. Our in-site editor runs Python, JavaScript and HTML right in your browser — no installs.</p>
+          <a href="editor.html" class="btn btn-primary btn-lg" data-ar="افتح المحرّر">Open the editor</a>
+        </div>
+
+        <div class="switcher-box">
+          <input class="sw-radio" type="radio" name="sw" id="sw1" checked />
+          <input class="sw-radio" type="radio" name="sw" id="sw2" />
+          <input class="sw-radio" type="radio" name="sw" id="sw3" />
+          <input class="sw-radio" type="radio" name="sw" id="sw4" />
+          <input class="sw-radio" type="radio" name="sw" id="sw5" />
+          <input class="sw-radio" type="radio" name="sw" id="sw6" />
+          <input class="sw-radio" type="radio" name="sw" id="sw7" />
+
+          <div class="sw-tabs">
+            <label for="sw1" class="sw-tab" title="Python"><img src="assets/img/lang/python.svg" alt="Python" width="26" height="26" /></label>
+            <label for="sw2" class="sw-tab" title="JavaScript"><img src="assets/img/lang/javascript.svg" alt="JavaScript" width="26" height="26" /></label>
+            <label for="sw3" class="sw-tab" title="TypeScript"><img src="assets/img/lang/typescript.svg" alt="TypeScript" width="26" height="26" /></label>
+            <label for="sw4" class="sw-tab" title="Java"><img src="assets/img/lang/java.svg" alt="Java" width="26" height="26" /></label>
+            <label for="sw5" class="sw-tab" title="C++"><img src="assets/img/lang/cplusplus.svg" alt="C++" width="26" height="26" /></label>
+            <label for="sw6" class="sw-tab" title="Go"><img src="assets/img/lang/go.svg" alt="Go" width="26" height="26" /></label>
+            <label for="sw7" class="sw-tab" title="Rust"><img src="assets/img/lang/rust.svg" alt="Rust" width="26" height="26" /></label>
+          </div>
+
+          <div class="sw-win">
+            <div class="sw-win-top"><span class="sw-dot r"></span><span class="sw-dot y"></span><span class="sw-dot g"></span><span class="sw-file"></span></div>
+            <pre class="sw-code c1"><span class="c-kw">print</span>(<span class="c-str">"Hello, IQ.T3ani!"</span>)
+
+<span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">3</span>):
+    <span class="c-kw">print</span>(<span class="c-str">"Line"</span>, i)</pre>
+            <pre class="sw-code c2"><span class="c-kw">console</span>.log(<span class="c-str">"Hello, IQ.T3ani!"</span>);
+
+[<span class="c-num">1</span>, <span class="c-num">2</span>, <span class="c-num">3</span>].forEach(n =&gt; <span class="c-kw">console</span>.log(n));</pre>
+            <pre class="sw-code c3"><span class="c-kw">let</span> msg: <span class="c-ty">string</span> = <span class="c-str">"Hello, IQ.T3ani!"</span>;
+<span class="c-kw">console</span>.log(msg);</pre>
+            <pre class="sw-code c4"><span class="c-kw">public class</span> Main {
+  <span class="c-kw">public static void</span> main(<span class="c-ty">String</span>[] a) {
+    System.out.println(<span class="c-str">"Hello, IQ.T3ani!"</span>);
+  }
+}</pre>
+            <pre class="sw-code c5"><span class="c-kw">#include</span> <span class="c-str">&lt;iostream&gt;</span>
+<span class="c-kw">using namespace</span> std;
+
+<span class="c-kw">int</span> main() {
+  cout &lt;&lt; <span class="c-str">"Hello, IQ.T3ani!"</span>;
+}</pre>
+            <pre class="sw-code c6"><span class="c-kw">package</span> main
+<span class="c-kw">import</span> <span class="c-str">"fmt"</span>
+
+<span class="c-kw">func</span> main() {
+  fmt.Println(<span class="c-str">"Hello, IQ.T3ani!"</span>)
+}</pre>
+            <pre class="sw-code c7"><span class="c-kw">fn</span> main() {
+    <span class="c-kw">println!</span>(<span class="c-str">"Hello, IQ.T3ani!"</span>);
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Statement band (dot-matrix, Supabase-style) ===== -->
+  <section class="section band-wrap">
+    <div class="container">
+      <div class="band reveal">
+        <div class="band-txt">
+          <span class="eyebrow" data-ar="مجاني للأبد">Free forever</span>
+          <h2 data-ar="مجاني للجميع، من أول يوم">Free for everyone, from day one</h2>
+          <p data-ar="كل الكورسات الـ 25 و750 درس، والمحرّر، ومساعد الذكاء الاصطناعي، والشهادات — بدون رسوم، بدون بطاقة ائتمان، وبدون إعلانات. للأبد.">All 25 courses, 750 lessons, the editor, the AI assistant and certificates — no fees, no credit card, and no ads. Forever.</p>
+          <a href="courses.html" class="btn btn-primary btn-lg" data-ar="ابدأ التعلّم الآن">Start learning now</a>
+        </div>
+        <div class="band-visual" aria-hidden="true">
+          <div class="matrix">
+            <b class="matrix-num">100%</b>
+            <span class="matrix-label" data-ar="مجاني · بدون إعلانات">free · no ads</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Free model + share ===== -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="freebox reveal">
+        <span class="eyebrow" data-ar="نظام بسيط">Simple model</span>
+        <h2 data-ar="كل الكورسات <span class='gradient-text'>مجانية</span> 🎁">All courses are <span class="gradient-text">free</span> 🎁</h2>
+        <p data-ar="كل الكورسات الـ 25 و750 درس مجانية بالكامل من أول دقيقة — بدون حدود وقت وبدون بطاقة ائتمان. وكل كورس بينتهي بشهادة ومشروع تطبيقي، وكله من الصفر.">All 25 courses and 750 lessons are 100% free from the first minute — no time limits, no credit card. Every course ends with a certificate and a hands-on project, all from absolute zero.</p>
+        <div class="share-btns" style="justify-content:center;margin-top:22px">
+          <button class="share-btn" data-share="whatsapp">🟢 <span data-ar="واتساب">WhatsApp</span></button>
+          <button class="share-btn" data-share="twitter">𝕏 <span>Twitter</span></button>
+          <button class="share-btn" data-share="telegram">✈️ <span data-ar="تيليجرام">Telegram</span></button>
+          <button class="share-btn" data-share="copy">🔗 <span data-ar="نسخ الرابط">Copy link</span></button>
+        </div>
+        <a href="pricing.html" class="btn btn-ghost" style="margin-top:18px" data-ar="أو شوف باقات الاشتراك">Or see subscription plans</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Popular courses ===== -->
+  <section class="section" style="padding-top:0" id="courses">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="الأكثر رواجًا">Most popular</span>
+        <h2 data-ar="كورسات يحبّها المتعلّمون">Courses learners love</h2>
+      </div>
+      <div class="grid grid-4">
+        <a href="course.html?c=python" class="card course-card reveal">
+          <div class="course-cover"><img class="lang-logo" src="assets/img/lang/python.svg" alt="Python" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="مبتدئ">Beginner</span></div>
+          <div class="course-body">
+            <span class="course-tag">Python</span>
+            <h3 data-ar="أساسيات بايثون">Python Fundamentals</h3>
+            <p data-ar="ابدأ من الصفر وتعلّم أقوى لغة للمبتدئين.">Start from zero with the most beginner-friendly language.</p>
+            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
+            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
+          </div>
+        </a>
+        <a href="course.html?c=web" class="card course-card reveal">
+          <div class="course-cover" style="background:linear-gradient(135deg,#f7971e,#ffd200)"><img class="lang-logo" src="assets/img/lang/html5.svg" alt="HTML5" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="مبتدئ">Beginner</span></div>
+          <div class="course-body">
+            <span class="course-tag">Web</span>
+            <h3 data-ar="تطوير الويب من الصفر">Web Dev from Scratch</h3>
+            <p data-ar="HTML وCSS وجافاسكربت لبناء مواقع حقيقية.">HTML, CSS &amp; JavaScript to build real websites.</p>
+            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
+            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
+          </div>
+        </a>
+        <a href="course.html?c=react" class="card course-card reveal">
+          <div class="course-cover" style="background:linear-gradient(135deg,#00c6ff,#0072ff)"><img class="lang-logo" src="assets/img/lang/react.svg" alt="React" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="متوسط">Intermediate</span></div>
+          <div class="course-body">
+            <span class="course-tag">React</span>
+            <h3 data-ar="React للمحترفين">React for Pros</h3>
+            <p data-ar="ابنِ واجهات حديثة وسريعة باستخدام React.">Build modern, fast interfaces with React.</p>
+            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
+            <div class="course-foot"><span class="stars">★★★★☆</span><span class="price" data-ar="مجاني">Free</span></div>
+          </div>
+        </a>
+        <a href="course.html?c=dsa" class="card course-card reveal">
+          <div class="course-cover" style="background:linear-gradient(135deg,#11998e,#38ef7d)"><span class="emoji">🧠</span><span class="course-level" data-ar="متقدّم">Advanced</span></div>
+          <div class="course-body">
+            <span class="course-tag">CS</span>
+            <h3 data-ar="الخوارزميات وهياكل البيانات">Data Structures &amp; Algorithms</h3>
+            <p data-ar="جهّز نفسك لمقابلات العمل التقنية بثقة.">Ace your technical interviews with confidence.</p>
+            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
+            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center mt-6">
+        <a href="courses.html" class="btn btn-ghost btn-lg" data-ar="شوف كل الكورسات">View all courses</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="ليش IQ.T3ani">Why IQ.T3ani</span>
+        <h2 data-ar="تتعلّم بالممارسة، مش بالمشاهدة">You learn by doing, not just watching</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="quote reveal">
+          <p data-ar="محرّر أكواد حقيقي داخل المتصفح — تكتب بايثون أو جافاسكربت أو HTML وتشغّله فورًا بدون ما تنزّل أي برنامج.">A real in-browser code editor — write Python, JavaScript or HTML and run it instantly, with nothing to install.</p>
+          <div class="who"><div class="avatar">💻</div><div><b data-ar="محرّر يشتغل فعلاً">A real editor</b><span data-ar="Python عبر Skulpt · JS · معاينة ويب حية">Python via Skulpt · JS · live web preview</span></div></div>
+        </div>
+        <div class="quote reveal">
+          <p data-ar="مساعد ذكاء اصطناعي مربوط فعليًا يجاوب على أسئلتك بالعربي والإنجليزي، ويكتب لك أكواد ويشرح الدروس.">A genuinely connected AI assistant that answers your questions in Arabic and English, writes code, and explains lessons.</p>
+          <div class="who"><div class="avatar">🤖</div><div><b data-ar="مساعد IQ الذكي">IQ AI assistant</b><span data-ar="مربوط بذكاء اصطناعي حقيقي">Powered by a real AI model</span></div></div>
+        </div>
+        <div class="quote reveal">
+          <p data-ar="تقدّمك محفوظ على جهازك: نقاط خبرة وسلاسل أيام وشارات وعلامات مرجعية — بدون تتبّع ولا إعلانات.">Your progress is saved on your device: XP, streaks, badges and bookmarks — no tracking, no ads.</p>
+          <div class="who"><div class="avatar">🏆</div><div><b data-ar="تقدّم حقيقي">Real progress</b><span data-ar="كل شي مجاني بالكامل">Everything 100% free</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta reveal">
+        <h2 data-ar="جاهز تبدأ رحلتك بالبرمجة؟">Ready to start your coding journey?</h2>
+        <p data-ar="ابدأ من الصفر اليوم — مجاني بالكامل، بدون بطاقة ائتمان.">Start from zero today — 100% free, no credit card required.</p>
+        <a href="register.html" class="btn btn-primary btn-lg" data-ar="أنشئ حسابك المجاني">Create your free account</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+          <p class="muted" data-ar="منصّة عربية لتعلّم البرمجة بالممارسة، من الصفر حتى الاحتراف.">A hands-on platform to learn programming — from zero to job-ready.</p>
+        </div>
+        <div>
+          <h5 data-ar="المنصّة">Platform</h5>
+          <a href="courses.html" data-ar="الكورسات">Courses</a>
+          <a href="about.html" data-ar="عن المنصّة">About</a>
+          <a href="dashboard.html" data-ar="لوحة التحكم">Dashboard</a>
+          <a href="#features" data-ar="المميّزات">Features</a>
+        </div>
+        <div>
+          <h5 data-ar="الحساب">Account</h5>
+          <a href="register.html" data-ar="إنشاء حساب">Sign up</a>
+        </div>
+        <div>
+          <h5 data-ar="تواصل">Connect</h5>
+          <a href="https://wa.me/962788330108" target="_blank" rel="noopener" data-ar="واتساب: IQ.T3ani">WhatsApp: IQ.T3ani</a>
+          <a href="https://www.instagram.com/dxq6n/" target="_blank" rel="noopener" data-ar="انستغرام: dxq6n">Instagram: dxq6n</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> IQ.T3ani · محمد اياد الطعاني. <span data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></span>
+        <span data-ar="صُنع بشغف للمتعلّمين ❤️">Made with ❤️ for learners</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

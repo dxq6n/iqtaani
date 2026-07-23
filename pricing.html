@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — IQ.T3ani</title>
+  <meta name="description" content="Simple pricing for IQ.T3ani — all core programming courses are free forever." />
+  <link rel="canonical" href="https://iqtaani.netlify.app/pricing.html" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IQ.T3ani" />
+  <meta property="og:title" content="Pricing — IQ.T3ani" />
+  <meta property="og:description" content="Simple pricing for IQ.T3ani — all core programming courses are free forever." />
+  <meta property="og:url" content="https://iqtaani.netlify.app/pricing.html" />
+  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pricing — IQ.T3ani" />
+  <meta name="twitter:description" content="Simple pricing for IQ.T3ani — all core programming courses are free forever." />
+  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=39" />
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=39" />
+  <script src="assets/js/app.js?v=39" defer></script>
+  <script src="assets/js/iq-engine.js?v=39" defer></script>
+  <script src="assets/js/iq-widget.js?v=39" defer></script>
+  <style>
+    .plans2 { display: grid; grid-template-columns: repeat(2, minmax(0, 330px)); gap: 22px; justify-content: center; }
+    .plan { display: flex; flex-direction: column; position: relative; }
+    .plan .price-tag { font-size: 3rem; font-weight: 800; letter-spacing: -.02em; }
+    .plan .price-tag small { font-size: 1rem; color: var(--muted); font-weight: 600; }
+    .plan ul.feat { display: grid; gap: 11px; margin: 18px 0 22px; text-align: start; }
+    .plan ul.feat li { display: flex; gap: 9px; color: var(--muted); font-size: .95rem; }
+    .plan ul.feat li b { color: var(--text); font-weight: 600; }
+    .plan.popular { border-color: var(--primary); box-shadow: 0 20px 50px -20px rgba(109,94,252,.6); }
+    .plan .tag-pop { position: absolute; inset-block-start: 14px; inset-inline-end: 14px; background: var(--grad); color: #fff; font-size: .72rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; }
+    .plan .btn { margin-top: auto; }
+    @media (max-width: 640px) { .plans2 { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="pricing.html" data-ar="الأسعار">Pricing</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="main" role="main">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-ar="الأسعار">Pricing</span>
+        <h2 data-ar="كل شي مجاني بالكامل">Everything is 100% free</h2>
+        <p data-ar="كل الكورسات الـ 25 و750 درس والمحرّر ومساعد الذكاء الاصطناعي — مجاني بالكامل، بدون بطاقة ائتمان.">All 25 courses, 750 lessons, the editor and the AI assistant — completely free, no credit card.</p>
+      </div>
+
+      <div class="plans2">
+        <!-- Free (the real, current plan) -->
+        <div class="card plan popular reveal">
+          <span class="tag-pop" data-ar="الخطة الحالية">Current plan</span>
+          <span class="course-tag" style="color:var(--primary)" data-ar="مجاني">Free</span>
+          <div class="price-tag">$0<small data-ar="للأبد">/forever</small></div>
+          <ul class="feat">
+            <li>⭐ <b data-ar="كل الكورسات الـ 25 — 750 درس">All 25 courses — 750 lessons</b></li>
+            <li>✅ <span data-ar="محرّر أكواد ومساعد ذكاء اصطناعي">Code editor &amp; AI assistant</span></li>
+            <li>🏆 <span data-ar="اختبارات وشهادات ومشاريع">Quizzes, certificates &amp; projects</span></li>
+            <li>💾 <span data-ar="تتبّع تقدّمك بدون إعلانات">Progress tracking — no ads</span></li>
+          </ul>
+          <a href="courses.html" class="btn btn-primary btn-block" data-ar="ابدأ الآن مجانًا">Start now — free</a>
+        </div>
+
+        <!-- Pro (coming soon, not active) -->
+        <div class="card plan reveal" style="opacity:.85">
+          <span class="course-tag" style="color:var(--cyan)" data-ar="Pro — قريبًا">Pro — soon</span>
+          <div class="price-tag" data-ar="قريبًا">Soon</div>
+          <ul class="feat">
+            <li>🚀 <span data-ar="مسارات وظيفية متقدّمة">Advanced career tracks</span></li>
+            <li>🧑‍🏫 <span data-ar="مراجعة مشاريع ودعم مباشر">Project reviews &amp; live support</span></li>
+            <li>📜 <span data-ar="شهادات موثّقة قابلة للمشاركة">Verified shareable certificates</span></li>
+          </ul>
+          <button class="btn btn-ghost btn-block" disabled style="opacity:.6;cursor:not-allowed" data-ar="قريبًا">Coming soon</button>
+        </div>
+      </div>
+
+      <p class="text-center" style="color:var(--muted);margin-top:26px;font-size:.92rem" data-ar="كل المنصّة مجانية بالكامل حاليًا — بدون بطاقة ائتمان وبدون حدود. خطة Pro (اختيارية) قيد التطوير وسنعلن عنها لاحقًا.">The whole platform is 100% free right now — no credit card, no limits. An optional Pro plan is in development and will be announced later.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:0;margin:0;padding:0">
+        <span>© <span id="year">2026</span> IQ.T3ani · محمد اياد الطعاني. <span data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></span>
+        <a href="https://wa.me/962788330108" target="_blank" rel="noopener" class="link" data-ar="واتساب: IQ.T3ani">WhatsApp: IQ.T3ani</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
