@@ -587,5 +587,37 @@
     </div>
   </footer>
 
+  <!-- Auto-play the "How it works" steps (pauses on hover / focus / when tab hidden) -->
+  <script>
+  (function () {
+    var how = document.querySelector('.how');
+    if (!how) return;
+    var radios = [].slice.call(how.querySelectorAll('.how-radio'));
+    if (radios.length < 2) return;
+    var DWELL = 6000, timer = null;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function currentIndex() {
+      for (var i = 0; i < radios.length; i++) if (radios[i].checked) return i;
+      return 0;
+    }
+    function clear() { if (timer) { clearTimeout(timer); timer = null; } }
+    function schedule() {
+      clear();
+      if (reduce || how.classList.contains('is-paused') || document.hidden) return;
+      timer = setTimeout(function () {
+        radios[(currentIndex() + 1) % radios.length].checked = true;
+        schedule();
+      }, DWELL);
+    }
+    radios.forEach(function (r) { r.addEventListener('change', schedule); });
+    how.addEventListener('mouseenter', function () { how.classList.add('is-paused'); clear(); });
+    how.addEventListener('mouseleave', function () { how.classList.remove('is-paused'); schedule(); });
+    how.addEventListener('focusin', function () { how.classList.add('is-paused'); clear(); });
+    how.addEventListener('focusout', function () { how.classList.remove('is-paused'); schedule(); });
+    document.addEventListener('visibilitychange', function () { document.hidden ? clear() : schedule(); });
+    schedule();
+  })();
+  </script>
+
 </body>
 </html>
