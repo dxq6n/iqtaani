@@ -13,10 +13,10 @@
 
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta';
 const MODEL_CANDIDATES = [
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-preview',
+  'gemini-flash-latest',
+  'gemini-flash-lite-latest',
   'gemini-2.0-flash',
-  'gemini-1.5-flash'
+  'gemini-2.5-flash'
 ];
 
 const SYSTEM_PROMPT =
@@ -55,7 +55,7 @@ exports.handler = async function (event) {
      back to the owner's key stored base64-encoded below so it isn't plainly
      readable in the source. NOTE: base64 is obfuscation, not encryption —
      for real safety set GEMINI_API_KEY in Netlify and remove this fallback. */
-  const _k = 'QVEuQWI4Uk42bDNLSExGeHVFWGtIMTN2NHBnYnMxUEh3WWdYRlBiZnhlbTlqbW9tV1dLaWc=';
+  const _k = 'QVEuQWI4Uk42SldRWFROZ0V3MWYtWDBZaFRLaHoxNGxtMVozeUNFQ0k0a2FZbjEtR1I1M3c=';
   const KEY = (process.env.GEMINI_API_KEY || Buffer.from(_k, 'base64').toString('utf8')).trim();
   if (!KEY) {
     return json(503, {
