@@ -44,7 +44,7 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
     try{
       window.twemoji.parse(document.body,{
         className:'emoji',
-        callback:function(icon){return 'assets/twemoji/'+icon+'.svg';}
+        callback:function(icon){return 'assets/emoji-apple/'+icon+'.png';}
       });
     }catch(e){}
   }
