@@ -31,11 +31,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=49" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=50" />
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var t = localStorage.getItem('theme') || 'dark';
         var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {}
         var r = document.documentElement; r.classList.add('js');
         r.setAttribute('data-theme', t); r.setAttribute('data-lang', l);
@@ -43,10 +43,10 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=49" />
-  <script src="assets/js/app.js?v=49" defer></script>
-  <script src="assets/js/iq-engine.js?v=49" defer></script>
-  <script src="assets/js/iq-widget.js?v=49" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=50" />
+  <script src="assets/js/app.js?v=50" defer></script>
+  <script src="assets/js/iq-engine.js?v=50" defer></script>
+  <script src="assets/js/iq-widget.js?v=50" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -721,6 +721,52 @@
       es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
     }, { threshold: 0.4 });
     els.forEach(function (el) { io.observe(el); });
+  })();
+  </script>
+  <!-- WOW: hero cursor spotlight + confetti on mascot click -->
+  <script>
+  (function () {
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hero = document.querySelector('.hero');
+    if (hero && !reduce) {
+      var spot = document.createElement('div'); spot.className = 'cursor-spot'; hero.appendChild(spot);
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        spot.style.left = (e.clientX - r.left) + 'px'; spot.style.top = (e.clientY - r.top) + 'px';
+      });
+    }
+    function confetti(x, y) {
+      if (reduce) return;
+      var c = document.getElementById('confetti');
+      if (!c) { c = document.createElement('canvas'); c.id = 'confetti'; document.body.appendChild(c); }
+      var ctx = c.getContext('2d'); c.width = innerWidth; c.height = innerHeight;
+      var colors = ['#34d399', '#059669', '#fbbf24', '#f472b6', '#34d7ee'], parts = [];
+      for (var i = 0; i < 90; i++) parts.push({ x: x, y: y, vx: (Math.random() - .5) * 9, vy: (Math.random() * -1) * 9 - 3, g: .28, size: 5 + Math.random() * 5, color: colors[i % colors.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .35, life: 70 + Math.random() * 30 });
+      (function anim() {
+        ctx.clearRect(0, 0, c.width, c.height); var alive = false;
+        parts.forEach(function (p) {
+          if (p.life <= 0) return; alive = true; p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life--;
+          ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.globalAlpha = Math.max(0, p.life / 40); ctx.fillStyle = p.color; ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * .6); ctx.restore();
+        });
+        if (alive) requestAnimationFrame(anim); else ctx.clearRect(0, 0, c.width, c.height);
+      })();
+    }
+    var mascot = document.querySelector('.mascot');
+    if (mascot) mascot.addEventListener('click', function () { var r = mascot.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + r.height / 2); });
+  })();
+  </script>
+  <!-- WOW: 3D-rotate the laptop with the cursor -->
+  <script>
+  (function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var hero = document.querySelector('.hero'), laptop = document.querySelector('.laptop');
+    if (!hero || !laptop) return;
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      laptop.style.transform = 'rotateY(' + (px * 20).toFixed(1) + 'deg) rotateX(' + (-py * 11).toFixed(1) + 'deg)';
+    });
+    hero.addEventListener('mouseleave', function () { laptop.style.transform = ''; });
   })();
   </script>
 </body>

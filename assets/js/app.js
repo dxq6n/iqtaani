@@ -97,3 +97,33 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
   if(document.readyState!=='loading') enhance(); else document.addEventListener('DOMContentLoaded', enhance);
   setTimeout(enhance,400); setTimeout(enhance,1200);
 })();
+
+;/* ===== WOW effects: scroll bar, 3D tilt cards, magnetic buttons ===== */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 1) Scroll progress bar */
+  (function(){
+    var bar=document.createElement('div'); bar.id='scrollbar'; document.body.appendChild(bar);
+    function upd(){ var h=document.documentElement.scrollHeight-innerHeight; bar.style.width=(h>0?(scrollY/h*100):0)+'%'; }
+    addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+  })();
+  if (reduce) return;
+  /* 2) 3D tilt on cards */
+  [].slice.call(document.querySelectorAll('.card')).forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform='perspective(760px) rotateX('+(-py*6).toFixed(2)+'deg) rotateY('+(px*8).toFixed(2)+'deg) translateY(-5px)';
+    });
+    card.addEventListener('mouseleave',function(){ card.style.transform=''; });
+  });
+  /* 4) Magnetic buttons */
+  [].slice.call(document.querySelectorAll('.btn-lg')).forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var r=btn.getBoundingClientRect();
+      var dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+      btn.style.transform='translate('+(dx*0.25).toFixed(1)+'px,'+(dy*0.35).toFixed(1)+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){ btn.style.transform=''; });
+  });
+})();

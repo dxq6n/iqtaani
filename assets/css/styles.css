@@ -223,3 +223,26 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 @keyframes glowDriftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-42px,32px) scale(1.16)}}
 @keyframes glowDriftB{from{transform:translate(0,0) scale(1)}to{transform:translate(36px,-26px) scale(1.12)}}
 @media (prefers-reduced-motion:reduce){.hero-glow{animation:none}}
+
+/* ===== WOW effects ===== */
+/* 1) Scroll progress bar */
+#scrollbar{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:var(--grad);z-index:100;box-shadow:0 0 10px rgba(52,211,153,.6);transition:width .08s linear}
+/* 2) 3D tilt cards */
+.card{transform-style:preserve-3d;will-change:transform}
+/* 3) Cursor spotlight in hero */
+.hero{position:relative;overflow:hidden}
+.cursor-spot{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.16),transparent 70%);pointer-events:none;transform:translate(-50%,-50%);z-index:0;opacity:0;transition:opacity .35s var(--ease)}
+.hero:hover .cursor-spot{opacity:1}
+.hero-copy,.hero-visual{position:relative;z-index:2}
+/* 4) Magnetic buttons */
+.btn-lg{will-change:transform}
+/* 5) Confetti canvas */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
+/* mascot clickable for the confetti easter-egg */
+.mascot{pointer-events:auto;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.card,.btn-lg{transform:none!important}}
+
+/* ===== 3D rotatable laptop (follows the cursor) ===== */
+.hero-visual{perspective:1500px}
+.laptop{transform-style:preserve-3d;transition:transform .18s ease-out}
+.laptop-screen,.laptop-base{transform-style:preserve-3d}
