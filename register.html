@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=70" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=71" />
   <script>
     (function () { try {
       var t = localStorage.getItem('theme') || 'dark';
@@ -39,13 +39,13 @@
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
     } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=70" />
-  <script src="assets/js/supabase.min.js?v=70" defer></script>
-  <script src="assets/js/auth-supabase.js?v=70" defer></script>
-  <script src="assets/js/app.js?v=70" defer></script>
-  <script src="assets/js/emoji.js?v=70" defer></script>
-  <script src="assets/js/iq-engine.js?v=70" defer></script>
-  <script src="assets/js/iq-widget.js?v=70" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=71" />
+  <script src="assets/js/supabase.min.js?v=71" defer></script>
+  <script src="assets/js/auth-supabase.js?v=71" defer></script>
+  <script src="assets/js/app.js?v=71" defer></script>
+  <script src="assets/js/emoji.js?v=71" defer></script>
+  <script src="assets/js/iq-engine.js?v=71" defer></script>
+  <script src="assets/js/iq-widget.js?v=71" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -58,6 +58,7 @@
         <a href="courses.html" data-ar="الكورسات">Courses</a>
         <a href="community.html" data-ar="المجتمع">Community</a>
         <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="pricing.html" data-ar="الأسعار">Pricing</a>
         <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
         <a href="qi.html">IQ</a>
       </nav>
@@ -141,12 +142,12 @@
         <!-- Step 2: email code (OTP) — shown after "Create account" when confirmation is on -->
         <div class="otp-step" id="otpStep" hidden>
           <button type="button" class="otp-back" id="otpBack" data-ar="‹ رجوع">‹ Back</button>
-          <h1 data-ar="أدخل رمز التأكيد">Enter your code</h1>
+          <h2 data-ar="أدخل رمز التأكيد">Enter your code</h2>
           <p class="sub" data-ar="بعتنالك رمز من 6 أرقام على بريدك. أدخله لتفعيل حسابك والدخول.">We emailed you a 6-digit code. Enter it to activate your account and sign in.</p>
           <div class="field">
             <div class="input-wrap">
               <span class="lead-ic">🔑</span>
-              <input class="input otp-input" id="otpCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="••••••" data-ar-ph="••••••" />
+              <input class="input otp-input" id="otpCode" aria-label="Verification code / رمز التأكيد" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="••••••" data-ar-ph="••••••" />
             </div>
           </div>
           <button type="button" class="btn btn-primary btn-block btn-lg" id="otpVerify" style="margin-top:16px" data-ar="تأكيد وفتح الحساب">Verify &amp; open account</button>
