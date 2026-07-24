@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=60" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=61" />
   <script>
     (function () {
       try {
@@ -43,11 +43,10 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=60" />
-  <script src="assets/js/app.js?v=60" defer></script>
-  <script src="assets/js/iq-engine.js?v=60" defer></script>
-  <script src="assets/js/iq-widget.js?v=60" defer></script>
-  <script src="assets/js/three.min.js?v=60" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=61" />
+  <script src="assets/js/app.js?v=61" defer></script>
+  <script src="assets/js/iq-engine.js?v=61" defer></script>
+  <script src="assets/js/iq-widget.js?v=61" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -132,6 +131,29 @@
       </div>
       <div class="hero-visual reveal">
         <div class="laptop3d" id="laptop3d" aria-label="Interactive 3D MacBook — drag to rotate" role="img">
+          <!-- Instant lightweight poster: shows immediately on every device/network; upgraded to interactive 3D only where it's fast -->
+          <svg class="laptop-poster" viewBox="0 0 520 360" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="lpScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#101827"/><stop offset="1" stop-color="#0a1120"/></linearGradient>
+              <linearGradient id="lpBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34363c"/><stop offset="1" stop-color="#1c1d21"/></linearGradient>
+              <linearGradient id="lpSheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset=".3" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+            </defs>
+            <!-- lid -->
+            <rect x="118" y="24" width="284" height="188" rx="12" fill="#202126"/>
+            <rect x="128" y="34" width="264" height="168" rx="7" fill="url(#lpScreen)"/>
+            <rect x="128" y="34" width="264" height="26" rx="7" fill="#0e1526"/>
+            <circle cx="146" cy="47" r="4.5" fill="#ff5f56"/><circle cx="162" cy="47" r="4.5" fill="#ffbd2e"/><circle cx="178" cy="47" r="4.5" fill="#27c93f"/>
+            <text x="196" y="51" fill="#93a1bd" font-family="Fira Code,monospace" font-size="12">hello.py</text>
+            <text x="142" y="86" fill="#6b8299" font-family="Fira Code,monospace" font-size="14"># Learn Python</text>
+            <text x="142" y="110" fill="#c3e88d" font-family="Fira Code,monospace" font-size="14">for i in range(3):</text>
+            <text x="160" y="134" fill="#e7ecf7" font-family="Fira Code,monospace" font-size="14">print("Hello, IQ.T3ani!")</text>
+            <text x="142" y="170" fill="#6b8299" font-family="Fira Code,monospace" font-size="14"># -&gt; runs instantly</text>
+            <rect x="128" y="34" width="264" height="168" rx="7" fill="url(#lpSheen)"/>
+            <!-- base / keyboard -->
+            <path d="M96 214 h328 l24 40 h-376 z" fill="url(#lpBody)"/>
+            <rect x="120" y="222" width="280" height="6" rx="3" fill="#0b0b0d" opacity=".7"/>
+            <rect x="228" y="246" width="64" height="5" rx="2.5" fill="#3a3b40"/>
+          </svg>
           <span class="laptop3d-hint" data-ar="اسحب لتدوير اللابتوب 360°">Drag to rotate ↻</span>
         </div>
       </div>
@@ -725,15 +747,38 @@
   <!-- Interactive 3D laptop (Three.js) — keyboard, live-typing screen, drag to rotate 360 -->
   <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var THREE = window.THREE; var el = document.getElementById('laptop3d');
-    if (!THREE || !el) { if (el) el.style.display='none'; return; }
+    var el = document.getElementById('laptop3d');
+    if (!el) return;
+    var poster = el.querySelector('.laptop-poster');
+    // Stay fast on every device: skip WebGL AND the ~600KB three.js download on weak
+    // devices / slow or data-saving networks — the instant SVG poster stays instead.
+    var conn = navigator.connection || navigator.webkitConnection || {};
+    var weak = conn.saveData
+      || /(^|[\s-])(2g|slow-2g)/.test(conn.effectiveType || '')
+      || (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2)
+      || (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 2);
+    if (weak) return;
+    // Load three.js on demand, only once the hero is near the viewport.
+    function ready(){
+      if (window.THREE) { build(); return; }
+      var s = document.createElement('script');
+      s.src = 'assets/js/three.min.js?v=61'; s.async = true;
+      s.onload = build; s.onerror = function(){}; document.head.appendChild(s);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ io.disconnect(); ready(); } }, { rootMargin:'250px' });
+      io.observe(el);
+    } else { ready(); }
+
+    function build(){
+      var THREE = window.THREE; if (!THREE) return;
     try {
       var W = function(){ return el.clientWidth || 520; }, H = function(){ return el.clientHeight || 440; };
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(30, W()/H(), 0.1, 100);
       camera.position.set(0, 2.7, 13.5);
       var renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'high-performance' });
-      renderer.setPixelRatio(Math.min(1.5, window.devicePixelRatio||1));
+      renderer.setPixelRatio(Math.min(1.25, window.devicePixelRatio||1));
       renderer.setSize(W(), H());
       renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       if (THREE.SRGBColorSpace) renderer.outputColorSpace = THREE.SRGBColorSpace; else if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
@@ -834,8 +879,10 @@
         renderer.render(scene, camera);
       }
       requestAnimationFrame(loop);
+      if (poster) poster.style.display = 'none';   // hand off from static poster to live 3D
       window.addEventListener('resize', function(){ camera.aspect = W()/H(); camera.updateProjectionMatrix(); renderer.setSize(W(), H()); });
-    } catch (err) { el.style.display='none'; }
+    } catch (err) { /* keep the instant poster if WebGL fails */ }
+    }
   });
   </script>
 </body>
