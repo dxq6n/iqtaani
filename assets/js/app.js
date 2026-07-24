@@ -229,3 +229,23 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
   },1000);
   addEventListener('beforeunload',function(){ save(u); });
 })();
+
+;/* ===== Small mascot chip next to the three-dots menu (all pages) ===== */
+(function(){
+  function place(){
+    var actions=document.querySelector('.nav-actions'); if(!actions) return;
+    if(actions.querySelector('.nav-mascot')) return;
+    var kebab=actions.querySelector('.kebab-btn');
+    var m=document.createElement('span'); m.className='nav-mascot'; m.setAttribute('aria-hidden','true');
+    m.innerHTML='<svg viewBox="0 0 240 240" width="30" height="30"><g>'
+      +'<path fill="#161c2b" d="M54 104 Q46 34 120 30 Q194 34 186 104 Q168 66 120 64 Q72 66 54 104 Z"/>'
+      +'<ellipse cx="120" cy="126" rx="66" ry="70" fill="#f3d9c0" stroke="#0b0f1a" stroke-width="3"/>'
+      +'<path fill="#161c2b" d="M52 106 Q58 60 120 58 Q182 60 188 106 Q152 80 120 82 Q88 80 52 106 Z"/>'
+      +'<g stroke="#0b0f1a" stroke-width="5" fill="#fff"><circle cx="96" cy="124" r="23"/><circle cx="150" cy="124" r="23"/><line x1="119" y1="122" x2="127" y2="122"/></g>'
+      +'<g fill="#0b0f1a"><circle cx="96" cy="124" r="7"/><circle cx="150" cy="124" r="7"/></g>'
+      +'<path d="M104 162 q16 15 32 0" fill="none" stroke="#0b0f1a" stroke-width="3.5" stroke-linecap="round"/></g></svg>';
+    if(kebab) actions.insertBefore(m, kebab); else actions.appendChild(m);
+  }
+  if(document.readyState!=='loading') place(); else document.addEventListener('DOMContentLoaded', place);
+  setTimeout(place, 500);
+})();
