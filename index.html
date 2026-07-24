@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=59" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=60" />
   <script>
     (function () {
       try {
@@ -43,11 +43,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=59" />
-  <script src="assets/js/app.js?v=59" defer></script>
-  <script src="assets/js/iq-engine.js?v=59" defer></script>
-  <script src="assets/js/iq-widget.js?v=59" defer></script>
-  <script src="assets/js/three.min.js?v=59" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=60" />
+  <script src="assets/js/app.js?v=60" defer></script>
+  <script src="assets/js/iq-engine.js?v=60" defer></script>
+  <script src="assets/js/iq-widget.js?v=60" defer></script>
+  <script src="assets/js/three.min.js?v=60" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -749,10 +749,19 @@
       ground.rotation.x = -Math.PI/2; ground.position.y = -1.25; ground.receiveShadow = true; scene.add(ground);
 
       var group = new THREE.Group(); scene.add(group);
-      var metal = new THREE.MeshStandardMaterial({ color:0x1a1a1d, metalness:0.92, roughness:0.32 });
+      // Space-black anodized aluminum (brushed, low-gloss like a real MacBook Pro)
+      var metal = new THREE.MeshStandardMaterial({ color:0x2b2b30, metalness:0.85, roughness:0.52 });
+      var edge  = new THREE.MeshStandardMaterial({ color:0x141417, metalness:0.9, roughness:0.4 });
 
-      var base = new THREE.Mesh(new THREE.BoxGeometry(6, 0.26, 4), metal);
+      // thin tapered base (deck) — a real MacBook base is ~1.5cm
+      var base = new THREE.Mesh(new THREE.BoxGeometry(6, 0.22, 4), metal);
       base.position.y = -0.98; base.castShadow = true; base.receiveShadow = true; group.add(base);
+      // rounded front lip + side rails so the aluminium body reads as machined, not a flat box
+      var lip = new THREE.Mesh(new THREE.BoxGeometry(6.02, 0.1, 0.12), edge);
+      lip.position.set(0, -0.95, 2.0); group.add(lip);
+      // hinge bar between deck and lid
+      var hinge = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 5.8, 20), edge);
+      hinge.rotation.z = Math.PI/2; hinge.position.set(0, -0.98, -1.9); group.add(hinge);
 
       // keyboard + trackpad drawn onto the deck (cheap, one texture)
       function rr(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
@@ -766,9 +775,12 @@
       var deck = new THREE.Mesh(new THREE.PlaneGeometry(5.7, 3.7), new THREE.MeshStandardMaterial({ map:kbtex, metalness:0.4, roughness:0.7 }));
       deck.rotation.x = -Math.PI/2; deck.position.set(0, -0.84, 0.15); group.add(deck);
 
-      var lid = new THREE.Group(); lid.position.set(0, -0.98, -2); group.add(lid);
-      var lidMesh = new THREE.Mesh(new THREE.BoxGeometry(6, 3.9, 0.2), metal); lidMesh.position.set(0, 1.95, 0); lidMesh.castShadow = true; lid.add(lidMesh);
-      lid.rotation.x = -0.16;
+      var lid = new THREE.Group(); lid.position.set(0, -0.98, -1.9); group.add(lid);
+      var lidMesh = new THREE.Mesh(new THREE.BoxGeometry(6, 3.9, 0.14), metal); lidMesh.position.set(0, 1.95, 0); lidMesh.castShadow = true; lid.add(lidMesh);
+      // dark glass bezel just under the screen so the display looks inset, not painted on
+      var bezel = new THREE.Mesh(new THREE.PlaneGeometry(5.94, 3.84), new THREE.MeshStandardMaterial({ color:0x050608, metalness:0.5, roughness:0.35 }));
+      bezel.position.set(0, 1.95, 0.075); lid.add(bezel);
+      lid.rotation.x = -0.12;
 
       // live-typing screen
       var sc = document.createElement('canvas'); sc.width=1024; sc.height=660; var x = sc.getContext('2d');
@@ -783,6 +795,10 @@
         var ls = CODE.slice(0,n).split('\n');
         ls.forEach(function(ln,r){ x.fillStyle=/^\s*#/.test(ln)?'#6b8299':'#c3e88d'; if(!/^\s*#/.test(ln)) x.fillStyle='#e7ecf7'; x.fillText(ln, 44, 150+r*58); });
         var last = ls[ls.length-1]||''; x.fillStyle='#34d399'; x.fillRect(44 + x.measureText(last).width + 4, 150+(ls.length-1)*58-26, 13, 32);
+        // diagonal glass sheen — sells the "glossy display" look
+        var gl = x.createLinearGradient(0,0,sc.width,sc.height);
+        gl.addColorStop(0,'rgba(255,255,255,0.09)'); gl.addColorStop(0.18,'rgba(255,255,255,0.02)'); gl.addColorStop(0.5,'rgba(255,255,255,0)');
+        x.fillStyle=gl; x.fillRect(0,70,sc.width,sc.height-70);
       }
       drawScreen(0);
       var tex = new THREE.CanvasTexture(sc); if (THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
@@ -791,7 +807,7 @@
       var mark = new THREE.Mesh(new THREE.CircleGeometry(0.32, 40), new THREE.MeshStandardMaterial({ color:0xdfe4ea, metalness:0.4, roughness:0.35, emissive:0x0e3a28, emissiveIntensity:0.4 }));
       mark.position.set(0, 1.95, -0.11); mark.rotation.y = Math.PI; lid.add(mark);
 
-      group.scale.set(0.92,0.92,0.92); group.rotation.set(0.06, -0.22, 0);
+      group.scale.set(0.92,0.92,0.92); group.rotation.set(0.05, -0.22, 0); group.position.y = 0.7;
 
       var dragging=false, lx=0, ly=0, auto=true;
       var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
