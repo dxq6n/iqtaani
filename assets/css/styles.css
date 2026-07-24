@@ -216,3 +216,10 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 @keyframes mascotFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @media (max-width:640px){.mascot-wrap{top:-46px}.mascot{width:112px;height:112px}}
 @media (prefers-reduced-motion:reduce){.mascot-wrap{animation:none}#mascotEyes,#mascotHead{transition:none}}
+
+/* ===== Living hero glow (subtle drift) ===== */
+.hero-glow{will-change:transform;animation:glowDriftA 16s ease-in-out infinite alternate}
+.hero-glow.two{animation:glowDriftB 21s ease-in-out infinite alternate}
+@keyframes glowDriftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-42px,32px) scale(1.16)}}
+@keyframes glowDriftB{from{transform:translate(0,0) scale(1)}to{transform:translate(36px,-26px) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.hero-glow{animation:none}}
