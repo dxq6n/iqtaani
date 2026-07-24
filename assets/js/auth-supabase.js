@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var sb = window.__IQ_SB__;
     if (v) v.addEventListener("click", async function(){
       var code = ((byId("otpCode")||{}).value || "").replace(/\D/g,"");
-      if (code.length < 6){ msg(isAr()?"أدخل الرمز المكوّن من 6 أرقام.":"Enter the 6-digit code.", false); return; }
+      if (code.length < 4){ msg(isAr()?"أدخل الرمز اللي وصلك على بريدك.":"Enter the code from your email.", false); return; }
       if (!sb){ return; }
       v.disabled = true;
       try {
