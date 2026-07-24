@@ -76,7 +76,13 @@
 .nav-search input::placeholder{color:var(--muted)}
 .nav-search button{flex-shrink:0;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;display:grid;place-items:center;padding:0}
 .nav-search button:hover{color:var(--primary)}
-@media (max-width:640px){.nav-search{max-width:none}.nav-actions .btn{padding:8px 11px;font-size:.82rem}}
+@media (max-width:640px){
+  .nav-inner{flex-wrap:wrap;height:auto;padding-block:10px;row-gap:10px}
+  .brand{order:1}
+  .nav-actions{order:2;margin-inline-start:auto}
+  .nav-search{order:3;flex:1 0 100%;max-width:none}
+  .nav-actions .btn{padding:8px 12px;font-size:.84rem}
+}
 
 /* ===== Twemoji: size emoji images to match text ===== */
 img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;display:inline-block}
