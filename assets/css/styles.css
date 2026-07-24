@@ -133,3 +133,8 @@ img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;displa
 .type-caret{display:inline-block;width:8px;height:1.05em;background:var(--primary);vertical-align:text-bottom;margin-inline-start:2px;border-radius:1px;animation:caretBlink 1.05s steps(1) infinite}
 @keyframes caretBlink{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.type-caret{animation:none}}
+
+/* ===== Nav auth links (Dribbble-style: Sign up text + Log in pill) ===== */
+.nav-signup{font-weight:700;font-size:.92rem;color:var(--text);padding:8px 6px;white-space:nowrap;transition:color .2s var(--ease)}
+.nav-signup:hover{color:var(--primary)}
+@media (max-width:640px){.nav-signup{display:none}}
