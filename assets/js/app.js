@@ -135,3 +135,70 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
   w.innerHTML='<span></span><span></span><span></span>';
   document.body.appendChild(w);
 })();
+
+;/* ===== Polish JS: nav shadow on scroll + back-to-top ===== */
+(function(){
+  var nav=document.querySelector('.nav');
+  var top=document.createElement('button'); top.id='toTop'; top.type='button';
+  top.setAttribute('aria-label','Back to top'); top.textContent='↑';
+  top.addEventListener('click',function(){ scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
+  if(document.body) document.body.appendChild(top);
+  function onScroll(){
+    if(nav) nav.classList.toggle('scrolled', scrollY>8);
+    top.classList.toggle('show', scrollY>500);
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+
+;/* ===== Search autocomplete (suggests courses as you type) ===== */
+(function(){
+  var CI=[
+    ['python','Python','python.svg'],['javascript','JavaScript','javascript.svg'],['web','HTML & CSS','html5.svg'],
+    ['sql','SQL','mysql.svg'],['react','React','react.svg'],['node','Node.js','nodejs.svg'],
+    ['data','Data Science','pandas.svg'],['dsa','Algorithms','🧠'],['mobile','Flutter','flutter.svg'],
+    ['typescript','TypeScript','typescript.svg'],['java','Java','java.svg'],['csharp','C#','csharp.svg'],
+    ['cpp','C++','cplusplus.svg'],['c','C','c.svg'],['php','PHP','php.svg'],['go','Go','go.svg'],
+    ['ruby','Ruby','ruby.svg'],['rust','Rust','rust.svg'],['kotlin','Kotlin','kotlin.svg'],
+    ['swift','Swift','swift.svg'],['r','R','r.svg'],['mongodb','MongoDB','mongodb.svg'],
+    ['django','Django','django.svg'],['bash','Bash','bash.svg'],['git','Git','git.svg']
+  ];
+  function attach(form){
+    var input=form.querySelector('input[name="q"]'); if(!input) return;
+    form.style.position='relative';
+    var menu=document.createElement('div'); menu.className='ac-menu'; form.appendChild(menu);
+    var idx=-1, items=[];
+    function close(){ menu.classList.remove('open'); menu.innerHTML=''; idx=-1; items=[]; }
+    function render(q){
+      q=q.trim().toLowerCase();
+      if(!q){ close(); return; }
+      var starts=CI.filter(function(c){return c[1].toLowerCase().indexOf(q)===0;});
+      var incl=CI.filter(function(c){return c[1].toLowerCase().indexOf(q)>0;});
+      var list=starts.concat(incl).slice(0,6);
+      if(!list.length){ close(); return; }
+      menu.innerHTML=''; items=[]; idx=-1;
+      list.forEach(function(c){
+        var a=document.createElement('a'); a.className='ac-item'; a.href='course.html?c='+c[0];
+        var ic; if(c[2].indexOf('.svg')<0){ ic=document.createElement('span'); ic.className='ac-emoji'; ic.textContent=c[2]; }
+        else { ic=document.createElement('img'); ic.src='assets/img/lang/'+c[2]; ic.alt=''; ic.width=22; ic.height=22; }
+        var t=document.createElement('span'); t.textContent=c[1];
+        a.appendChild(ic); a.appendChild(t); menu.appendChild(a); items.push(a);
+      });
+      menu.classList.add('open');
+    }
+    input.addEventListener('input',function(){ render(input.value); });
+    input.addEventListener('focus',function(){ if(input.value.trim()) render(input.value); });
+    input.addEventListener('keydown',function(e){
+      if(!menu.classList.contains('open')) return;
+      if(e.key==='ArrowDown'){ e.preventDefault(); idx=Math.min(items.length-1,idx+1); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); idx=Math.max(0,idx-1); }
+      else if(e.key==='Enter'){ if(idx>=0){ e.preventDefault(); location.href=items[idx].href; return; } }
+      else if(e.key==='Escape'){ close(); return; }
+      else return;
+      items.forEach(function(a,i){ a.classList.toggle('active',i===idx); });
+    });
+    document.addEventListener('click',function(e){ if(!form.contains(e.target)) close(); });
+  }
+  function init(){ [].slice.call(document.querySelectorAll('form.nav-search, form.hero-search')).forEach(attach); }
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded', init);
+  setTimeout(init,500);
+})();

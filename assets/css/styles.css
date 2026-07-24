@@ -257,3 +257,57 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 @keyframes orbA{to{transform:translate(60px,44px) scale(1.2)}}
 @keyframes orbB{to{transform:translate(-52px,-40px) scale(1.15)}}
 @media (prefers-reduced-motion:reduce){.bg-orbs span{animation:none}}
+
+/* ===== White MacBook laptop (silver body, dark screen) ===== */
+.laptop-screen{border-color:#e0e3e8;border-width:13px;border-bottom-width:9px;border-radius:20px 20px 6px 6px;box-shadow:inset 0 0 0 3px #0d1016,0 34px 54px -22px rgba(2,6,23,.55)}
+.laptop-base{background:linear-gradient(180deg,#eef0f4 0%,#d5d9e0 45%,#b6bbc4 100%);border-radius:0 0 18px 18px;box-shadow:0 20px 28px -14px rgba(0,0,0,.45)}
+.laptop-base::before{background:#bcc0c8}
+
+/* ===== Big polish pass (dozens of refinements) ===== */
+/* branded text selection */
+::selection{background:rgba(52,211,153,.28)}
+/* branded slim scrollbar */
+*{scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--primary),#059669);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(#34d399,#047857);background-clip:padding-box}
+::-webkit-scrollbar-track{background:transparent}
+html{scroll-behavior:smooth}
+/* nav lifts with a shadow once you scroll */
+.nav{transition:box-shadow .3s var(--ease),background .3s var(--ease)}
+.nav.scrolled{box-shadow:0 12px 34px -20px rgba(0,0,0,.7)}
+/* shimmering gradient headline */
+.gradient-text{background-size:220% auto;animation:gradShift 6s linear infinite}
+@keyframes gradShift{to{background-position:220% center}}
+/* footer links get a sliding underline */
+.footer a:not(.brand){position:relative}
+.footer a:not(.brand)::after{content:"";position:absolute;inset-inline-start:0;bottom:-2px;height:1.5px;width:0;background:var(--primary);transition:width .25s var(--ease)}
+.footer a:not(.brand):hover::after{width:100%}
+/* course logos gently zoom on hover */
+.course-cover .lang-logo,.course-cover .emoji{transition:transform .3s var(--ease)}
+.course-card:hover .course-cover .lang-logo,.course-card:hover .course-cover .emoji{transform:scale(1.08)}
+/* icon buttons rise on hover */
+.icon-btn{transition:transform .18s var(--ease),background .2s,color .2s}
+.icon-btn:hover{transform:translateY(-1px)}
+/* subject cards icon pop */
+.subject-card:hover .subject-ic{transform:scale(1.1)}
+.subject-ic{transition:transform .22s var(--ease)}
+/* back-to-top button */
+#toTop{position:fixed;bottom:26px;inset-inline-start:22px;width:46px;height:46px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:1.15rem;font-weight:800;border:none;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease),box-shadow .2s;z-index:60;box-shadow:0 10px 24px -8px rgba(5,150,105,.6)}
+#toTop.show{opacity:1;transform:none;pointer-events:auto}
+#toTop:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gradient-text{animation:none}}
+
+/* ===== Search autocomplete menu ===== */
+.ac-menu{position:absolute;top:calc(100% + 6px);inset-inline-start:0;inset-inline-end:0;z-index:80;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-lg);padding:6px;max-height:330px;overflow:auto;display:none;animation:fadeIn .15s ease}
+.ac-menu.open{display:block}
+.ac-item{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:9px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--text);text-decoration:none}
+.ac-item:hover,.ac-item.active{background:var(--surface-2)}
+.ac-item img,.ac-item .ac-emoji{width:22px;height:22px;flex-shrink:0;display:grid;place-items:center;font-size:1.1rem}
+
+/* ===== Tailwind-style sidebar polish (dashboard + account) ===== */
+.dash .side a,.acct-side a{border-radius:10px;transition:background .16s var(--ease),color .16s var(--ease),padding-inline-start .16s var(--ease)}
+.dash .side a:hover,.acct-side a:hover{background:var(--surface-2)}
+.dash .side a:hover{padding-inline-start:16px}
+.dash .side a.active,.acct-side a.active{background:var(--grad-soft);color:var(--primary);font-weight:700;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary) 22%,transparent)}
+.dash .side h4,.acct-nav-h{font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
