@@ -127,3 +127,11 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
     btn.addEventListener('mouseleave',function(){ btn.style.transform=''; });
   });
 })();
+
+;/* ===== Ambient background orbs on every page ===== */
+(function(){
+  if(document.querySelector('.bg-orbs')||!document.body) return;
+  var w=document.createElement('div'); w.className='bg-orbs'; w.setAttribute('aria-hidden','true');
+  w.innerHTML='<span></span><span></span><span></span>';
+  document.body.appendChild(w);
+})();

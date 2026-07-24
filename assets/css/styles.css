@@ -246,3 +246,14 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 .hero-visual{perspective:1500px}
 .laptop{transform-style:preserve-3d;transition:transform .18s ease-out}
 .laptop-screen,.laptop-base{transform-style:preserve-3d}
+
+/* ===== Ambient animated background orbs (every page) ===== */
+.bg-orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-orbs span{position:absolute;border-radius:50%;filter:blur(64px);will-change:transform}
+.bg-orbs span:nth-child(1){width:440px;height:440px;top:-120px;inset-inline-start:-130px;background:radial-gradient(circle,rgba(16,185,129,.26),transparent 68%);animation:orbA 22s ease-in-out infinite alternate}
+.bg-orbs span:nth-child(2){width:380px;height:380px;bottom:-140px;inset-inline-end:-110px;background:radial-gradient(circle,rgba(52,211,153,.20),transparent 68%);animation:orbB 27s ease-in-out infinite alternate}
+.bg-orbs span:nth-child(3){width:320px;height:320px;top:42%;inset-inline-start:52%;background:radial-gradient(circle,rgba(52,215,238,.13),transparent 68%);animation:orbA 31s ease-in-out infinite alternate}
+:root[data-theme=light] .bg-orbs span{opacity:.5}
+@keyframes orbA{to{transform:translate(60px,44px) scale(1.2)}}
+@keyframes orbB{to{transform:translate(-52px,-40px) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.bg-orbs span{animation:none}}
