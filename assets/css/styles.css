@@ -124,3 +124,12 @@ img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;displa
 
 /* Stat numbers: tighter, more confident */
 .stat b,.hero-meta b,.matrix-num{letter-spacing:-.02em}
+
+/* ===== Clean Dribbble-style top bar: keep only logo + search + CTA + ⋮ ===== */
+.nav-actions #langBtn,.nav-actions #themeBtn{display:none!important}
+
+/* ===== Hero self-typing code demo ===== */
+.code-body{min-height:186px}
+.type-caret{display:inline-block;width:8px;height:1.05em;background:var(--primary);vertical-align:text-bottom;margin-inline-start:2px;border-radius:1px;animation:caretBlink 1.05s steps(1) infinite}
+@keyframes caretBlink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.type-caret{animation:none}}

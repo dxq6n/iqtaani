@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=41" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=42" />
   <script>
     (function () {
       try {
@@ -43,10 +43,10 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=41" />
-  <script src="assets/js/app.js?v=41" defer></script>
-  <script src="assets/js/iq-engine.js?v=41" defer></script>
-  <script src="assets/js/iq-widget.js?v=41" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=42" />
+  <script src="assets/js/app.js?v=42" defer></script>
+  <script src="assets/js/iq-engine.js?v=42" defer></script>
+  <script src="assets/js/iq-widget.js?v=42" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -132,14 +132,9 @@
         <div class="code-window">
           <div class="code-top">
             <span class="code-dot r"></span><span class="code-dot y"></span><span class="code-dot g"></span>
-            <span class="code-file">hello.py</span>
+            <span class="code-file" id="heroFile">hello.py</span>
           </div>
-<pre class="code-body"><span class="ln">1</span><span class="tok-com"># Your first program 🚀</span>
-<span class="ln">2</span><span class="tok-key">def</span> <span class="tok-fn">greet</span>(name):
-<span class="ln">3</span>    <span class="tok-key">return</span> <span class="tok-str">f"Hello, {name}!"</span>
-<span class="ln">4</span>
-<span class="ln">5</span><span class="tok-fn">print</span>(<span class="tok-fn">greet</span>(<span class="tok-str">"IQ.T3ani"</span>))
-<span class="ln">6</span><span class="tok-com"># → Hello, IQ.T3ani! ✅</span></pre>
+<pre class="code-body" id="heroCode" aria-label="Live code demo"><span id="heroTxt"></span><span class="type-caret" aria-hidden="true"></span></pre>
         </div>
       </div>
     </div>
@@ -465,61 +460,6 @@
     </div>
   </section>
 
-  <!-- ===== Popular courses ===== -->
-  <section class="section" style="padding-top:0" id="courses">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" data-ar="الأكثر رواجًا">Most popular</span>
-        <h2 data-ar="كورسات يحبّها المتعلّمون">Courses learners love</h2>
-      </div>
-      <div class="grid grid-4">
-        <a href="course.html?c=python" class="card course-card reveal">
-          <div class="course-cover"><img class="lang-logo" src="assets/img/lang/python.svg" alt="Python" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="مبتدئ">Beginner</span></div>
-          <div class="course-body">
-            <span class="course-tag">Python</span>
-            <h3 data-ar="أساسيات بايثون">Python Fundamentals</h3>
-            <p data-ar="ابدأ من الصفر وتعلّم أقوى لغة للمبتدئين.">Start from zero with the most beginner-friendly language.</p>
-            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
-            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
-          </div>
-        </a>
-        <a href="course.html?c=web" class="card course-card reveal">
-          <div class="course-cover" style="background:linear-gradient(135deg,#f7971e,#ffd200)"><img class="lang-logo" src="assets/img/lang/html5.svg" alt="HTML5" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="مبتدئ">Beginner</span></div>
-          <div class="course-body">
-            <span class="course-tag">Web</span>
-            <h3 data-ar="تطوير الويب من الصفر">Web Dev from Scratch</h3>
-            <p data-ar="HTML وCSS وجافاسكربت لبناء مواقع حقيقية.">HTML, CSS &amp; JavaScript to build real websites.</p>
-            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
-            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
-          </div>
-        </a>
-        <a href="course.html?c=react" class="card course-card reveal">
-          <div class="course-cover" style="background:linear-gradient(135deg,#00c6ff,#0072ff)"><img class="lang-logo" src="assets/img/lang/react.svg" alt="React" width="86" height="86" loading="lazy" decoding="async" /><span class="course-level" data-ar="متوسط">Intermediate</span></div>
-          <div class="course-body">
-            <span class="course-tag">React</span>
-            <h3 data-ar="React للمحترفين">React for Pros</h3>
-            <p data-ar="ابنِ واجهات حديثة وسريعة باستخدام React.">Build modern, fast interfaces with React.</p>
-            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
-            <div class="course-foot"><span class="stars">★★★★☆</span><span class="price" data-ar="مجاني">Free</span></div>
-          </div>
-        </a>
-        <a href="course.html?c=dsa" class="card course-card reveal">
-          <div class="course-cover" style="background:linear-gradient(135deg,#11998e,#38ef7d)"><span class="emoji">🧠</span><span class="course-level" data-ar="متقدّم">Advanced</span></div>
-          <div class="course-body">
-            <span class="course-tag">CS</span>
-            <h3 data-ar="الخوارزميات وهياكل البيانات">Data Structures &amp; Algorithms</h3>
-            <p data-ar="جهّز نفسك لمقابلات العمل التقنية بثقة.">Ace your technical interviews with confidence.</p>
-            <div class="course-perks">🏆 <span data-ar="شهادة">Certificate</span> · 🏗️ <span data-ar="مشروع">Project</span> · 🎁 <span class="badge-free" data-ar="مجاني بالكامل">Free forever</span></div>
-            <div class="course-foot"><span class="stars">★★★★★</span><span class="price" data-ar="مجاني">Free</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="text-center mt-6">
-        <a href="courses.html" class="btn btn-ghost btn-lg" data-ar="شوف كل الكورسات">View all courses</a>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== Testimonials ===== -->
   <section class="section" style="padding-top:0">
     <div class="container">
@@ -669,6 +609,46 @@
     }
     autoplay(document.querySelector('.how'), '.how-radio', 6000);
     autoplay(document.querySelector('.onb-demo'), '.onb-radio', 2600);
+  })();
+  </script>
+
+  <!-- Hero: continuously self-typing code demo (keeps playing, cycles languages) -->
+  <script>
+  (function () {
+    var out = document.getElementById('heroTxt');
+    var file = document.getElementById('heroFile');
+    if (!out) return;
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var snips = [
+      { f: 'hello.py',  code: '# Learn Python 🐍\nfor i in range(3):\n    print("Hello, IQ.T3ani!", i)\n\n# → runs instantly in your browser ✅' },
+      { f: 'app.js',    code: '// Learn JavaScript ⚡\nconst langs = ["JS", "TS", "Node"];\nlangs.forEach(l => console.log(l));\n\n// → no setup needed ✅' },
+      { f: 'Main.java', code: '// Learn Java ☕\nclass Main {\n  public static void main(String[] a) {\n    System.out.println("Job-ready!");\n  }\n}' },
+      { f: 'index.html', code: '<!-- Build real websites 🌐 -->\n<h1>Hello, world</h1>\n<p>from zero to pro</p>\n\n<!-- → live preview ✅ -->' }
+    ];
+    function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function render(txt){
+      out.innerHTML = txt.split('\n').map(function(ln){
+        return /^\s*(#|\/\/|<!--|→)/.test(ln) ? '<span class="tok-com">'+esc(ln)+'</span>' : esc(ln);
+      }).join('\n');
+    }
+    if (reduce) { file.textContent = snips[0].f; render(snips[0].code); return; }
+    var si = 0;
+    function typeSnippet(){
+      var snip = snips[si]; file.textContent = snip.f;
+      var code = snip.code, i = 0;
+      (function type(){
+        render(code.slice(0, i));
+        if (i <= code.length) { i++; setTimeout(type, code[i-1] === '\n' ? 90 : 32); }
+        else { setTimeout(erase, 1500); }
+      })();
+      function erase(){
+        var t = out.textContent;
+        if (t.length) { render(t.slice(0, -3 < -t.length ? 0 : t.length - 3)); setTimeout(erase, 12); }
+        else { si = (si + 1) % snips.length; setTimeout(typeSnippet, 250); }
+      }
+    }
+    if (document.hidden) document.addEventListener('visibilitychange', function once(){ if(!document.hidden){ document.removeEventListener('visibilitychange', once); typeSnippet(); } });
+    else typeSnippet();
   })();
   </script>
 
