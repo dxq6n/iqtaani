@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=58" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=59" />
   <script>
     (function () { try {
       var t = localStorage.getItem('theme') || 'dark';
@@ -38,10 +38,10 @@
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
     } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=58" />
-  <script src="assets/js/app.js?v=58" defer></script>
-  <script src="assets/js/iq-engine.js?v=58" defer></script>
-  <script src="assets/js/iq-widget.js?v=58" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=59" />
+  <script src="assets/js/app.js?v=59" defer></script>
+  <script src="assets/js/iq-engine.js?v=59" defer></script>
+  <script src="assets/js/iq-widget.js?v=59" defer></script>
   <style>
     .plans2 { display: grid; grid-template-columns: repeat(3, minmax(0, 300px)); gap: 20px; justify-content: center; }
     .plan { display: flex; flex-direction: column; position: relative; }
@@ -128,7 +128,18 @@
         </div>
       </div>
 
-      <p class="text-center" style="color:var(--muted);margin-top:26px;font-size:.92rem" data-ar="الخطة المجانية تعطيك ساعتين كل يوم. الاشتراك حاليًا يتم عبر واتساب — بوابة الدفع الإلكترونية قريبًا.">The free plan gives you 2 hours per day. Subscriptions are arranged via WhatsApp for now — online checkout is coming soon.</p>
+      <div class="card reveal" style="max-width:640px;margin:30px auto 0;text-align:start;padding:26px">
+        <h3 style="margin-bottom:6px" data-ar="طريقة الاشتراك">How to subscribe</h3>
+        <p style="color:var(--muted);margin-bottom:16px;font-size:.92rem" data-ar="اختر خطتك، حوّل المبلغ، وابعتلنا الإيصال — بنفعّل Pro فورًا.">Pick a plan, transfer the amount, and send us the receipt — we activate Pro right away.</p>
+        <div style="display:grid;gap:10px">
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2)"><span style="color:var(--muted)" data-ar="البنك">Bank</span><b data-ar="بنك الإسكان">Housing Bank</b></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2)"><span style="color:var(--muted)" data-ar="اسم الحساب">Account name</span><b>DXQ6N</b></div>
+          <div style="display:flex;justify-content:space-between;gap:14px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg-2)"><span style="color:var(--muted)" data-ar="واتساب لإرسال الإيصال">WhatsApp receipt</span><b>0788330108</b></div>
+        </div>
+        <a href="https://wa.me/962788330108?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20Pro" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top:18px" data-ar="🟢 تواصل عبر واتساب">🟢 Contact on WhatsApp</a>
+      </div>
+
+      <p class="text-center" style="color:var(--muted);margin-top:26px;font-size:.92rem" data-ar="الخطة المجانية تعطيك ساعتين كل يوم. للاشتراك في Pro: حوّل على بنك الإسكان (باسم DXQ6N) وابعت الإيصال على واتساب 0788330108 — بوابة الدفع الإلكترونية قريبًا.">The free plan gives you 2 hours per day. To go Pro, transfer to Housing Bank (account: DXQ6N) and send the receipt on WhatsApp 0788330108 — online checkout is coming soon.</p>
     </div>
   </section>
 

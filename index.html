@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=58" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=59" />
   <script>
     (function () {
       try {
@@ -43,11 +43,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=58" />
-  <script src="assets/js/app.js?v=58" defer></script>
-  <script src="assets/js/iq-engine.js?v=58" defer></script>
-  <script src="assets/js/iq-widget.js?v=58" defer></script>
-  <script src="assets/js/three.min.js?v=58" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=59" />
+  <script src="assets/js/app.js?v=59" defer></script>
+  <script src="assets/js/iq-engine.js?v=59" defer></script>
+  <script src="assets/js/iq-widget.js?v=59" defer></script>
+  <script src="assets/js/three.min.js?v=59" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -778,6 +778,7 @@
         x.fillStyle='#0e1526'; x.fillRect(0,0,sc.width,70);
         ['#ff5f56','#ffbd2e','#27c93f'].forEach(function(c,i){ x.beginPath(); x.arc(42+i*36,36,11,0,7); x.fillStyle=c; x.fill(); });
         x.fillStyle='#93a1bd'; x.font='26px monospace'; x.fillText('hello.py', 160, 45);
+        x.fillStyle='#000'; x.beginPath(); x.moveTo(sc.width/2-70,0); x.lineTo(sc.width/2+70,0); x.lineTo(sc.width/2+58,26); x.lineTo(sc.width/2-58,26); x.closePath(); x.fill();
         x.font='32px monospace';
         var ls = CODE.slice(0,n).split('\n');
         ls.forEach(function(ln,r){ x.fillStyle=/^\s*#/.test(ln)?'#6b8299':'#c3e88d'; if(!/^\s*#/.test(ln)) x.fillStyle='#e7ecf7'; x.fillText(ln, 44, 150+r*58); });
@@ -785,12 +786,12 @@
       }
       drawScreen(0);
       var tex = new THREE.CanvasTexture(sc); if (THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
-      var screen = new THREE.Mesh(new THREE.PlaneGeometry(5.5, 3.52), new THREE.MeshBasicMaterial({ map: tex }));
+      var screen = new THREE.Mesh(new THREE.PlaneGeometry(5.78, 3.68), new THREE.MeshBasicMaterial({ map: tex }));
       screen.position.set(0, 1.95, 0.11); lid.add(screen);
       var mark = new THREE.Mesh(new THREE.CircleGeometry(0.32, 40), new THREE.MeshStandardMaterial({ color:0xdfe4ea, metalness:0.4, roughness:0.35, emissive:0x0e3a28, emissiveIntensity:0.4 }));
       mark.position.set(0, 1.95, -0.11); mark.rotation.y = Math.PI; lid.add(mark);
 
-      group.scale.set(0.92,0.92,0.92); group.rotation.set(0.14, -0.55, 0);
+      group.scale.set(0.92,0.92,0.92); group.rotation.set(0.06, -0.22, 0);
 
       var dragging=false, lx=0, ly=0, auto=true;
       var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
