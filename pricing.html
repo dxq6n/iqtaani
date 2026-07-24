@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=54" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=55" />
   <script>
     (function () { try {
       var t = localStorage.getItem('theme') || 'dark';
@@ -38,12 +38,12 @@
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
     } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=54" />
-  <script src="assets/js/app.js?v=54" defer></script>
-  <script src="assets/js/iq-engine.js?v=54" defer></script>
-  <script src="assets/js/iq-widget.js?v=54" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=55" />
+  <script src="assets/js/app.js?v=55" defer></script>
+  <script src="assets/js/iq-engine.js?v=55" defer></script>
+  <script src="assets/js/iq-widget.js?v=55" defer></script>
   <style>
-    .plans2 { display: grid; grid-template-columns: repeat(2, minmax(0, 330px)); gap: 22px; justify-content: center; }
+    .plans2 { display: grid; grid-template-columns: repeat(3, minmax(0, 300px)); gap: 20px; justify-content: center; }
     .plan { display: flex; flex-direction: column; position: relative; }
     .plan .price-tag { font-size: 3rem; font-weight: 800; letter-spacing: -.02em; }
     .plan .price-tag small { font-size: 1rem; color: var(--muted); font-weight: 600; }
@@ -53,7 +53,7 @@
     .plan.popular { border-color: var(--primary); box-shadow: 0 20px 50px -20px rgba(109,94,252,.6); }
     .plan .tag-pop { position: absolute; inset-block-start: 14px; inset-inline-end: 14px; background: var(--grad); color: #fff; font-size: .72rem; font-weight: 800; padding: 4px 12px; border-radius: 999px; }
     .plan .btn { margin-top: auto; }
-    @media (max-width: 640px) { .plans2 { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; } }
+    @media (max-width: 960px) { .plans2 { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } }
   </style>
 </head>
 <body>
@@ -83,39 +83,52 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow" data-ar="الأسعار">Pricing</span>
-        <h2 data-ar="كل شي مجاني بالكامل">Everything is 100% free</h2>
-        <p data-ar="كل الكورسات الـ 25 و750 درس والمحرّر ومساعد الذكاء الاصطناعي — مجاني بالكامل، بدون بطاقة ائتمان.">All 25 courses, 750 lessons, the editor and the AI assistant — completely free, no credit card.</p>
+        <h2 data-ar="ابدأ مجانًا، وطوّر وقت ما تكون جاهز">Start free, upgrade when you’re ready</h2>
+        <p data-ar="جرّب مجانًا ساعتين كل يوم، أو اشترك في Pro لوصول غير محدود.">Try it free for 2 hours every day, or go Pro for unlimited access.</p>
       </div>
 
       <div class="plans2">
-        <!-- Free (the real, current plan) -->
-        <div class="card plan popular reveal">
-          <span class="tag-pop" data-ar="الخطة الحالية">Current plan</span>
+        <!-- Free -->
+        <div class="card plan reveal">
           <span class="course-tag" style="color:var(--primary)" data-ar="مجاني">Free</span>
           <div class="price-tag">$0<small data-ar="للأبد">/forever</small></div>
           <ul class="feat">
-            <li>⭐ <b data-ar="كل الكورسات الـ 25 — 750 درس">All 25 courses — 750 lessons</b></li>
+            <li>⏳ <b data-ar="ساعتان مجانًا كل يوم">2 free hours every day</b></li>
+            <li>⭐ <span data-ar="كل الكورسات الـ 25 — 750 درس">All 25 courses — 750 lessons</span></li>
             <li>✅ <span data-ar="محرّر أكواد ومساعد ذكاء اصطناعي">Code editor &amp; AI assistant</span></li>
             <li>🏆 <span data-ar="اختبارات وشهادات ومشاريع">Quizzes, certificates &amp; projects</span></li>
-            <li>💾 <span data-ar="تتبّع تقدّمك بدون إعلانات">Progress tracking — no ads</span></li>
           </ul>
-          <a href="courses.html" class="btn btn-primary btn-block" data-ar="ابدأ الآن مجانًا">Start now — free</a>
+          <a href="register.html" class="btn btn-ghost btn-block" data-ar="ابدأ مجانًا">Start free</a>
         </div>
 
-        <!-- Pro (coming soon, not active) -->
-        <div class="card plan reveal" style="opacity:.85">
-          <span class="course-tag" style="color:var(--cyan)" data-ar="Pro — قريبًا">Pro — soon</span>
-          <div class="price-tag" data-ar="قريبًا">Soon</div>
+        <!-- Pro Monthly -->
+        <div class="card plan popular reveal">
+          <span class="tag-pop" data-ar="الأشهر">Most popular</span>
+          <span class="course-tag" style="color:var(--cyan)">Pro</span>
+          <div class="price-tag">$8<small data-ar="/شهريًا">/month</small></div>
           <ul class="feat">
-            <li>🚀 <span data-ar="مسارات وظيفية متقدّمة">Advanced career tracks</span></li>
-            <li>🧑‍🏫 <span data-ar="مراجعة مشاريع ودعم مباشر">Project reviews &amp; live support</span></li>
+            <li>🚀 <b data-ar="وصول غير محدود — بدون حد الساعتين">Unlimited access — no 2-hour limit</b></li>
+            <li>⭐ <span data-ar="كل الكورسات والمميّزات">All courses &amp; features</span></li>
+            <li>🧑‍🏫 <span data-ar="أولوية دعم">Priority support</span></li>
             <li>📜 <span data-ar="شهادات موثّقة قابلة للمشاركة">Verified shareable certificates</span></li>
           </ul>
-          <button class="btn btn-ghost btn-block" disabled style="opacity:.6;cursor:not-allowed" data-ar="قريبًا">Coming soon</button>
+          <a href="https://wa.me/962788330108?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20IQ.T3ani%20Pro%20%D8%A7%D9%84%D8%B4%D9%87%D8%B1%D9%8A%20%28%248/%D8%B4%D9%87%D8%B1%29" target="_blank" rel="noopener" class="btn btn-primary btn-block" data-ar="اشترك — 8$ شهريًا">Subscribe — $8/mo</a>
+        </div>
+
+        <!-- Pro Yearly -->
+        <div class="card plan reveal">
+          <span class="course-tag" style="color:var(--amber)" data-ar="سنوي">Pro Yearly</span>
+          <div class="price-tag">$100<small data-ar="/سنويًا">/year</small></div>
+          <ul class="feat">
+            <li>🚀 <b data-ar="كل مميّزات Pro لسنة كاملة">Everything in Pro, for a full year</b></li>
+            <li>⭐ <span data-ar="وصول غير محدود دائمًا">Always-unlimited access</span></li>
+            <li>🎁 <span data-ar="اشتراك سنوي بدفعة واحدة">One yearly payment</span></li>
+          </ul>
+          <a href="https://wa.me/962788330108?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20IQ.T3ani%20Pro%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%20%28%24100/%D8%B3%D9%86%D8%A9%29" target="_blank" rel="noopener" class="btn btn-primary btn-block" data-ar="اشترك — 100$ سنويًا">Subscribe — $100/yr</a>
         </div>
       </div>
 
-      <p class="text-center" style="color:var(--muted);margin-top:26px;font-size:.92rem" data-ar="كل المنصّة مجانية بالكامل حاليًا — بدون بطاقة ائتمان وبدون حدود. خطة Pro (اختيارية) قيد التطوير وسنعلن عنها لاحقًا.">The whole platform is 100% free right now — no credit card, no limits. An optional Pro plan is in development and will be announced later.</p>
+      <p class="text-center" style="color:var(--muted);margin-top:26px;font-size:.92rem" data-ar="الخطة المجانية تعطيك ساعتين كل يوم. الاشتراك حاليًا يتم عبر واتساب — بوابة الدفع الإلكترونية قريبًا.">The free plan gives you 2 hours per day. Subscriptions are arranged via WhatsApp for now — online checkout is coming soon.</p>
     </div>
   </section>
 

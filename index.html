@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=54" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=55" />
   <script>
     (function () {
       try {
@@ -43,11 +43,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=54" />
-  <script src="assets/js/app.js?v=54" defer></script>
-  <script src="assets/js/iq-engine.js?v=54" defer></script>
-  <script src="assets/js/iq-widget.js?v=54" defer></script>
-  <script src="assets/js/three.min.js?v=54" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=55" />
+  <script src="assets/js/app.js?v=55" defer></script>
+  <script src="assets/js/iq-engine.js?v=55" defer></script>
+  <script src="assets/js/iq-widget.js?v=55" defer></script>
+  <script src="assets/js/three.min.js?v=55" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -780,7 +780,7 @@
 
       scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x0a0e18, 0.6));
       var key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(6,9,7);
-      key.castShadow = true; key.shadow.mapSize.set(1024,1024); key.shadow.camera.near = 1; key.shadow.camera.far = 40; key.shadow.bias = -0.0006; scene.add(key);
+      key.castShadow = true; key.shadow.mapSize.set(512,512); key.shadow.camera.near = 1; key.shadow.camera.far = 40; key.shadow.bias = -0.0006; scene.add(key);
       var rim = new THREE.DirectionalLight(0x34d399, 1.0); rim.position.set(-8,3,-6); scene.add(rim);
       var fill = new THREE.DirectionalLight(0xffffff, 0.35); fill.position.set(-4,-2,5); scene.add(fill);
 
@@ -841,11 +841,12 @@
       var visible = true;
       if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, {threshold:0.01}).observe(el);
 
-      var typed=0, lastT=0, hold=0;
+      var typed=0, lastT=0, hold=0, lastF=0;
       function loop(t){
         requestAnimationFrame(loop);
-        if (!visible) return;
-        if (auto && !reduce) group.rotation.y += 0.0045;
+        if (!visible || t - lastF < 32) return;
+        lastF = t;
+        if (auto && !reduce) group.rotation.y += 0.009;
         if (!reduce && t >= lastT+45){
           lastT = t;
           if (hold){ if (t>hold){ typed=0; hold=0; drawScreen(0); tex.needsUpdate=true; } }
