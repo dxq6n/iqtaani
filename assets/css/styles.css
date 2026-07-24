@@ -87,3 +87,40 @@
 /* ===== Twemoji: size emoji images to match text ===== */
 img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;display:inline-block}
 .feature-ic img.emoji,.how-ic img.emoji,.s-emoji img.emoji,.subject-ic img.emoji,.avatar img.emoji,.emoji img.emoji{height:1em;width:1em}
+
+/* ===== World-class polish layer (same palette, refined craft) ===== */
+/* Typography: tighter display headings, cleaner rhythm */
+.hero h1,.section-head h2,.switcher h2,.band h2,.freebox h2,.cta h2{letter-spacing:-.03em;line-height:1.1}
+.section-head h2{line-height:1.15}
+.section-head p,.lead{letter-spacing:-.005em}
+[dir=rtl] .hero h1,[dir=rtl] .section-head h2{letter-spacing:0}
+
+/* Cards: refined depth + smoother, more premium hover */
+.card{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease)}
+.card:hover{transform:translateY(-5px);box-shadow:0 24px 48px -24px rgba(2,6,23,.55);border-color:color-mix(in srgb,var(--primary) 35%,var(--border))}
+.course-card:hover{transform:translateY(-6px)}
+.subject-card{transition:transform .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease)}
+.subject-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--primary) 45%,var(--border))}
+
+/* Buttons: subtle lift + depth, crisp active press */
+.btn{transition:transform .16s var(--ease),box-shadow .22s var(--ease),background .22s var(--ease),opacity .2s}
+.btn-primary{box-shadow:0 8px 20px -8px rgba(5,150,105,.55)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(5,150,105,.6)}
+.btn-ghost:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.99)}
+
+/* Softer, layered elevation for feature/quote tiles */
+.quote,.freebox,.switcher,.band,.cta{box-shadow:0 20px 44px -28px rgba(2,6,23,.45)}
+.feature-ic{transition:transform .25s var(--ease)}
+.card:hover .feature-ic{transform:scale(1.08) rotate(-3deg)}
+
+/* Crisper focus ring (accessibility + polish) */
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+
+/* Nav: a touch more refined glass + hairline */
+.nav{border-bottom:1px solid color-mix(in srgb,var(--border) 70%,transparent)}
+.nav-search{transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.nav-search:focus-within{box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent)}
+
+/* Stat numbers: tighter, more confident */
+.stat b,.hero-meta b,.matrix-num{letter-spacing:-.02em}
