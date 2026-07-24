@@ -207,3 +207,12 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 .acct-row b{font-weight:700;text-align:end;word-break:break-word}
 .plan-pill{background:var(--grad);color:#fff;padding:4px 12px;border-radius:20px;font-size:.82rem}
 @media (max-width:760px){.acct-grid{grid-template-columns:1fr}.acct-side{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}.acct-nav-h{width:100%}}
+
+/* ===== Interactive mascot (eyes follow the cursor) ===== */
+.hero-visual{position:relative}
+.mascot-wrap{position:absolute;top:-64px;inset-inline-end:0;z-index:4;pointer-events:none;filter:drop-shadow(0 12px 18px rgba(0,0,0,.45));animation:mascotFloat 4.5s ease-in-out infinite}
+.mascot{display:block}
+#mascotEyes,#mascotHead{transition:transform .12s ease-out}
+@keyframes mascotFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media (max-width:640px){.mascot-wrap{top:-46px}.mascot{width:112px;height:112px}}
+@media (prefers-reduced-motion:reduce){.mascot-wrap{animation:none}#mascotEyes,#mascotHead{transition:none}}
