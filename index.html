@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=62" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=63" />
   <script>
     (function () {
       try {
@@ -43,10 +43,10 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=62" />
-  <script src="assets/js/app.js?v=62" defer></script>
-  <script src="assets/js/iq-engine.js?v=62" defer></script>
-  <script src="assets/js/iq-widget.js?v=62" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=63" />
+  <script src="assets/js/app.js?v=63" defer></script>
+  <script src="assets/js/iq-engine.js?v=63" defer></script>
+  <script src="assets/js/iq-widget.js?v=63" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -774,16 +774,16 @@
     // Stay fast on every device: skip WebGL AND the ~600KB three.js download on weak
     // devices / slow or data-saving networks — the instant SVG poster stays instead.
     var conn = navigator.connection || navigator.webkitConnection || {};
+    // Only skip the real 3D on genuine data-saver / 2G or ultra-tiny devices — everyone else gets the live MacBook.
     var weak = conn.saveData
       || /(^|[\s-])(2g|slow-2g)/.test(conn.effectiveType || '')
-      || (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2)
-      || (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 2);
+      || (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 1);
     if (weak) return;
     // Load three.js on demand, only once the hero is near the viewport.
     function ready(){
       if (window.THREE) { build(); return; }
       var s = document.createElement('script');
-      s.src = 'assets/js/three.min.js?v=62'; s.async = true;
+      s.src = 'assets/js/three.min.js?v=63'; s.async = true;
       s.onload = build; s.onerror = function(){}; document.head.appendChild(s);
     }
     if ('IntersectionObserver' in window) {
