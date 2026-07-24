@@ -195,6 +195,14 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 .acct-profile{display:flex;align-items:center;gap:18px;padding:22px}
 .acct-avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:2rem;color:#fff;background:var(--grad);overflow:hidden;flex-shrink:0;box-shadow:0 8px 20px -8px rgba(5,150,105,.5)}
 .acct-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.acct-avatar-wrap{position:relative;border:0;background:transparent;padding:0;cursor:pointer;flex-shrink:0;border-radius:50%;line-height:0}
+.acct-avatar-wrap:focus-visible{outline:2px solid var(--brand,#10b981);outline-offset:3px}
+.acct-avatar-cam{position:absolute;inset-block-end:-2px;inset-inline-end:-2px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;background:var(--card,#131a2a);border:2px solid var(--bg,#0b0f1a);box-shadow:0 4px 10px -4px rgba(0,0,0,.5);transition:transform .15s}
+.acct-avatar-wrap:hover .acct-avatar-cam{transform:scale(1.1)}
+.acct-avatar-wrap:hover .acct-avatar{filter:brightness(.85)}
+.acct-photo-link{border:0;background:transparent;color:var(--brand,#10b981);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;padding:2px 0;text-align:start;width:fit-content}
+.acct-photo-link:hover{text-decoration:underline}
+.acct-photo-msg{font-size:.82rem;margin-top:2px}
 .acct-id{display:grid;gap:3px;min-width:0}
 .acct-id b{font-size:1.25rem}
 .acct-id span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
