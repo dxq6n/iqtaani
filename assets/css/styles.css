@@ -147,3 +147,38 @@ img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;displa
 [dir=rtl] .laptop-base{transform:translateX(7.6%)}
 .laptop-base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:8px;background:#0a0e16;border-radius:0 0 10px 10px}
 @media (max-width:520px){.laptop{max-width:100%}.laptop-screen{border-width:8px}}
+
+/* ===== Social button brand logos ===== */
+.social-ic{vertical-align:-4px;margin-inline-end:9px;flex-shrink:0}
+.social-btn{display:inline-flex;align-items:center;justify-content:center}
+
+/* ===== Laptop refinement (MacBook-like) ===== */
+.laptop{max-width:580px}
+.laptop-screen{border-color:#1c1c1e;border-width:14px;border-bottom-width:8px;border-radius:18px 18px 5px 5px}
+.laptop-base{height:15px;width:124%;max-width:720px;transform:translateX(-9.7%);background:linear-gradient(180deg,#3c3f47 0,#2b2e35 45%,#191b21 100%);border-radius:0 0 16px 16px}
+[dir=rtl] .laptop-base{transform:translateX(9.7%)}
+.laptop-base::before{width:160px;height:9px;background:#141319;border-radius:0 0 14px 14px}
+
+/* ===== Logged-in avatar in the nav ===== */
+.nav-user{gap:10px}
+.nav-avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.95rem;color:#fff;background:var(--grad);overflow:hidden;flex-shrink:0;box-shadow:0 2px 8px -2px rgba(5,150,105,.5)}
+.nav-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Hide Sign up / Log in when the user is signed in (avatar chip present) */
+.nav-actions:has(.nav-user) .nav-signup,
+.nav-actions:has(.nav-user) a[href="login.html"]{display:none!important}
+
+/* ===== Account avatar dropdown (lapa-style: photo only + menu) ===== */
+.nav-user{position:relative;gap:0}
+button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
+.nav-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1rem;color:#fff;background:var(--grad);overflow:hidden;flex-shrink:0;box-shadow:0 2px 8px -2px rgba(5,150,105,.5);transition:transform .18s var(--ease),box-shadow .2s var(--ease)}
+.nav-avatar:hover{transform:translateY(-1px);box-shadow:0 6px 16px -4px rgba(5,150,105,.6)}
+.nav-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-menu{display:none;position:absolute;top:calc(100% + 12px);inset-inline-end:0;z-index:70;min-width:210px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;animation:fadeIn .16s ease}
+.avatar-menu.open{display:block}
+.am-head{padding:8px 12px 10px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.am-head b{display:block;font-size:.95rem}
+.am-head small{display:block;color:var(--muted);font-size:.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.am-item{display:block;width:100%;text-align:start;padding:10px 12px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--text);border:none;background:none;cursor:pointer;transition:background .15s}
+.am-item:hover{background:var(--surface-2)}
+.am-out{color:var(--pink)}

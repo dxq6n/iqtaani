@@ -59,3 +59,40 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
   }
   if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
+
+;/* ===== Logged-in avatar chip (photo only) + account dropdown ===== */
+(function(){
+  function isAr(){ return document.documentElement.getAttribute('data-lang')==='ar'; }
+  function logout(){
+    try{ localStorage.removeItem('iqt_auth'); localStorage.removeItem('iqt_user'); }catch(e){}
+    try{ if(window.__IQ_SB__ && window.__IQ_SB__.auth) window.__IQ_SB__.auth.signOut(); }catch(e){}
+    location.href='index.html';
+  }
+  function enhance(){
+    var us=document.querySelectorAll('.nav-user'); if(!us.length) return;
+    var name='', avatar='', email='';
+    try{ var u=JSON.parse(localStorage.getItem('iqt_user')||'{}'); name=(u.name||u.email||'').trim(); email=u.email||''; avatar=u.avatar||''; }catch(e){}
+    us.forEach(function(nu){
+      if(nu.dataset.enhanced) return; nu.dataset.enhanced='1';
+      nu.innerHTML='';
+      var btn=document.createElement('button'); btn.type='button'; btn.className='nav-avatar';
+      btn.setAttribute('aria-label', isAr()?'حسابي':'Account'); btn.setAttribute('aria-haspopup','true');
+      if(avatar){ var img=document.createElement('img'); img.src=avatar; img.alt=''; img.referrerPolicy='no-referrer'; btn.appendChild(img); }
+      else { btn.textContent=(name[0]||'?').toUpperCase(); }
+      var menu=document.createElement('div'); menu.className='avatar-menu';
+      var head=document.createElement('div'); head.className='am-head';
+      var hb=document.createElement('b'); hb.textContent=name||'—';
+      var hs=document.createElement('small'); hs.textContent=email;
+      head.appendChild(hb); head.appendChild(hs);
+      var dash=document.createElement('a'); dash.className='am-item'; dash.href='dashboard.html'; dash.textContent=isAr()?'لوحتي':'Dashboard';
+      var out=document.createElement('button'); out.type='button'; out.className='am-item am-out'; out.textContent=isAr()?'تسجيل الخروج':'Log out'; out.addEventListener('click',logout);
+      menu.appendChild(head); menu.appendChild(dash); menu.appendChild(out);
+      btn.addEventListener('click',function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
+      document.addEventListener('click',function(e){ if(!nu.contains(e.target)) menu.classList.remove('open'); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') menu.classList.remove('open'); });
+      nu.appendChild(btn); nu.appendChild(menu);
+    });
+  }
+  if(document.readyState!=='loading') enhance(); else document.addEventListener('DOMContentLoaded', enhance);
+  setTimeout(enhance,400); setTimeout(enhance,1200);
+})();

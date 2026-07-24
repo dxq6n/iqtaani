@@ -21,3 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+/* Mirror any existing Supabase session (incl. OAuth returns) into localStorage
+   so the nav shows the user's name + avatar on every page. */
+document.addEventListener("DOMContentLoaded", function () {
+  var sb = window.__IQ_SB__;
+  if (!sb || !sb.auth || !sb.auth.getSession) return;
+  sb.auth.getSession().then(function (res) {
+    var u = res && res.data && res.data.session && res.data.session.user;
+    if (!u) return;
+    var md = u.user_metadata || {};
+    try {
+      localStorage.setItem("iqt_auth", "1");
+      localStorage.setItem("iqt_user", JSON.stringify({
+        name: md.full_name || md.name || md.user_name || (u.email || "").split("@")[0],
+        email: u.email || "",
+        avatar: md.avatar_url || md.picture || ""
+      }));
+    } catch (e) {}
+  }).catch(function () {});
+});
