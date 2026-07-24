@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=63" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=64" />
   <script>
     (function () {
       try {
@@ -43,10 +43,10 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=63" />
-  <script src="assets/js/app.js?v=63" defer></script>
-  <script src="assets/js/iq-engine.js?v=63" defer></script>
-  <script src="assets/js/iq-widget.js?v=63" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=64" />
+  <script src="assets/js/app.js?v=64" defer></script>
+  <script src="assets/js/iq-engine.js?v=64" defer></script>
+  <script src="assets/js/iq-widget.js?v=64" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -783,7 +783,7 @@
     function ready(){
       if (window.THREE) { build(); return; }
       var s = document.createElement('script');
-      s.src = 'assets/js/three.min.js?v=63'; s.async = true;
+      s.src = 'assets/js/three.min.js?v=64'; s.async = true;
       s.onload = build; s.onerror = function(){}; document.head.appendChild(s);
     }
     if ('IntersectionObserver' in window) {
@@ -805,6 +805,7 @@
       renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       if (THREE.SRGBColorSpace) renderer.outputColorSpace = THREE.SRGBColorSpace; else if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
       el.appendChild(renderer.domElement);
+      renderer.domElement.style.opacity = '0'; // fades in smoothly once the first real frame is drawn
 
       scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x0a0e18, 0.6));
       var key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(6,9,7);
@@ -899,9 +900,14 @@
           else { hold = t+1800; }
         }
         renderer.render(scene, camera);
+        if (!shown) {   // smooth cross-fade: poster out, live 3D in — no jarring "swap"
+          shown = true;
+          renderer.domElement.style.opacity = '1';
+          if (poster) { poster.style.opacity = '0'; setTimeout(function(){ if (poster) poster.style.display = 'none'; }, 650); }
+        }
       }
+      var shown = false;
       requestAnimationFrame(loop);
-      if (poster) poster.style.display = 'none';   // hand off from static poster to live 3D
       window.addEventListener('resize', function(){ camera.aspect = W()/H(); camera.updateProjectionMatrix(); renderer.setSize(W(), H()); });
     } catch (err) { /* keep the instant poster if WebGL fails */ }
     }
