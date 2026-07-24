@@ -11,7 +11,8 @@
   <title>IQ.T3ani — Learn to code, the smart way</title>
   <meta name="description" content="IQ.T3ani is a free bilingual (Arabic/English) programming education platform: interactive lessons, an in-browser code editor, video courses and a helpful community." />
   <link rel="canonical" href="https://iqtaani.netlify.app/" />
-  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="IQ.T3ani" />
   <meta property="og:title" content="IQ.T3ani — Learn to code, the smart way" />
@@ -31,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=71" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=72" />
   <script>
     (function () {
       try {
@@ -43,11 +44,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=71" />
-  <script src="assets/js/app.js?v=71" defer></script>
-  <script src="assets/js/emoji.js?v=71" defer></script>
-  <script src="assets/js/iq-engine.js?v=71" defer></script>
-  <script src="assets/js/iq-widget.js?v=71" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=72" />
+  <script src="assets/js/app.js?v=72" defer></script>
+  <script src="assets/js/emoji.js?v=72" defer></script>
+  <script src="assets/js/iq-engine.js?v=72" defer></script>
+  <script src="assets/js/iq-widget.js?v=72" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -418,13 +419,13 @@
           <input class="sw-radio" type="radio" name="sw" id="sw7" />
 
           <div class="sw-tabs">
-            <label for="sw1" class="sw-tab" title="Python"><img src="assets/img/lang/python.svg" alt="Python" width="26" height="26" /></label>
-            <label for="sw2" class="sw-tab" title="JavaScript"><img src="assets/img/lang/javascript.svg" alt="JavaScript" width="26" height="26" /></label>
-            <label for="sw3" class="sw-tab" title="TypeScript"><img src="assets/img/lang/typescript.svg" alt="TypeScript" width="26" height="26" /></label>
-            <label for="sw4" class="sw-tab" title="Java"><img src="assets/img/lang/java.svg" alt="Java" width="26" height="26" /></label>
-            <label for="sw5" class="sw-tab" title="C++"><img src="assets/img/lang/cplusplus.svg" alt="C++" width="26" height="26" /></label>
-            <label for="sw6" class="sw-tab" title="Go"><img src="assets/img/lang/go.svg" alt="Go" width="26" height="26" /></label>
-            <label for="sw7" class="sw-tab" title="Rust"><img src="assets/img/lang/rust.svg" alt="Rust" width="26" height="26" /></label>
+            <label for="sw1" class="sw-tab" title="Python"><img loading="lazy" decoding="async" src="assets/img/lang/python.svg" alt="Python" width="26" height="26" /></label>
+            <label for="sw2" class="sw-tab" title="JavaScript"><img loading="lazy" decoding="async" src="assets/img/lang/javascript.svg" alt="JavaScript" width="26" height="26" /></label>
+            <label for="sw3" class="sw-tab" title="TypeScript"><img loading="lazy" decoding="async" src="assets/img/lang/typescript.svg" alt="TypeScript" width="26" height="26" /></label>
+            <label for="sw4" class="sw-tab" title="Java"><img loading="lazy" decoding="async" src="assets/img/lang/java.svg" alt="Java" width="26" height="26" /></label>
+            <label for="sw5" class="sw-tab" title="C++"><img loading="lazy" decoding="async" src="assets/img/lang/cplusplus.svg" alt="C++" width="26" height="26" /></label>
+            <label for="sw6" class="sw-tab" title="Go"><img loading="lazy" decoding="async" src="assets/img/lang/go.svg" alt="Go" width="26" height="26" /></label>
+            <label for="sw7" class="sw-tab" title="Rust"><img loading="lazy" decoding="async" src="assets/img/lang/rust.svg" alt="Rust" width="26" height="26" /></label>
           </div>
 
           <div class="sw-win">
@@ -784,7 +785,7 @@
     function ready(){
       if (window.THREE) { build(); return; }
       var s = document.createElement('script');
-      s.src = 'assets/js/three.min.js?v=71'; s.async = true;
+      s.src = 'assets/js/three.min.js?v=72'; s.async = true;
       s.onload = build; s.onerror = function(){}; document.head.appendChild(s);
     }
     if ('IntersectionObserver' in window) {

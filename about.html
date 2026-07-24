@@ -9,7 +9,8 @@
   <title>About — IQ.T3ani</title>
   <meta name="description" content="The story behind IQ.T3ani — a free bilingual (Arabic/English) platform to learn programming from zero, built by Mohammad Iyad Al-Ta'ani." />
   <link rel="canonical" href="https://iqtaani.netlify.app/about.html" />
-  <meta name="theme-color" content="#0b0f1a" />
+  <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="IQ.T3ani" />
   <meta property="og:title" content="About — IQ.T3ani" />
@@ -29,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=71" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=72" />
   <script>
     (function () { try {
       var t = localStorage.getItem('theme') || 'dark';
@@ -38,11 +39,11 @@
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
     } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=71" />
-  <script src="assets/js/app.js?v=71" defer></script>
-  <script src="assets/js/emoji.js?v=71" defer></script>
-  <script src="assets/js/iq-engine.js?v=71" defer></script>
-  <script src="assets/js/iq-widget.js?v=71" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=72" />
+  <script src="assets/js/app.js?v=72" defer></script>
+  <script src="assets/js/emoji.js?v=72" defer></script>
+  <script src="assets/js/iq-engine.js?v=72" defer></script>
+  <script src="assets/js/iq-widget.js?v=72" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -81,7 +82,7 @@
 
       <h2 data-ar="من أنا">Who's behind it</h2>
       <div class="founder-card">
-        <img src="assets/img/logo.png" alt="" width="64" height="64" class="founder-logo" decoding="async" />
+        <img loading="lazy" decoding="async" src="assets/img/logo.png" alt="" width="64" height="64" class="founder-logo" decoding="async" />
         <div>
           <b class="founder-name">Mohammad Iyad Al-Ta'ani</b>
           <span class="founder-role" data-ar="المدير التنفيذي والمؤسّس — IQ<b>.</b>T3ani">CEO &amp; Founder — IQ<b>.</b>T3ani</span>
