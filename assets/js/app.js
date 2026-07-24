@@ -84,9 +84,10 @@ var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/
       var hb=document.createElement('b'); hb.textContent=name||'—';
       var hs=document.createElement('small'); hs.textContent=email;
       head.appendChild(hb); head.appendChild(hs);
+      var acct=document.createElement('a'); acct.className='am-item'; acct.href='account.html'; acct.textContent=isAr()?'حسابي':'Account';
       var dash=document.createElement('a'); dash.className='am-item'; dash.href='dashboard.html'; dash.textContent=isAr()?'لوحتي':'Dashboard';
       var out=document.createElement('button'); out.type='button'; out.className='am-item am-out'; out.textContent=isAr()?'تسجيل الخروج':'Log out'; out.addEventListener('click',logout);
-      menu.appendChild(head); menu.appendChild(dash); menu.appendChild(out);
+      menu.appendChild(head); menu.appendChild(acct); menu.appendChild(dash); menu.appendChild(out);
       btn.addEventListener('click',function(e){ e.stopPropagation(); menu.classList.toggle('open'); });
       document.addEventListener('click',function(e){ if(!nu.contains(e.target)) menu.classList.remove('open'); });
       document.addEventListener('keydown',function(e){ if(e.key==='Escape') menu.classList.remove('open'); });

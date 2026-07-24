@@ -182,3 +182,28 @@ button.nav-avatar{border:none;cursor:pointer;padding:0;line-height:0}
 .am-item{display:block;width:100%;text-align:start;padding:10px 12px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--text);border:none;background:none;cursor:pointer;transition:background .15s}
 .am-item:hover{background:var(--surface-2)}
 .am-out{color:var(--pink)}
+
+/* ===== Account page ===== */
+.acct-grid{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:start}
+.acct-side{display:flex;flex-direction:column;gap:4px;position:sticky;top:88px}
+.acct-nav-h{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px 8px}
+.acct-side a,.acct-signout{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;font-weight:600;font-size:.94rem;color:var(--text);border:none;background:none;cursor:pointer;text-align:start;transition:background .15s,color .15s}
+.acct-side a:hover,.acct-signout:hover{background:var(--surface-2)}
+.acct-side a.active{background:var(--grad-soft);color:var(--primary)}
+.acct-signout{color:var(--pink);margin-top:10px}
+.acct-main{display:grid;gap:20px}
+.acct-profile{display:flex;align-items:center;gap:18px;padding:22px}
+.acct-avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:2rem;color:#fff;background:var(--grad);overflow:hidden;flex-shrink:0;box-shadow:0 8px 20px -8px rgba(5,150,105,.5)}
+.acct-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.acct-id{display:grid;gap:3px;min-width:0}
+.acct-id b{font-size:1.25rem}
+.acct-id span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-block{padding:22px}
+.acct-block h3{font-size:1.05rem;margin-bottom:14px}
+.acct-block .muted{color:var(--muted);font-size:.9rem;margin:6px 0 14px}
+.acct-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 0;border-top:1px solid var(--border)}
+.acct-row:first-of-type{border-top:none}
+.acct-row>span{color:var(--muted);font-size:.9rem}
+.acct-row b{font-weight:700;text-align:end;word-break:break-word}
+.plan-pill{background:var(--grad);color:#fff;padding:4px 12px;border-radius:20px;font-size:.82rem}
+@media (max-width:760px){.acct-grid{grid-template-columns:1fr}.acct-side{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}.acct-nav-h{width:100%}}

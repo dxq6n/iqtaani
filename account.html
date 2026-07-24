@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account — IQ.T3ani</title>
+  <meta name="description" content="Your IQ.T3ani account settings and profile." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://iqtaani.netlify.app/account.html" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=47" />
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=47" />
+  <script src="assets/js/supabase.min.js?v=47" defer></script>
+  <script src="assets/js/auth-supabase.js?v=47" defer></script>
+  <script src="assets/js/app.js?v=47" defer></script>
+  <script src="assets/js/iq-engine.js?v=47" defer></script>
+  <script src="assets/js/iq-widget.js?v=47" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="pricing.html" data-ar="الأسعار">Pricing</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <a href="register.html" class="nav-signup" data-ar="إنشاء حساب">Sign up</a>
+        <a href="login.html" class="btn btn-primary" data-ar="تسجيل الدخول">Log in</a>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="main">
+    <div class="container acct">
+      <div class="section-head" style="text-align:start;margin-bottom:24px">
+        <h2 data-ar="إعدادات الحساب">Account Settings</h2>
+        <p id="acctEmailTop" style="margin:0">—</p>
+      </div>
+
+      <div class="acct-grid">
+        <aside class="acct-side">
+          <span class="acct-nav-h" data-ar="الحساب">Account</span>
+          <a href="account.html" class="active">⚙️ <span data-ar="إعدادات الحساب">Account Settings</span></a>
+          <a href="pricing.html">💳 <span data-ar="الاشتراك">Membership</span></a>
+          <a href="dashboard.html">📊 <span data-ar="لوحتي">Dashboard</span></a>
+          <span class="acct-nav-h" data-ar="المكتبة">Library</span>
+          <a href="courses.html">📚 <span data-ar="كورساتي">My courses</span></a>
+          <a href="certificate.html">🏅 <span data-ar="شهاداتي">Certificates</span></a>
+          <button type="button" class="acct-signout" data-logout data-ar="تسجيل الخروج">🚪 Sign out</button>
+        </aside>
+
+        <div class="acct-main">
+          <div class="card acct-profile">
+            <span class="acct-avatar" id="acctAvatar">?</span>
+            <div class="acct-id">
+              <b id="acctName">—</b>
+              <span id="acctEmail">—</span>
+              <span class="acct-provider" id="acctProvider" hidden></span>
+            </div>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="معلومات الحساب">Account details</h3>
+            <div class="acct-row"><span data-ar="الاسم">Name</span><b id="acctNameRow">—</b></div>
+            <div class="acct-row"><span data-ar="البريد الإلكتروني">Email</span><b id="acctEmailRow">—</b></div>
+            <div class="acct-row"><span data-ar="طريقة الدخول">Signed in with</span><b id="acctMethod">—</b></div>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="الاشتراك">Membership</h3>
+            <div class="acct-row"><span data-ar="خطتك الحالية">Current plan</span><b><span class="plan-pill" data-ar="مجاني">Free</span></b></div>
+            <p class="muted" data-ar="كل الكورسات والمميّزات مجانية بالكامل حاليًا. خطة Pro قيد التطوير.">All courses and features are 100% free right now. A Pro plan is on the way.</p>
+            <a href="pricing.html" class="btn btn-ghost" data-ar="شوف الباقات">See plans</a>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="الأمان">Security</h3>
+            <p class="muted" data-ar="جلستك محفوظة بأمان عبر Supabase.">Your session is secured through Supabase.</p>
+            <button type="button" class="btn btn-primary" data-logout data-ar="تسجيل الخروج">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    function isAr(){ return document.documentElement.getAttribute('data-lang') === 'ar'; }
+    function read(){ try { return JSON.parse(localStorage.getItem('iqt_user') || '{}'); } catch (e) { return {}; } }
+    function authed(){ try { return localStorage.getItem('iqt_auth') === '1'; } catch (e) { return false; } }
+    function fill(){
+      var u = read();
+      var name = (u.name || (u.email ? u.email.split('@')[0] : '') || '').trim();
+      var email = u.email || '';
+      var avatar = u.avatar || '';
+      var set = function(id, v){ var el = document.getElementById(id); if (el) el.textContent = v || '—'; };
+      set('acctName', name); set('acctNameRow', name);
+      set('acctEmail', email); set('acctEmailRow', email); set('acctEmailTop', email);
+      var av = document.getElementById('acctAvatar');
+      if (av) {
+        if (avatar) { av.innerHTML = ''; var img = document.createElement('img'); img.src = avatar; img.alt = ''; img.referrerPolicy = 'no-referrer'; av.appendChild(img); }
+        else { av.textContent = (name[0] || '?').toUpperCase(); }
+      }
+      // method (best-effort from email domain / avatar host)
+      var method = isAr() ? 'البريد وكلمة السر' : 'Email & password';
+      if (/githubusercontent/.test(avatar)) method = 'GitHub';
+      else if (/googleusercontent/.test(avatar)) method = 'Google';
+      else if (/fbcdn|facebook/.test(avatar)) method = 'Facebook';
+      set('acctMethod', method);
+    }
+    function guard(){
+      if (!authed()) { location.replace('login.html'); return; }
+      fill();
+    }
+    if (document.readyState !== 'loading') guard(); else document.addEventListener('DOMContentLoaded', guard);
+    // Supabase session may arrive slightly later (e.g. right after OAuth) — refill.
+    setTimeout(fill, 800); setTimeout(fill, 1600);
+  })();
+  </script>
+</body>
+</html>
