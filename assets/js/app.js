@@ -179,30 +179,4 @@ _Course: `+n.title.en+`_
   setTimeout(init,500);
 })();
 
-;/* ===== Free daily limit: 2 hours/day, then lock (Pro bypasses) ===== */
-(function(){
-  var PRO=false; try{ PRO=localStorage.getItem('iqt_pro')==='1'; }catch(e){}
-  if(PRO) return;
-  var LIMIT=2*60*60, today=new Date().toISOString().slice(0,10);
-  function get(){ try{ var d=JSON.parse(localStorage.getItem('iqt_usage')||'{}'); if(d.day!==today) d={day:today,sec:0}; return d; }catch(e){ return {day:today,sec:0}; } }
-  function save(d){ try{ localStorage.setItem('iqt_usage',JSON.stringify(d)); }catch(e){} }
-  var u=get();
-  function isAr(){ return document.documentElement.getAttribute('data-lang')==='ar'; }
-  function lock(){
-    if(document.getElementById('iqt-lock')) return;
-    var ar=isAr(), ov=document.createElement('div'); ov.id='iqt-lock';
-    ov.innerHTML='<div class="lock-card"><div class="lock-ic">⏳</div>'+
-      '<h2>'+(ar?'انتهى وقتك المجاني اليوم':'Your free time is up for today')+'</h2>'+
-      '<p>'+(ar?'استخدمت ساعتين مجانيتين اليوم. اشترك في Pro للوصول غير المحدود، أو ارجع بكرة.':'You’ve used your 2 free hours today. Upgrade to Pro for unlimited access, or come back tomorrow.')+'</p>'+
-      '<a class="btn btn-primary btn-lg" href="pricing.html">'+(ar?'اشترك في Pro':'Upgrade to Pro')+'</a></div>';
-    document.body.appendChild(ov); document.documentElement.style.overflow='hidden';
-  }
-  if(u.sec>=LIMIT){ lock(); return; }
-  var t=setInterval(function(){
-    if(document.hidden) return;
-    u.sec++; if(u.sec%15===0) save(u);
-    if(u.sec>=LIMIT){ save(u); clearInterval(t); lock(); }
-  },1000);
-  addEventListener('beforeunload',function(){ save(u); });
-})();
 

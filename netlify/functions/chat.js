@@ -50,6 +50,15 @@ exports.handler = async function (event) {
     return json(405, { error: 'METHOD', message: 'POST only' });
   }
 
+  /* Abuse guard: only serve requests that come from our own site, so other
+     sites can't burn the quota. Lenient — a missing Origin/Referer is allowed
+     (some same-origin requests omit it); only a clearly foreign origin is blocked. */
+  var _origin = (event.headers && (event.headers.origin || event.headers.Origin ||
+                 event.headers.referer || event.headers.Referer)) || '';
+  if (_origin && !/iqtaani|localhost|127\.0\.0\.1/i.test(_origin)) {
+    return json(403, { error: 'FORBIDDEN', message: 'This assistant is only available on IQ.T3ani.' });
+  }
+
   /* The key runs ONLY here, on the server (never sent to the browser).
      Priority: the Netlify env var GEMINI_API_KEY. If it isn't set, we fall
      back to the owner's key stored base64-encoded below so it isn't plainly
