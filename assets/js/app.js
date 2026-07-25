@@ -45,7 +45,21 @@ _Course: `+n.title.en+`_
     location.href='index.html';
   }
   function enhance(){
-    var us=document.querySelectorAll('.nav-user'); if(!us.length) return;
+    var loggedIn=false; try{ loggedIn=localStorage.getItem('iqt_auth')==='1'; }catch(e){}
+    var us=document.querySelectorAll('.nav-user');
+    if(!us.length){
+      if(!loggedIn) return;
+      var actions=document.querySelector('.nav-actions'); if(!actions) return;
+      if(actions.querySelector('.nav-user')) { us=document.querySelectorAll('.nav-user'); }
+      else {
+        var su=actions.querySelector('.nav-signup'); if(su) su.style.display='none';
+        var li=actions.querySelector('a[href="login.html"]'); if(li) li.style.display='none';
+        var nu2=document.createElement('span'); nu2.className='nav-user';
+        var anchor=actions.querySelector('.kebab-btn')||actions.querySelector('.nav-toggle');
+        if(anchor) actions.insertBefore(nu2, anchor); else actions.appendChild(nu2);
+        us=document.querySelectorAll('.nav-user');
+      }
+    }
     var name='', avatar='', email='';
     try{ var u=JSON.parse(localStorage.getItem('iqt_user')||'{}'); name=(u.name||u.email||'').trim(); email=u.email||''; avatar=u.avatar||''; }catch(e){}
     us.forEach(function(nu){

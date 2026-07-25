@@ -68,3 +68,21 @@
   for = "/manifest.json"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+# ---- Friendly aliases so common typed URLs never 404 (static-site equivalents) ----
+[[redirects]]
+  from = "/signup"
+  to = "/register.html"
+  status = 301
+[[redirects]]
+  from = "/sign-up"
+  to = "/register.html"
+  status = 301
+[[redirects]]
+  from = "/sign-in"
+  to = "/login.html"
+  status = 301
+[[redirects]]
+  from = "/courses/:id"
+  to = "/course.html?c=:id"
+  status = 301
