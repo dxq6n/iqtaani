@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community & Smart Debugger — IQ.T3ani</title>
+  <meta name="description" content="Ask programming questions, share code and get answers from the IQ.T3ani community — plus a smart code debugger." />
+  <link rel="canonical" href="https://iqtaani.netlify.app/community.html" />
+  <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IQ.T3ani" />
+  <meta property="og:title" content="Community & Smart Debugger — IQ.T3ani" />
+  <meta property="og:description" content="Ask programming questions, share code and get answers from the IQ.T3ani community — plus a smart code debugger." />
+  <meta property="og:url" content="https://iqtaani.netlify.app/community.html" />
+  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Community & Smart Debugger — IQ.T3ani" />
+  <meta name="twitter:description" content="Ask programming questions, share code and get answers from the IQ.T3ani community — plus a smart code debugger." />
+  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=78" />
+  <link rel="stylesheet" href="assets/css/community.css?v=78" />
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || 'dark';
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/app.js?v=78" defer></script>
+  <script src="assets/js/emoji.js?v=78" defer></script>
+  <script src="assets/js/iq-engine.js?v=78" defer></script>
+  <script src="assets/js/iq-widget.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+  <script src="assets/js/community.js?v=78" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Page hero ===== -->
+  <section class="section comm-hero" id="main" role="main">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-ar="المجتمع والمصحّح الذكي">Community & Smart Debugger</span>
+        <h1 data-ar="اسأل، شارك، وصحّح أكوادك بذكاء">Ask, share, and debug your code smartly</h1>
+        <p data-ar="منتدى مطوّرين متكامل مع مصحّح أكواد يعمل بالذكاء الاصطناعي — كل شيء في مكان واحد.">A full-featured developer forum with an AI-powered code corrector — all in one place.</p>
+      </div>
+
+      <!-- ===== Tab switcher ===== -->
+      <div class="comm-tabs">
+        <button class="comm-tab active" data-tab="forum">
+          <span class="tab-ic">💬</span>
+          <span data-ar="منتدى النقاش">Discussion Forum</span>
+        </button>
+        <button class="comm-tab" data-tab="debugger">
+          <span class="tab-ic">🛠️</span>
+          <span data-ar="المصحّح الذكي">Smart Debugger</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TAB 1 — DISCUSSION FORUM
+       ================================================================ -->
+  <section class="section comm-section" id="forumSection" style="padding-top:0">
+    <div class="container">
+
+      <!-- New post composer -->
+      <div class="composer reveal" id="composer">
+        <h3 data-ar="اطرح سؤالك أو شارك فكرتك">Ask a question or share an idea</h3>
+
+        <div class="field" style="margin-top:14px">
+          <input class="input" id="postTitle" aria-label="Question title / عنوان السؤال" type="text" placeholder="What's your question about?" data-ar-ph="عن ماذا سؤالك؟" />
+        </div>
+
+        <div class="field" style="margin-top:10px">
+          <div class="editor-toolbar">
+            <button type="button" class="tb" title="Bold" id="tbBold"><b>B</b></button>
+            <button type="button" class="tb" title="Italic" id="tbItalic"><i>I</i></button>
+            <button type="button" class="tb" title="Code" id="tbCode">&lt;/&gt;</button>
+            <button type="button" class="tb" title="Code block" id="tbCodeBlock" data-ar="كتلة برمجية">{ }</button>
+          </div>
+          <textarea class="input post-body" id="postBody" aria-label="Question details / تفاصيل السؤال" rows="5" placeholder="Describe your problem or share your code..." data-ar-ph="اوصف مشكلتك أو شارك الكود..."></textarea>
+        </div>
+
+        <div class="field" style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <select class="input tag-select" id="postTag" aria-label="Topic tag / وسم الموضوع">
+            <option value="general" data-ar="عام">General</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="html-css">HTML/CSS</option>
+            <option value="cpp">C++</option>
+            <option value="react">React</option>
+            <option value="sql">SQL</option>
+            <option value="other" data-ar="أخرى">Other</option>
+          </select>
+          <button class="btn btn-primary" id="postSubmit" data-ar="نشر السؤال">Post question</button>
+        </div>
+      </div>
+
+      <!-- Posts feed -->
+      <div class="posts-header">
+        <h3><span id="postCount">0</span> <span data-ar="مناقشة">discussions</span></h3>
+        <select class="input sort-select" id="sortPosts" aria-label="Sort posts / ترتيب المنشورات">
+          <option value="newest" data-ar="الأحدث">Newest</option>
+          <option value="votes" data-ar="الأكثر تصويتاً">Most voted</option>
+        </select>
+      </div>
+
+      <div id="postsFeed" class="posts-feed">
+        <!-- Posts are injected here by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TAB 2 — SMART DEBUGGER
+       ================================================================ -->
+  <section class="section comm-section" id="debuggerSection" style="display:none;padding-top:0">
+    <div class="container">
+
+      <div class="debugger-wrap reveal">
+        <!-- Editor top bar -->
+        <div class="dbg-top">
+          <h3 data-ar="مصحّح الأكواد الذكي">AI Code Corrector</h3>
+          <div class="dbg-actions">
+            <select class="input lang-select" id="dbgLang" aria-label="Code language / لغة الكود">
+              <option value="python">Python</option>
+              <option value="javascript">JavaScript</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="cpp">C++</option>
+              <option value="java">Java</option>
+              <option value="csharp">C#</option>
+              <option value="php">PHP</option>
+              <option value="sql">SQL</option>
+            </select>
+            <button class="btn btn-primary" id="dbgRun" data-ar="تحليل وتصحيح الكود">
+              <span class="dbg-run-text" data-ar="تحليل وتصحيح الكود">Debug & Fix Code</span>
+              <span class="dbg-spinner" style="display:none"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Code editor area -->
+        <div class="dbg-editor-wrap">
+          <div class="dbg-gutter" id="dbgGutter">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div>
+          <textarea class="dbg-editor" id="dbgCode" aria-label="Your code / الكود" spellcheck="false" placeholder="Paste your code here..." data-ar-ph="ألصق الكود هنا...">def calculate_average(numbers):
+    total = 0
+    for num in numbers
+        total += num
+    average = total / len(numbers)
+    return average
+
+result = calculate_average([10, 20, 30])
+print("The average is: " + result)</textarea>
+        </div>
+
+        <p class="dbg-hint" data-ar="💡 ألصق أي كود فيه أخطاء واضغط «تحليل وتصحيح الكود» — الذكاء الاصطناعي سيكتشف الأخطاء ويقترح التصحيحات.">
+          💡 Paste any buggy code and press "Debug & Fix Code" — the AI will detect errors and suggest corrections.
+        </p>
+      </div>
+
+      <!-- Results area (hidden until analysis runs) -->
+      <div class="dbg-results" id="dbgResults" style="display:none">
+        <h3 data-ar="نتائج التحليل">Analysis Results</h3>
+
+        <!-- Errors found -->
+        <div class="dbg-errors" id="dbgErrors"></div>
+
+        <!-- Before / After comparison -->
+        <div class="dbg-compare">
+          <div class="dbg-panel">
+            <div class="dbg-panel-head bad">
+              <span>❌</span> <span data-ar="الكود الأصلي (قبل التصحيح)">Original Code (Before)</span>
+            </div>
+            <pre class="dbg-pre" id="dbgBefore"></pre>
+          </div>
+          <div class="dbg-panel">
+            <div class="dbg-panel-head good">
+              <span>✅</span> <span data-ar="الكود المصحّح (بعد التصحيح)">Corrected Code (After)</span>
+            </div>
+            <pre class="dbg-pre" id="dbgAfter"></pre>
+          </div>
+        </div>
+
+        <!-- Copy corrected code -->
+        <div style="text-align:center;margin-top:18px">
+          <button class="btn btn-primary" id="dbgCopy" data-ar="نسخ الكود المصحّح">Copy corrected code</button>
+        </div>
+
+        <!--
+        ============================================================
+        🔌 API INTEGRATION POINT
+        ============================================================
+        To connect a real AI backend (OpenAI, Gemini, etc.):
+
+        1. Create a backend endpoint, e.g.:
+             POST https://api.iqtaani.netlify.app/v1/debug
+             Body: { "code": "...", "language": "python" }
+
+        2. In community.js, replace the `mockAiCorrection()` call
+           inside `runDebugger()` with a fetch() to your endpoint:
+
+             const res = await fetch('https://api.iqtaani.netlify.app/v1/debug', {
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': 'Bearer YOUR_API_KEY'  // ← API key here
+               },
+               body: JSON.stringify({ code, language })
+             });
+             const data = await res.json();
+
+        3. IMPORTANT: Never expose your API key in client-side JS.
+           Always proxy through your own backend server.
+        ============================================================
+        -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="text-align:center;padding:28px 0;color:var(--muted);font-size:.88rem">
+        &copy; <span id="year"></span> IQ.T3ani — <span data-ar="صُنع بـ ❤️ بواسطة محمد وعبدالرحمن">Made with ❤️ by Mohammad & Abdulrahman</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

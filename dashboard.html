@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — IQ.T3ani</title>
+  <meta name="description" content="Your IQ.T3ani learning dashboard — XP, streaks, badges, bookmarks and course progress." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://iqtaani.netlify.app/dashboard.html" />
+  <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IQ.T3ani" />
+  <meta property="og:title" content="Dashboard — IQ.T3ani" />
+  <meta property="og:description" content="Your IQ.T3ani learning dashboard — XP, streaks, badges, bookmarks and course progress." />
+  <meta property="og:url" content="https://iqtaani.netlify.app/dashboard.html" />
+  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dashboard — IQ.T3ani" />
+  <meta name="twitter:description" content="Your IQ.T3ani learning dashboard — XP, streaks, badges, bookmarks and course progress." />
+  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=78" />
+  <link rel="stylesheet" href="assets/css/dashboard.css?v=78" />
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || 'dark';
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <script>
+    /* Protected page: only signed-in users. Waits briefly for Supabase to restore
+       an OAuth/email session before redirecting, so it never bounces a real user. */
+    (function () {
+      function authed(){ try { return localStorage.getItem('iqt_auth') === '1'; } catch (e) { return true; } }
+      if (authed()) return;
+      var tries = 0;
+      var t = setInterval(function () {
+        if (authed()) { clearInterval(t); return; }
+        if (++tries >= 7) { clearInterval(t); location.replace('login.html'); }
+      }, 300);
+    })();
+  </script>
+  <script src="assets/js/courses.js?v=78" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/supabase.min.js?v=78" defer></script>
+  <script src="assets/js/auth-supabase.js?v=78" defer></script>
+  <script src="assets/js/app.js?v=78" defer></script>
+  <script src="assets/js/emoji.js?v=78" defer></script>
+  <script src="assets/js/iq-engine.js?v=78" defer></script>
+  <script src="assets/js/iq-widget.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <a href="login.html" class="btn btn-ghost" data-logout data-ar="خروج">Log out</a>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dash" id="main">
+    <aside class="side">
+      <a href="dashboard.html" class="active">📊 <span data-ar="نظرة عامة">Overview</span></a>
+      <a href="courses.html">📚 <span data-ar="كورساتي">My courses</span></a>
+      <a href="editor.html">💻 <span data-ar="محرّر الأكواد">Code editor</span></a>
+      <a href="community.html">💬 <span data-ar="المجتمع">Community</span></a>
+      <h4 data-ar="التقدّم">Progress</h4>
+      <a href="dashboard.html#badges">🏆 <span data-ar="الإنجازات">Achievements</span></a>
+      <a href="dashboard.html#bookmarks">🔖 <span data-ar="المفضّلة">Bookmarks</span></a>
+      <a href="certificate.html">🏅 <span data-ar="شهاداتي">Certificates</span></a>
+    </aside>
+
+    <main class="dash-main">
+      <div class="welcome">
+        <div>
+          <h1><span data-ar="أهلًا بعودتك،">Welcome back,</span> <span id="greetName" data-ar="أيها المتعلّم">Learner</span> 👋</h1>
+          <p style="color:var(--muted)" id="welcomeSubtitle" data-ar="جاهز تكمل التعلّم؟">Ready to keep learning?</p>
+        </div>
+        <a href="courses.html" class="btn btn-primary" data-ar="أكمل التعلّم">Continue learning</a>
+      </div>
+
+      <!-- Level & XP hero -->
+      <section class="lvl-hero">
+        <div class="lvl-hero-grid">
+          <div class="lvl-badge" id="lvlNum">1</div>
+          <div class="lvl-info">
+            <h2 data-ar="أنت في المستوى" id="lvlTitle">You're at Level 1</h2>
+            <p><span id="lvlNext">100</span> <span data-ar="نقاط للمستوى التالي">XP to next level</span></p>
+            <div class="lvl-xpbar"><i id="lvlBar" style="width:0%"></i></div>
+            <small><span id="lvlXPCurrent">0</span> / <span id="lvlXPNeeded">100</span> XP</small>
+          </div>
+          <div class="lvl-total">
+            <b id="lvlTotalXP">0</b>
+            <span data-ar="مجموع النقاط">Total XP</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="kpis">
+        <div class="kpi streak-card">
+          <div class="ic" style="background:rgba(255,255,255,.2);color:#fff">🔥</div>
+          <b id="kpiStreak">0</b>
+          <span data-ar="سلسلة الأيام">Day streak</span>
+          <small data-ar="أفضل سلسلة:">Best:</small> <small id="bestStreak" style="opacity:.9">0</small>
+        </div>
+        <div class="kpi"><div class="ic">⭐</div><b id="kpiXP">0</b><span data-ar="نقاط الخبرة">XP points</span></div>
+        <div class="kpi"><div class="ic">📚</div><b id="kpiProgress">0</b><span data-ar="قيد التقدّم">In progress</span></div>
+        <div class="kpi"><div class="ic">🏅</div><b id="kpiDone">0</b><span data-ar="مكتملة">Completed</span></div>
+      </div>
+
+      <div class="dash-grid">
+        <!-- Left column: activity + courses -->
+        <div style="display:grid;gap:20px">
+          <!-- Weekly activity heatmap -->
+          <div class="panel">
+            <div class="panel-head">
+              <h3 data-ar="نشاطك هذا الأسبوع">Your activity this week</h3>
+              <span style="color:var(--muted);font-size:.82rem"><span id="activeDays">0</span>/7</span>
+            </div>
+            <div class="heatmap" id="heatmap"></div>
+            <div class="heatmap-labels" id="heatmapLabels"></div>
+          </div>
+
+          <!-- My courses progress -->
+          <div class="panel">
+            <div class="panel-head">
+              <h3 data-ar="تقدّمي في الكورسات">My course progress</h3>
+              <a href="courses.html" class="panel-action" data-ar="تصفّح الكل">Browse all</a>
+            </div>
+            <div class="dash-courses" id="dashCourses">
+              <div class="dash-empty">
+                <div class="empty-ic">📖</div>
+                <b data-ar="لم تبدأ أي كورس بعد">No courses started yet</b>
+                <p data-ar="ابدأ كورسك الأول وابدأ ببناء المهارات">Pick your first course and start building skills</p>
+                <a href="courses.html" class="btn btn-primary btn-sm" data-ar="ابدأ كورس">Start a course</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily goals -->
+          <div class="panel">
+            <div class="panel-head">
+              <h3 data-ar="أهداف اليوم">Today's goals</h3>
+              <span style="color:var(--muted);font-size:.82rem" id="goalsProgress">0/3</span>
+            </div>
+            <div class="goals-list" id="goalsList"></div>
+          </div>
+        </div>
+
+        <!-- Right column: badges + bookmarks + activity -->
+        <div style="display:grid;gap:20px">
+          <!-- Achievements -->
+          <div class="panel" id="badges">
+            <div class="panel-head">
+              <h3 data-ar="الإنجازات">Achievements</h3>
+              <span style="color:var(--muted);font-size:.82rem"><span id="badgeCount">0</span>/<span id="badgeTotal">12</span></span>
+            </div>
+            <div class="badges-grid" id="badgesGrid"></div>
+          </div>
+
+          <!-- Stats -->
+          <div class="panel">
+            <h3 data-ar="إحصائياتك">Your stats</h3>
+            <div class="stats-mini" id="statsMini"></div>
+          </div>
+
+          <!-- Bookmarks -->
+          <div class="panel" id="bookmarks">
+            <div class="panel-head">
+              <h3 data-ar="المفضّلة">Bookmarks</h3>
+              <span style="color:var(--muted);font-size:.82rem"><span id="bookmarkCount">0</span></span>
+            </div>
+            <div class="bookmarks-list" id="bookmarksList">
+              <div class="dash-empty">
+                <div class="empty-ic">🔖</div>
+                <b data-ar="لا مفضّلة بعد">No bookmarks yet</b>
+                <p data-ar="اضغط ⭐ على أي درس لحفظه هنا">Click ⭐ on any lesson to save it here</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent activity -->
+          <div class="panel">
+            <h3 data-ar="النشاط الأخير">Recent activity</h3>
+            <div class="activity-list" id="activityList">
+              <div class="dash-empty">
+                <div class="empty-ic">✨</div>
+                <b data-ar="لا يوجد نشاط بعد">No activity yet</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

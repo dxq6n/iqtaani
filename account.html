@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HFMLNS5W8F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HFMLNS5W8F");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account — IQ.T3ani</title>
+  <meta name="description" content="Your IQ.T3ani account settings and profile." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://iqtaani.netlify.app/account.html" />
+  <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=78" />
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('theme') || 'dark';
+      var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
+      r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
+      r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    } catch (e) {} })();
+  </script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/supabase.min.js?v=78" defer></script>
+  <script src="assets/js/auth-supabase.js?v=78" defer></script>
+  <script src="assets/js/app.js?v=78" defer></script>
+  <script src="assets/js/emoji.js?v=78" defer></script>
+  <script src="assets/js/iq-engine.js?v=78" defer></script>
+  <script src="assets/js/iq-widget.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand"><img src="assets/img/logo.png" class="logo" alt="" width="34" height="34" decoding="async" /> IQ<b>.</b>T3ani</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" data-ar="الرئيسية">Home</a>
+        <a href="courses.html" data-ar="الكورسات">Courses</a>
+        <a href="community.html" data-ar="المجتمع">Community</a>
+        <a href="editor.html" data-ar="المحرر">Playground</a>
+        <a href="dashboard.html" data-ar="لوحتي">Dashboard</a>
+        <a href="qi.html">IQ</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
+        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        <a href="register.html" class="nav-signup" data-ar="إنشاء حساب">Sign up</a>
+        <a href="login.html" class="btn btn-primary" data-ar="تسجيل الدخول">Log in</a>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="main">
+    <div class="container acct">
+      <div class="section-head" style="text-align:start;margin-bottom:24px">
+        <h1 data-ar="إعدادات الحساب">Account Settings</h1>
+        <p id="acctEmailTop" style="margin:0">—</p>
+      </div>
+
+      <div class="acct-grid">
+        <aside class="acct-side">
+          <span class="acct-nav-h" data-ar="الحساب">Account</span>
+          <a href="account.html" class="active">⚙️ <span data-ar="إعدادات الحساب">Account Settings</span></a>
+          <a href="dashboard.html">📊 <span data-ar="لوحتي">Dashboard</span></a>
+          <span class="acct-nav-h" data-ar="المكتبة">Library</span>
+          <a href="courses.html">📚 <span data-ar="كورساتي">My courses</span></a>
+          <a href="certificate.html">🏅 <span data-ar="شهاداتي">Certificates</span></a>
+          <button type="button" class="acct-signout" data-logout data-ar="تسجيل الخروج">🚪 Sign out</button>
+        </aside>
+
+        <div class="acct-main">
+          <div class="card acct-profile">
+            <button type="button" class="acct-avatar-wrap" id="avatarBtn" aria-label="تغيير الصورة / Change photo">
+              <span class="acct-avatar" id="acctAvatar">?</span>
+              <span class="acct-avatar-cam" aria-hidden="true">📷</span>
+            </button>
+            <input type="file" id="avatarFile" aria-label="Upload profile photo / رفع صورة" accept="image/png,image/jpeg,image/webp,image/gif" hidden />
+            <div class="acct-id">
+              <b id="acctName">—</b>
+              <span id="acctEmail">—</span>
+              <button type="button" class="acct-photo-link" id="avatarLink" data-ar="أضف / غيّر صورتك">Add / change your photo</button>
+              <span class="acct-photo-msg" id="avatarMsg" hidden></span>
+            </div>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="معلومات الحساب">Account details</h3>
+            <div class="acct-row"><span data-ar="الاسم">Name</span><b id="acctNameRow">—</b></div>
+            <div class="acct-row"><span data-ar="البريد الإلكتروني">Email</span><b id="acctEmailRow">—</b></div>
+            <div class="acct-row"><span data-ar="طريقة الدخول">Signed in with</span><b id="acctMethod">—</b></div>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="الاشتراك">Membership</h3>
+            <div class="acct-row"><span data-ar="خطتك الحالية">Current plan</span><b><span class="plan-pill" data-ar="مجاني">Free</span></b></div>
+            <p class="muted" data-ar="كل الكورسات والمميّزات مجانية بالكامل حاليًا. خطة Pro قيد التطوير.">All courses and features are 100% free right now. A Pro plan is on the way.</p>
+          </div>
+
+          <div class="card acct-block">
+            <h3 data-ar="الأمان">Security</h3>
+            <p class="muted" data-ar="جلستك محفوظة بأمان عبر Supabase.">Your session is secured through Supabase.</p>
+            <button type="button" class="btn btn-primary" data-logout data-ar="تسجيل الخروج">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    function isAr(){ return document.documentElement.getAttribute('data-lang') === 'ar'; }
+    function read(){ try { return JSON.parse(localStorage.getItem('iqt_user') || '{}'); } catch (e) { return {}; } }
+    function authed(){ try { return localStorage.getItem('iqt_auth') === '1'; } catch (e) { return false; } }
+    function fill(){
+      var u = read();
+      var name = (u.name || (u.email ? u.email.split('@')[0] : '') || '').trim();
+      var email = u.email || '';
+      var avatar = u.avatar || '';
+      var set = function(id, v){ var el = document.getElementById(id); if (el) el.textContent = v || '—'; };
+      set('acctName', name); set('acctNameRow', name);
+      set('acctEmail', email); set('acctEmailRow', email); set('acctEmailTop', email);
+      var av = document.getElementById('acctAvatar');
+      if (av) {
+        if (avatar) { av.innerHTML = ''; var img = document.createElement('img'); img.src = avatar; img.alt = ''; img.referrerPolicy = 'no-referrer'; av.appendChild(img); }
+        else { av.textContent = (name[0] || '?').toUpperCase(); }
+      }
+      // method (best-effort from email domain / avatar host)
+      var method = isAr() ? 'البريد وكلمة السر' : 'Email & password';
+      if (/githubusercontent/.test(avatar)) method = 'GitHub';
+      else if (/googleusercontent/.test(avatar)) method = 'Google';
+      else if (/fbcdn|facebook/.test(avatar)) method = 'Facebook';
+      set('acctMethod', method);
+    }
+    function guard(){
+      if (!authed()) { location.replace('login.html'); return; }
+      fill();
+      setupAvatarUpload();
+    }
+
+    // ---- Profile photo upload (resize on-device, store small, show everywhere) ----
+    function setupAvatarUpload(){
+      var btn = document.getElementById('avatarBtn');
+      var link = document.getElementById('avatarLink');
+      var file = document.getElementById('avatarFile');
+      var msg = document.getElementById('avatarMsg');
+      if (!file || file.dataset.ready) return; file.dataset.ready = '1';
+      function pick(){ file.click(); }
+      if (btn) btn.addEventListener('click', pick);
+      if (link) link.addEventListener('click', pick);
+      function say(t, ok){ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.style.color = ok ? 'var(--brand,#10b981)' : 'var(--pink,#ef4444)'; }
+      file.addEventListener('change', function(){
+        var f = file.files && file.files[0]; if (!f) return;
+        if (!/^image\//.test(f.type)) { say(isAr()?'اختر صورة من فضلك.':'Please choose an image.', false); return; }
+        if (f.size > 8 * 1024 * 1024) { say(isAr()?'الصورة كبيرة (الحد 8MB).':'Image too large (max 8MB).', false); return; }
+        var reader = new FileReader();
+        reader.onload = function(e){
+          var img = new Image();
+          img.onload = function(){
+            // square-crop (cover) + downscale to 200px, compress to JPEG — keeps it tiny
+            var S = 200, c = document.createElement('canvas'); c.width = S; c.height = S;
+            var ctx = c.getContext('2d');
+            var side = Math.min(img.width, img.height);
+            var sx = (img.width - side) / 2, sy = (img.height - side) / 2;
+            ctx.drawImage(img, sx, sy, side, side, 0, 0, S, S);
+            var data = c.toDataURL('image/jpeg', 0.85);
+            // save to localStorage so the nav + this page show it immediately
+            var u = read(); u.avatar = data;
+            try { localStorage.setItem('iqt_user', JSON.stringify(u)); } catch (er) {}
+            fill();
+            say(isAr()?'تم حفظ صورتك ✓':'Photo saved ✓', true);
+            // also persist to the cloud account (so it follows you on other devices)
+            try {
+              var sb = window.__IQ_SB__;
+              if (sb && sb.auth && sb.auth.updateUser) {
+                sb.auth.updateUser({ data: { avatar_url: data } }).catch(function(){});
+              }
+            } catch (er2) {}
+          };
+          img.onerror = function(){ say(isAr()?'تعذّر قراءة الصورة.':'Could not read the image.', false); };
+          img.src = e.target.result;
+        };
+        reader.onerror = function(){ say(isAr()?'تعذّر رفع الصورة.':'Upload failed.', false); };
+        reader.readAsDataURL(f);
+      });
+    }
+
+    if (document.readyState !== 'loading') guard(); else document.addEventListener('DOMContentLoaded', guard);
+    // Supabase session may arrive slightly later (e.g. right after OAuth) — refill.
+    setTimeout(fill, 800); setTimeout(fill, 1600);
+  })();
+  </script>
+  <script src="assets/js/avatar-picker.js?v=78" defer></script>
+</body>
+</html>
