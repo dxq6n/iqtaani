@@ -166,7 +166,7 @@ window.IQ_logout=function(){
     var w=Math.max(2,Math.round(W*NS)), h=Math.max(2,Math.round(H*NS));
     neb=sprite(w,h);
     var g=neb.getContext('2d');
-    [[0.76,0.16,0.42,'56,120,180'],[0.16,0.72,0.36,'96,70,150'],[0.50,0.44,0.30,'30,110,120']]
+    [[0.76,0.16,0.42,'56,120,180'],[0.16,0.72,0.36,'96,70,150'],[0.50,0.44,0.30,'60,90,170']]
     .forEach(function(b){
       var x=b[0]*w, y=b[1]*h, r=Math.max(w,h)*b[2];
       var rg=g.createRadialGradient(x,y,0,x,y,r);

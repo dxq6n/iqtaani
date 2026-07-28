@@ -131,52 +131,9 @@
         </div>
       </div>
       <div class="hero-visual reveal">
-        <div class="laptop3d" id="laptop3d" aria-label="Interactive 3D MacBook — drag to rotate" role="img">
-          <!-- Instant realistic black-MacBook poster: shows immediately on every device/network; upgraded to interactive 3D only where it's fast -->
-          <svg class="laptop-poster" viewBox="0 0 560 380" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="lpScreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1626"/><stop offset="1" stop-color="#0a1018"/></linearGradient>
-              <linearGradient id="lpAlu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3b41"/><stop offset=".5" stop-color="#26272c"/><stop offset="1" stop-color="#141418"/></linearGradient>
-              <linearGradient id="lpDeck" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#303138"/><stop offset="1" stop-color="#181a1e"/></linearGradient>
-              <linearGradient id="lpSheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".12"/><stop offset=".28" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-              <radialGradient id="lpShadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#020409" stop-opacity=".55"/><stop offset="1" stop-color="#020409" stop-opacity="0"/></radialGradient>
-            </defs>
-            <!-- soft ground shadow -->
-            <ellipse cx="280" cy="330" rx="215" ry="26" fill="url(#lpShadow)"/>
-            <!-- lid (aluminium body) -->
-            <rect x="116" y="18" width="328" height="214" rx="16" fill="url(#lpAlu)" stroke="#0c0c0f" stroke-width="2"/>
-            <!-- black glass bezel -->
-            <rect x="128" y="30" width="304" height="190" rx="9" fill="#050607"/>
-            <!-- notch -->
-            <rect x="262" y="30" width="36" height="10" rx="5" fill="#050607"/>
-            <!-- screen -->
-            <rect x="138" y="42" width="284" height="166" rx="5" fill="url(#lpScreen)"/>
-            <!-- title bar -->
-            <path d="M138 47 a5 5 0 0 1 5 -5 h274 a5 5 0 0 1 5 5 v22 h-284 z" fill="#0e1526"/>
-            <circle cx="156" cy="57" r="4.5" fill="#ff5f56"/><circle cx="172" cy="57" r="4.5" fill="#ffbd2e"/><circle cx="188" cy="57" r="4.5" fill="#27c93f"/>
-            <text x="208" y="61" fill="#93a1bd" font-family="Fira Code,monospace" font-size="12">hello.py</text>
-            <text x="152" y="96"  fill="#6b8299" font-family="Fira Code,monospace" font-size="14"># Learn Python</text>
-            <text x="152" y="120" fill="#c3e88d" font-family="Fira Code,monospace" font-size="14">for i in range(3):</text>
-            <text x="170" y="144" fill="#e7ecf7" font-family="Fira Code,monospace" font-size="14">print("Hello, IQ.T3ani!")</text>
-            <text x="152" y="182" fill="#6b8299" font-family="Fira Code,monospace" font-size="14"># -&gt; runs instantly</text>
-            <rect x="422" y="118" width="8" height="18" fill="#34d399"/>
-            <rect x="138" y="42" width="284" height="166" rx="5" fill="url(#lpSheen)"/>
-            <!-- hinge -->
-            <rect x="150" y="230" width="260" height="6" rx="3" fill="#0b0b0d"/>
-            <!-- base / keyboard deck (perspective trapezoid) -->
-            <path d="M104 232 h352 l40 54 a10 10 0 0 1 -9 15 h-414 a10 10 0 0 1 -9 -15 z" fill="url(#lpDeck)" stroke="#0c0c0f" stroke-width="2"/>
-            <!-- keyboard well -->
-            <path d="M150 244 h260 l24 34 h-308 z" fill="#0d0e11" opacity=".85"/>
-            <!-- key rows (subtle) -->
-            <g fill="#33343b">
-              <rect x="162" y="250" width="236" height="5" rx="2.5"/>
-              <rect x="158" y="260" width="244" height="5" rx="2.5"/>
-              <rect x="154" y="270" width="252" height="5" rx="2.5"/>
-            </g>
-            <!-- trackpad -->
-            <rect x="238" y="288" width="84" height="18" rx="4" fill="#26272c" stroke="#3a3b41" stroke-width="1.5"/>
-          </svg>
-          <span class="laptop3d-hint" data-ar="اسحب لتدوير اللابتوب 360°">Drag to rotate ↻</span>
+        <div class="codeglobe" id="codeGlobe" role="img"
+             aria-label="A globe of connected code nodes, turning on its own / كرة أرضية من عقد برمجية تدور تلقائيًا">
+          <canvas class="codeglobe-cv"></canvas>
         </div>
       </div>
     </div>
@@ -736,7 +693,7 @@
       var c = document.getElementById('confetti');
       if (!c) { c = document.createElement('canvas'); c.id = 'confetti'; document.body.appendChild(c); }
       var ctx = c.getContext('2d'); c.width = innerWidth; c.height = innerHeight;
-      var colors = ['#34d399', '#059669', '#fbbf24', '#f472b6', '#34d7ee'], parts = [];
+      var colors = ['#38bdf8', '#4f46e5', '#fbbf24', '#f472b6', '#22d3ee'], parts = [];
       for (var i = 0; i < 90; i++) parts.push({ x: x, y: y, vx: (Math.random() - .5) * 9, vy: (Math.random() * -1) * 9 - 3, g: .28, size: 5 + Math.random() * 5, color: colors[i % colors.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .35, life: 70 + Math.random() * 30 });
       (function anim() {
         ctx.clearRect(0, 0, c.width, c.height); var alive = false;
@@ -751,167 +708,6 @@
     if (mascot) mascot.addEventListener('click', function () { var r = mascot.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + r.height / 2); });
   })();
   </script>
-  <!-- WOW: 3D-rotate the laptop with the cursor -->
-  <script>
-  (function () {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var hero = document.querySelector('.hero'), laptop = document.querySelector('.laptop');
-    if (!hero || !laptop) return;
-    hero.addEventListener('mousemove', function (e) {
-      var r = hero.getBoundingClientRect();
-      var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
-      laptop.style.transform = 'rotateY(' + (px * 27).toFixed(1) + 'deg) rotateX(' + (-py * 15).toFixed(1) + 'deg)';
-    });
-    hero.addEventListener('mouseleave', function () { laptop.style.transform = ''; });
-  })();
-  </script>
-  <!-- Interactive 3D laptop (Three.js) — keyboard, live-typing screen, drag to rotate 360 -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var el = document.getElementById('laptop3d');
-    if (!el) return;
-    var poster = el.querySelector('.laptop-poster');
-    // Stay fast on every device: skip WebGL AND the ~600KB three.js download on weak
-    // devices / slow or data-saving networks — the instant SVG poster stays instead.
-    var conn = navigator.connection || navigator.webkitConnection || {};
-    // Only skip the real 3D on genuine data-saver / 2G or ultra-tiny devices — everyone else gets the live MacBook.
-    var weak = conn.saveData
-      || /(^|[\s-])(2g|slow-2g)/.test(conn.effectiveType || '')
-      || (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 1);
-    if (weak) return;
-    // Load three.js on demand, only once the hero is near the viewport.
-    function ready(){
-      if (window.THREE) { build(); return; }
-      var s = document.createElement('script');
-      s.src = 'assets/js/three.min.js?v=79'; s.async = true;
-      s.onload = build; s.onerror = function(){}; document.head.appendChild(s);
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function(en){ if (en[0].isIntersecting){ io.disconnect(); ready(); } }, { rootMargin:'250px' });
-      io.observe(el);
-    } else { ready(); }
-
-    function build(){
-      var THREE = window.THREE; if (!THREE) return;
-    try {
-      var W = function(){ return el.clientWidth || 520; }, H = function(){ return el.clientHeight || 440; };
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(32, W()/H(), 0.1, 100);
-      camera.position.set(0, 1.9, 12.8);
-      camera.lookAt(0, 0.7, 0);   // aim below the laptop's centre so it rises into the upper space, not sunk to the bottom
-      var renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, powerPreference:'high-performance' });
-      renderer.setPixelRatio(Math.min(1.25, window.devicePixelRatio||1));
-      renderer.setSize(W(), H());
-      renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      if (THREE.SRGBColorSpace) renderer.outputColorSpace = THREE.SRGBColorSpace; else if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
-      el.appendChild(renderer.domElement);
-      renderer.domElement.style.opacity = '0'; // fades in smoothly once the first real frame is drawn
-
-      scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x0a0e18, 0.6));
-      var key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(6,9,7);
-      key.castShadow = true; key.shadow.mapSize.set(512,512); key.shadow.camera.near = 1; key.shadow.camera.far = 40; key.shadow.bias = -0.0006; scene.add(key);
-      var rim = new THREE.DirectionalLight(0x34d399, 1.0); rim.position.set(-8,3,-6); scene.add(rim);
-      var fill = new THREE.DirectionalLight(0xffffff, 0.35); fill.position.set(-4,-2,5); scene.add(fill);
-
-      var ground = new THREE.Mesh(new THREE.PlaneGeometry(40,40), new THREE.ShadowMaterial({ opacity:0.32 }));
-      ground.rotation.x = -Math.PI/2; ground.position.y = -1.25; ground.receiveShadow = true; scene.add(ground);
-
-      var group = new THREE.Group(); scene.add(group);
-      // Space-black anodized aluminum (brushed, low-gloss like a real MacBook Pro)
-      var metal = new THREE.MeshStandardMaterial({ color:0x2b2b30, metalness:0.85, roughness:0.52 });
-      var edge  = new THREE.MeshStandardMaterial({ color:0x141417, metalness:0.9, roughness:0.4 });
-
-      // thin tapered base (deck) — a real MacBook base is ~1.5cm
-      var base = new THREE.Mesh(new THREE.BoxGeometry(6, 0.22, 4), metal);
-      base.position.y = -0.98; base.castShadow = true; base.receiveShadow = true; group.add(base);
-      // rounded front lip + side rails so the aluminium body reads as machined, not a flat box
-      var lip = new THREE.Mesh(new THREE.BoxGeometry(6.02, 0.1, 0.12), edge);
-      lip.position.set(0, -0.95, 2.0); group.add(lip);
-      // hinge bar between deck and lid
-      var hinge = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 5.8, 20), edge);
-      hinge.rotation.z = Math.PI/2; hinge.position.set(0, -0.98, -1.9); group.add(hinge);
-
-      // keyboard + trackpad drawn onto the deck (cheap, one texture)
-      function rr(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
-      var kb = document.createElement('canvas'); kb.width=1100; kb.height=740; var g = kb.getContext('2d');
-      g.fillStyle='#141416'; g.fillRect(0,0,kb.width,kb.height);
-      var cols=14, rows=5, m=70, kw=(kb.width-2*m)/cols, kh=66, pad=12;
-      for(var ri=0;ri<rows;ri++){ for(var ci=0;ci<cols;ci++){ var kx=m+ci*kw+pad/2, ky=48+ri*(kh+pad); g.fillStyle='#0b0b0d'; rr(g,kx,ky,kw-pad,kh,9); g.fill(); g.strokeStyle='#2a2a2f'; g.lineWidth=2; g.stroke(); } }
-      var sbY=48+rows*(kh+pad); g.fillStyle='#0b0b0d'; rr(g, kb.width*0.30, sbY, kb.width*0.40, kh, 9); g.fill(); g.strokeStyle='#2a2a2f'; g.stroke();
-      g.fillStyle='#171719'; rr(g, kb.width/2-190, sbY+kh+26, 380, 200, 16); g.fill(); g.strokeStyle='#303035'; g.lineWidth=3; g.stroke();
-      var kbtex = new THREE.CanvasTexture(kb); if (THREE.SRGBColorSpace) kbtex.colorSpace = THREE.SRGBColorSpace;
-      var deck = new THREE.Mesh(new THREE.PlaneGeometry(5.7, 3.7), new THREE.MeshStandardMaterial({ map:kbtex, metalness:0.4, roughness:0.7 }));
-      deck.rotation.x = -Math.PI/2; deck.position.set(0, -0.84, 0.15); group.add(deck);
-
-      var lid = new THREE.Group(); lid.position.set(0, -0.98, -1.9); group.add(lid);
-      var lidMesh = new THREE.Mesh(new THREE.BoxGeometry(6, 3.9, 0.14), metal); lidMesh.position.set(0, 1.95, 0); lidMesh.castShadow = true; lid.add(lidMesh);
-      // dark glass bezel just under the screen so the display looks inset, not painted on
-      var bezel = new THREE.Mesh(new THREE.PlaneGeometry(5.94, 3.84), new THREE.MeshStandardMaterial({ color:0x050608, metalness:0.5, roughness:0.35 }));
-      bezel.position.set(0, 1.95, 0.075); lid.add(bezel);
-      lid.rotation.x = -0.12;
-
-      // live-typing screen
-      var sc = document.createElement('canvas'); sc.width=1024; sc.height=660; var x = sc.getContext('2d');
-      var CODE = '# Learn Python\nfor i in range(3):\n    print("Hello, IQ.T3ani!", i)\n\n# -> runs instantly';
-      function drawScreen(n){
-        x.fillStyle='#0c1220'; x.fillRect(0,0,sc.width,sc.height);
-        x.fillStyle='#0e1526'; x.fillRect(0,0,sc.width,70);
-        ['#ff5f56','#ffbd2e','#27c93f'].forEach(function(c,i){ x.beginPath(); x.arc(42+i*36,36,11,0,7); x.fillStyle=c; x.fill(); });
-        x.fillStyle='#93a1bd'; x.font='26px monospace'; x.fillText('hello.py', 160, 45);
-        x.fillStyle='#000'; x.beginPath(); x.moveTo(sc.width/2-70,0); x.lineTo(sc.width/2+70,0); x.lineTo(sc.width/2+58,26); x.lineTo(sc.width/2-58,26); x.closePath(); x.fill();
-        x.font='32px monospace';
-        var ls = CODE.slice(0,n).split('\n');
-        ls.forEach(function(ln,r){ x.fillStyle=/^\s*#/.test(ln)?'#6b8299':'#c3e88d'; if(!/^\s*#/.test(ln)) x.fillStyle='#e7ecf7'; x.fillText(ln, 44, 150+r*58); });
-        var last = ls[ls.length-1]||''; x.fillStyle='#34d399'; x.fillRect(44 + x.measureText(last).width + 4, 150+(ls.length-1)*58-26, 13, 32);
-        // diagonal glass sheen — sells the "glossy display" look
-        var gl = x.createLinearGradient(0,0,sc.width,sc.height);
-        gl.addColorStop(0,'rgba(255,255,255,0.09)'); gl.addColorStop(0.18,'rgba(255,255,255,0.02)'); gl.addColorStop(0.5,'rgba(255,255,255,0)');
-        x.fillStyle=gl; x.fillRect(0,70,sc.width,sc.height-70);
-      }
-      drawScreen(0);
-      var tex = new THREE.CanvasTexture(sc); if (THREE.SRGBColorSpace) tex.colorSpace = THREE.SRGBColorSpace;
-      var screen = new THREE.Mesh(new THREE.PlaneGeometry(5.78, 3.68), new THREE.MeshBasicMaterial({ map: tex }));
-      screen.position.set(0, 1.95, 0.11); lid.add(screen);
-      var mark = new THREE.Mesh(new THREE.CircleGeometry(0.32, 40), new THREE.MeshStandardMaterial({ color:0xdfe4ea, metalness:0.4, roughness:0.35, emissive:0x0e3a28, emissiveIntensity:0.4 }));
-      mark.position.set(0, 1.95, -0.11); mark.rotation.y = Math.PI; lid.add(mark);
-
-      group.scale.set(0.95,0.95,0.95); group.rotation.set(0.05, -0.22, 0); group.position.y = 0.95;
-
-      var dragging=false, lx=0, ly=0, auto=true;
-      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      renderer.domElement.addEventListener('pointerdown', function(e){ dragging=true; auto=false; lx=e.clientX; ly=e.clientY; });
-      window.addEventListener('pointermove', function(e){ if(!dragging) return; group.rotation.y += (e.clientX-lx)*0.01; group.rotation.x += (e.clientY-ly)*0.01; group.rotation.x = Math.max(-1.3, Math.min(1.3, group.rotation.x)); lx=e.clientX; ly=e.clientY; }, {passive:true});
-      window.addEventListener('pointerup', function(){ dragging=false; });
-
-      // performance: only render while the hero is on screen
-      var visible = true;
-      if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }, {threshold:0.01}).observe(el);
-
-      var typed=0, lastT=0, hold=0, lastF=0;
-      function loop(t){
-        requestAnimationFrame(loop);
-        if (!visible || t - lastF < 32) return;
-        lastF = t;
-        if (auto && !reduce) group.rotation.y += 0.009;
-        if (!reduce && t >= lastT+45){
-          lastT = t;
-          if (hold){ if (t>hold){ typed=0; hold=0; drawScreen(0); tex.needsUpdate=true; } }
-          else if (typed < CODE.length){ typed++; drawScreen(typed); tex.needsUpdate=true; }
-          else { hold = t+1800; }
-        }
-        renderer.render(scene, camera);
-        if (!shown) {   // smooth cross-fade: poster out, live 3D in — no jarring "swap"
-          shown = true;
-          renderer.domElement.style.opacity = '1';
-          if (poster) { poster.style.opacity = '0'; setTimeout(function(){ if (poster) poster.style.display = 'none'; }, 650); }
-        }
-      }
-      var shown = false;
-      requestAnimationFrame(loop);
-      window.addEventListener('resize', function(){ camera.aspect = W()/H(); camera.updateProjectionMatrix(); renderer.setSize(W(), H()); });
-    } catch (err) { /* keep the instant poster if WebGL fails */ }
-    }
-  });
-  </script>
+  <script src="assets/js/globe.js?v=79" defer></script>
 </body>
 </html>

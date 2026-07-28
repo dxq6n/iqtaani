@@ -75,8 +75,8 @@
       el.style.cssText = "margin-top:12px;padding:10px 14px;border-radius:10px;font-size:.88rem;line-height:1.5";
       form.appendChild(el);
     }
-    el.style.background = ok ? "rgba(16,185,129,.15)" : "rgba(239,68,68,.14)";
-    el.style.color = ok ? "#059669" : "#dc2626";
+    el.style.background = ok ? "rgba(56,189,248,.14)" : "rgba(239,68,68,.14)";
+    el.style.color = ok ? "#7dd3fc" : "#f87171";
     el.textContent = text;
     return el;
   }

@@ -155,7 +155,7 @@
       function pick(){ file.click(); }
       if (btn) btn.addEventListener('click', pick);
       if (link) link.addEventListener('click', pick);
-      function say(t, ok){ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.style.color = ok ? 'var(--brand,#10b981)' : 'var(--pink,#ef4444)'; }
+      function say(t, ok){ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.style.color = ok ? 'var(--brand,#0ea5e9)' : 'var(--pink,#ef4444)'; }
       file.addEventListener('change', function(){
         var f = file.files && file.files[0]; if (!f) return;
         if (!/^image\//.test(f.type)) { say(isAr()?'اختر صورة من فضلك.':'Please choose an image.', false); return; }
