@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=79" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=80" />
   <script>
     (function () { try {
       var t = 'dark'; try { localStorage.setItem('theme','dark'); } catch (e3) {}
@@ -26,13 +26,12 @@
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
     } catch (e) {} })();
   </script>
-  <link rel="stylesheet" href="assets/css/iq-widget.css?v=79" />
-  <script src="assets/js/supabase.min.js?v=79" defer></script>
-  <script src="assets/js/auth-supabase.js?v=79" defer></script>
-  <script src="assets/js/app.js?v=79" defer></script>
-  <script src="assets/js/emoji.js?v=79" defer></script>
-  <script src="assets/js/iq-engine.js?v=79" defer></script>
-  <script src="assets/js/iq-widget.js?v=79" defer></script>
+  <link rel="stylesheet" href="assets/css/iq-widget.css?v=80" />
+  <script src="assets/js/clerk-auth.js?v=80" defer></script>
+  <script src="assets/js/app.js?v=80" defer></script>
+  <script src="assets/js/emoji.js?v=80" defer></script>
+  <script src="assets/js/iq-engine.js?v=80" defer></script>
+  <script src="assets/js/iq-widget.js?v=80" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -155,7 +154,7 @@
       function pick(){ file.click(); }
       if (btn) btn.addEventListener('click', pick);
       if (link) link.addEventListener('click', pick);
-      function say(t, ok){ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.style.color = ok ? 'var(--brand,#0ea5e9)' : 'var(--pink,#ef4444)'; }
+      function say(t, ok){ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.style.color = ok ? 'var(--brand,#c8cedb)' : 'var(--pink,#ef4444)'; }
       file.addEventListener('change', function(){
         var f = file.files && file.files[0]; if (!f) return;
         if (!/^image\//.test(f.type)) { say(isAr()?'اختر صورة من فضلك.':'Please choose an image.', false); return; }
@@ -197,6 +196,6 @@
     setTimeout(fill, 800); setTimeout(fill, 1600);
   })();
   </script>
-  <script src="assets/js/avatar-picker.js?v=79" defer></script>
+  <script src="assets/js/avatar-picker.js?v=80" defer></script>
 </body>
 </html>

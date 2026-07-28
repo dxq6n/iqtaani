@@ -1541,7 +1541,7 @@ git push -u origin main`}]}};Object.keys(e).forEach(function(n){var o=e[n];windo
   p { color: green; font-size: 18px; }
 </style>
 <p>Styled text</p>`,sec:{en:"Styling (CSS)",ar:"التنسيق CSS"}},{t:{en:"Colors & text",ar:"الألوان والنصوص"},body:{en:"<p>Set text color, background, size and alignment with CSS properties.</p>",ar:"<p>حدّد لون النص والخلفية والحجم والمحاذاة بخصائص CSS.</p>"},code:`h1 {
-  color: #4f46e5;
+  color: #1b1f27;
   text-align: center;
   font-family: sans-serif;
 }`},{t:{en:"The box model",ar:"نموذج الصندوق"},body:{en:"<p>Every element is a box with content, padding, border and margin.</p>",ar:"<p>كل عنصر عبارة عن صندوق فيه محتوى وحشو وحدود وهامش.</p>"},code:`.card {
@@ -1562,7 +1562,7 @@ git push -u origin main`}]}};Object.keys(e).forEach(function(n){var o=e[n];windo
 }`},{t:{en:"Responsive design",ar:"التصميم المتجاوب"},body:{en:"<p>Media queries adapt your layout to phones, tablets and desktops.</p>",ar:"<p>استعلامات الوسائط بتكيّف التخطيط للجوال والتابلت والحاسوب.</p>"},code:`@media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; }
 }`},{t:{en:"Position & hover",ar:"الموضع والتحويم"},body:{en:"<p>Position elements precisely and react to the mouse with :hover.</p>",ar:"<p>ثبّت العناصر بدقّة وتفاعل مع الماوس بـ :hover.</p>"},code:`.btn:hover {
-  background: #0369a1;
+  background: #111827;
   transition: 0.3s;
 }`},{t:{en:"JavaScript in a page",ar:"JavaScript بالصفحة"},body:{en:"<p>JavaScript makes pages interactive. Add it with a <script> tag.</p>",ar:"<p>JavaScript بتخلّي الصفحات تفاعلية. أضفها بوسم <script>.</p>"},code:`<script>
   console.log("Page loaded!");
