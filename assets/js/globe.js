@@ -133,19 +133,38 @@
     setRot();
     ctx.clearRect(0, 0, W, H);
 
-    /* atmosphere */
-    var glow = ctx.createRadialGradient(cx, cy, R * 0.88, cx, cy, R * 1.5);
-    glow.addColorStop(0, 'rgba(255,255,255,0.10)');
-    glow.addColorStop(1, 'rgba(255,255,255,0)');
+    /* outer atmosphere haze */
+    var glow = ctx.createRadialGradient(cx, cy, R * 0.92, cx, cy, R * 1.42);
+    glow.addColorStop(0, 'rgba(198,210,228,0.20)');
+    glow.addColorStop(0.35, 'rgba(150,165,190,0.07)');
+    glow.addColorStop(1, 'rgba(120,140,170,0)');
     ctx.fillStyle = glow;
-    ctx.beginPath(); ctx.arc(cx, cy, R * 1.5, 0, 6.283); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, R * 1.42, 0, 6.283); ctx.fill();
 
-    /* ocean */
-    var sea = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
-    sea.addColorStop(0, 'rgba(22,25,32,0.96)');
-    sea.addColorStop(0.72, 'rgba(11,13,17,0.96)');
-    sea.addColorStop(1, 'rgba(5,6,8,0.96)');
+    /* ocean — opaque, and light enough to read as a solid body against black */
+    ctx.fillStyle = '#000';
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.fill();
+    var sea = ctx.createRadialGradient(cx - R * 0.36, cy - R * 0.42, R * 0.05, cx, cy, R * 1.06);
+    sea.addColorStop(0, '#39414f');
+    sea.addColorStop(0.45, '#232935');
+    sea.addColorStop(0.78, '#141821');
+    sea.addColorStop(1, '#080a0e');
     ctx.fillStyle = sea;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.fill();
+
+    /* inner rim light: the fresnel edge that sells a sphere */
+    var fres = ctx.createRadialGradient(cx, cy, R * 0.80, cx, cy, R);
+    fres.addColorStop(0, 'rgba(190,205,228,0)');
+    fres.addColorStop(0.75, 'rgba(190,205,228,0.05)');
+    fres.addColorStop(1, 'rgba(214,226,244,0.26)');
+    ctx.fillStyle = fres;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.fill();
+
+    /* specular sheen, upper-left, matching the light direction */
+    var spec = ctx.createRadialGradient(cx - R * 0.42, cy - R * 0.46, 0, cx - R * 0.42, cy - R * 0.46, R * 0.72);
+    spec.addColorStop(0, 'rgba(255,255,255,0.09)');
+    spec.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = spec;
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.fill();
 
     /* land as a dot matrix; squares are cheaper than arcs and read as pixels */
@@ -153,8 +172,10 @@
     for (var i = 0; i < pts.length; i++) {
       var s = project(pts[i]);
       if (s.z < 0.02) continue;                    // back of the sphere
-      var a = 0.22 + s.z * 0.62;
-      ctx.fillStyle = 'rgba(226,231,240,' + a.toFixed(3) + ')';
+      /* dim the land as it turns away from the light in the upper left */
+      var lit = 1 - Math.min(1, (Math.hypot(s.sx - (cx - R * 0.38), s.sy - (cy - R * 0.42)) / (R * 1.7)));
+      var a = (0.20 + s.z * 0.55) * (0.55 + lit * 0.65);
+      ctx.fillStyle = 'rgba(232,238,248,' + Math.min(1, a).toFixed(3) + ')';
       ctx.fillRect(s.sx - dotSize / 2, s.sy - dotSize / 2, dotSize, dotSize);
     }
 
@@ -204,8 +225,8 @@
     }
 
     /* rim */
-    ctx.strokeStyle = 'rgba(226,231,240,0.22)';
-    ctx.lineWidth = 1.2;
+    ctx.strokeStyle = 'rgba(214,226,244,0.34)';
+    ctx.lineWidth = 1.1;
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.stroke();
   }
 
