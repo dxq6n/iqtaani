@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="assets/css/styles.css?v=78" />
   <script>
     (function () { try {
-      var t = localStorage.getItem('theme') || 'dark';
+      var t = 'dark'; try { localStorage.setItem('theme','dark'); } catch (e3) {}
       var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
       r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
@@ -64,7 +64,7 @@
       </nav>
       <div class="nav-actions">
         <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
-        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        
         <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
       </div>
     </div>
@@ -87,7 +87,6 @@
 
     <main class="auth-main">
       <div class="auth-card">
-        <div id="clerk-signin"></div>
         <h1 data-ar="تسجيل الدخول">Sign in</h1>
         <p class="sub" data-ar="ما عندك حساب؟ <a class='link' href='register.html'>أنشئ حساب مجاني</a>">Don't have an account? <a class="link" href="register.html">Create one free</a></p>
         <form data-auth novalidate>
@@ -124,6 +123,5 @@
     </main>
   </div>
 
-  <script src="assets/js/clerk-auth.js?v=78" defer></script>
 </body>
 </html>

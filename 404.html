@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="assets/css/styles.css?v=78" />
   <script>
     (function () { try {
-      var t = localStorage.getItem('theme') || 'dark';
+      var t = 'dark'; try { localStorage.setItem('theme','dark'); } catch (e3) {}
       var l = sessionStorage.getItem('lang') || 'en'; try { localStorage.removeItem('lang'); } catch (e2) {} var r = document.documentElement; r.classList.add('js');
       r.setAttribute('data-theme', t); r.setAttribute('data-lang', l); r.setAttribute('lang', l);
       r.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
@@ -45,7 +45,6 @@
   <script src="assets/js/emoji.js?v=78" defer></script>
   <script src="assets/js/iq-engine.js?v=78" defer></script>
   <script src="assets/js/iq-widget.js?v=78" defer></script>
-  <script src="assets/js/clerk-auth.js?v=78" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -63,7 +62,7 @@
       </nav>
       <div class="nav-actions">
         <button class="icon-btn lang-btn" id="langBtn" title="Language / اللغة" aria-label="Switch language / تبديل اللغة"><span id="langText">ع</span></button>
-        <button class="icon-btn" id="themeBtn" title="Theme / المظهر" aria-label="Toggle theme / تبديل المظهر"><span id="themeIcon">🌙</span></button>
+        
         <a href="register.html" class="nav-signup" data-ar="إنشاء حساب">Sign up</a>
         <a href="login.html" class="btn btn-primary" data-ar="تسجيل الدخول">Log in</a>
         <button class="icon-btn nav-toggle" id="navToggle" aria-label="Menu">☰</button>
