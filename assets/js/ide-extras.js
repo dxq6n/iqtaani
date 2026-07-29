@@ -202,15 +202,48 @@
     document.documentElement.classList.add('ide-embed');
   }
 
+
+  /* ---------- 3. Run opens the result full-width ---------- */
+  function wireRunView() {
+    var wrap = document.querySelector('.ide-wrap');
+    var run = document.querySelector('[data-action="run"]');
+    var outTabs = document.querySelector('.ide-output-tabs');
+    if (!wrap || !run || !outTabs || outTabs.querySelector('.ide-exit-result')) return;
+
+    var exit = document.createElement('button');
+    exit.type = 'button';
+    exit.className = 'ide-tbtn ide-exit-result';
+    exit.innerHTML = '← <span data-ar="رجوع للكود">Back to code</span>';
+    exit.title = t('Back to the editor (Esc)', 'رجوع للمحرّر (Esc)');
+    exit.addEventListener('click', function () { show(false); });
+    outTabs.insertBefore(exit, outTabs.firstChild);
+
+    function show(on) {
+      wrap.classList.toggle('result-on', on);
+      /* Monaco measures itself on layout, so let it know the pane resized */
+      if (window.monaco && window.monaco.editor) {
+        setTimeout(function () {
+          window.monaco.editor.getEditors().forEach(function (e) { e.layout(); });
+        }, 60);
+      }
+    }
+
+    run.addEventListener('click', function () { show(true); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && wrap.classList.contains('result-on')) show(false);
+    });
+  }
+
   function init() {
     embedMode();
     wireMedia();
     wireSplit();
+    wireRunView();
   }
 
   if (document.readyState !== 'loading') init();
   else document.addEventListener('DOMContentLoaded', init);
   /* editor.js builds its toolbar asynchronously */
-  setTimeout(wireMedia, 600);
-  setTimeout(wireMedia, 1800);
+  setTimeout(function(){ wireMedia(); wireRunView(); }, 600);
+  setTimeout(function(){ wireMedia(); wireRunView(); }, 1800);
 })();
