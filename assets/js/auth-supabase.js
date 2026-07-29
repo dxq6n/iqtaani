@@ -27,6 +27,9 @@
   function setSession(user) {
     try {
       localStorage.setItem("iqt_auth", "1");
+      /* marks the session as NOT created by Clerk, so clerk-auth.js never
+         wipes it when it loads and finds no Clerk user. */
+      localStorage.setItem("iqt_auth_src", "local");
       localStorage.setItem("iqt_user", JSON.stringify(user || {}));
     } catch (e) {}
   }
