@@ -188,6 +188,28 @@
     }, true);
   }
 
+  /* The console input doubles as stdin for compiled languages, but its
+     placeholder says "type JS here" — misleading the moment you are running
+     C++ or Java. Keep it in step with whatever language is active. */
+  function syncStdinHint() {
+    var input = document.querySelector('.ide-console-input input');
+    if (!input) return;
+    var box = input.closest('.ide-console-input');
+    var lang = activeLanguage();
+    if (REMOTE[lang]) {
+      input.placeholder = t('Program input (stdin) — then press Run',
+                            'مدخلات البرنامج (stdin) — وبعدين اضغط تشغيل');
+      input.dataset.stdin = '1';
+      /* editor.js only reveals this row for JS; compiled programs need it too */
+      if (box) box.style.display = '';
+    } else if (input.dataset.stdin) {
+      input.placeholder = t('type JS here…', 'اكتب JS هنا…');
+      delete input.dataset.stdin;
+      if (box) box.style.display = 'none';
+    }
+  }
+  setInterval(syncStdinHint, 900);
+
   window.IQ_runRemote = runRemote;   // exposed for tests
 
   if (document.readyState !== 'loading') wire();
