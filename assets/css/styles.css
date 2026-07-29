@@ -398,7 +398,7 @@ body{background:#000}
 @media(max-width:760px){.acct-grid{grid-template-columns:1fr}.acct-side{flex-direction:row;flex-wrap:wrap;gap:4px;margin-bottom:10px}.acct-nav-h{display:none}.acct-profile{flex-direction:column;text-align:center}}
 
 /* ===== Hero code globe (replaces the old 3D laptop) ===== */
-.codeglobe{position:relative;width:100%;aspect-ratio:1;max-width:520px;margin-inline:auto;display:grid;place-items:center;cursor:grab;touch-action:none;-webkit-user-select:none;user-select:none}
+.codeglobe{position:relative;width:100%;aspect-ratio:1;max-width:520px;margin-inline:auto;display:grid;place-items:center;cursor:crosshair;touch-action:none;-webkit-user-select:none;user-select:none}
 .codeglobe.is-dragging{cursor:grabbing}
 .codeglobe-cv{width:100%;height:100%;display:block}
 @media(max-width:960px){.codeglobe{max-width:400px}}
