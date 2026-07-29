@@ -203,34 +203,107 @@
   }
 
 
-  /* ---------- 3. Run opens the result full-width ---------- */
+  /* ---------- 3. Full-screen code / full-screen result ----------
+     Two independent states:
+       zen       — the playground covers the whole viewport (nav and footer out)
+       result-on — the output takes the pane, the editor steps aside
+     Run turns both on, so the result fills the screen. "Back to code" keeps
+     zen and returns the editor, so you can edit and Run again without ever
+     leaving full screen. Esc steps back one level at a time.               */
   function wireRunView() {
     var wrap = document.querySelector('.ide-wrap');
     var run = document.querySelector('[data-action="run"]');
     var outTabs = document.querySelector('.ide-output-tabs');
-    if (!wrap || !run || !outTabs || outTabs.querySelector('.ide-exit-result')) return;
+    var bar = document.querySelector('.ide-toolbar');
+    if (!wrap || !run || !outTabs || !bar || outTabs.querySelector('.ide-exit-result')) return;
 
-    var exit = document.createElement('button');
-    exit.type = 'button';
-    exit.className = 'ide-tbtn ide-exit-result';
-    exit.innerHTML = '← <span data-ar="رجوع للكود">Back to code</span>';
-    exit.title = t('Back to the editor (Esc)', 'رجوع للمحرّر (Esc)');
-    exit.addEventListener('click', function () { show(false); });
-    outTabs.insertBefore(exit, outTabs.firstChild);
-
-    function show(on) {
-      wrap.classList.toggle('result-on', on);
-      /* Monaco measures itself on layout, so let it know the pane resized */
-      if (window.monaco && window.monaco.editor) {
-        setTimeout(function () {
-          window.monaco.editor.getEditors().forEach(function (e) { e.layout(); });
-        }, 60);
+    function zen(on) {
+      document.documentElement.classList.toggle('ide-zen', on);
+      if (on) {
+        var el = document.documentElement;
+        if (el.requestFullscreen) { try { el.requestFullscreen(); } catch (e) {} }
+      } else if (document.fullscreenElement && document.exitFullscreen) {
+        try { document.exitFullscreen(); } catch (e) {}
       }
+      relayout();
+    }
+    function isZen() { return document.documentElement.classList.contains('ide-zen'); }
+
+    function result(on) {
+      wrap.classList.toggle('result-on', on);
+      relayout();
+    }
+    function isResult() { return wrap.classList.contains('result-on'); }
+
+    /* Monaco sizes itself from its container, so tell it after every change */
+    function relayout() {
+      setTimeout(function () {
+        if (window.monaco && window.monaco.editor) {
+          window.monaco.editor.getEditors().forEach(function (e) { e.layout(); });
+        }
+      }, 80);
     }
 
-    run.addEventListener('click', function () { show(true); });
+    /* toolbar: enter/leave full screen for the code itself */
+    var zenBtn = document.createElement('button');
+    zenBtn.type = 'button';
+    zenBtn.className = 'ide-tbtn ide-zen-btn';
+    zenBtn.innerHTML = '⛶ <span data-ar="ملء الشاشة">Full screen</span>';
+    zenBtn.title = t('Full screen (Esc to leave)', 'ملء الشاشة (Esc للخروج)');
+    zenBtn.addEventListener('click', function () { zen(!isZen()); });
+    bar.insertBefore(zenBtn, run);
+
+    /* back from the result to the code, staying full screen */
+    var back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'ide-tbtn ide-exit-result';
+    back.innerHTML = '← <span data-ar="رجوع للكود">Back to code</span>';
+    back.title = t('Back to the editor (Esc)', 'رجوع للمحرّر (Esc)');
+    back.addEventListener('click', function () { result(false); });
+    outTabs.insertBefore(back, outTabs.firstChild);
+
+    /* leave full screen entirely */
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'ide-tbtn ide-zen-exit';
+    close.innerHTML = '✕ <span data-ar="إغلاق ملء الشاشة">Exit full screen</span>';
+    close.addEventListener('click', function () { result(false); zen(false); });
+    outTabs.appendChild(close);
+
+    /* editor.js writes "Running..." into the console while also showing the
+       preview, so both panes end up open and each takes half the height —
+       which is the big empty black area under the result. Show only whichever
+       tab is actually selected, and let it have the full pane. */
+    function syncOutput() {
+      var active = outTabs.querySelector('.ide-out-tab.active');
+      var which = active ? active.getAttribute('data-out') : 'preview';
+      var prev = document.querySelector('.ide-preview');
+      var con = document.querySelector('.ide-console');
+      if (prev) prev.classList.toggle('hidden', which !== 'preview');
+      if (con) con.classList.toggle('hidden', which !== 'console');
+    }
+    outTabs.addEventListener('click', function () { setTimeout(syncOutput, 30); });
+
+    run.addEventListener('click', function () {
+      zen(true); result(true);
+      /* run() may switch tabs itself, so settle afterwards */
+      setTimeout(syncOutput, 120);
+      setTimeout(syncOutput, 600);
+    });
+    setTimeout(syncOutput, 800);
+
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && wrap.classList.contains('result-on')) show(false);
+      if (e.key !== 'Escape') return;
+      if (isResult()) { result(false); e.preventDefault(); }
+      else if (isZen()) { zen(false); e.preventDefault(); }
+    });
+
+    /* leaving native full screen by F11 or the browser UI must not strand us */
+    document.addEventListener('fullscreenchange', function () {
+      if (!document.fullscreenElement && isZen()) {
+        document.documentElement.classList.remove('ide-zen');
+        relayout();
+      }
     });
   }
 
