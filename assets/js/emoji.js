@@ -1,4 +1,4 @@
-/* IQ.T3ani — emoji library (Apple-style emoji rendering).
+/* Vixo — emoji library (Apple-style emoji rendering).
    Single home for emoji handling: vendored twemoji parser + local Apple PNGs,
    with a graceful fallback to the original Unicode character if an image is missing. */
 /*! Copyright Twitter Inc. and other contributors. Licensed under MIT */

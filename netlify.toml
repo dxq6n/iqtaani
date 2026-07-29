@@ -1,4 +1,4 @@
-# Netlify configuration for the IQ.T3ani static site.
+# Netlify configuration for the Vixo static site.
 # No build step — the site is plain HTML/CSS/JS served from the publish root.
 
 [build]
@@ -28,7 +28,7 @@
     #   tiny lang-init snippet in each page head. For A+ hardening replace it
     #   with per-snippet hashes. When a backend API exists, add its origin to
     #   connect-src (e.g. https://api.iqt3ani.com).
-    Content-Security-Policy = "default-src 'self'; base-uri 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: blob: https://img.clerk.com https://social-anchovy-20.clerk.accounts.dev https://lh3.googleusercontent.com https://avatars.githubusercontent.com https://i.ytimg.com https://s.ytimg.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://social-anchovy-20.clerk.accounts.dev https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://www.youtube.com https://s.ytimg.com https://www.googletagmanager.com; connect-src 'self' https://*.clerk.accounts.dev https://clerk-telemetry.com https://www.youtube.com https://generativelanguage.googleapis.com https://text.pollinations.ai https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://social-anchovy-20.clerk.accounts.dev https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.googlevideo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'none'; frame-ancestors 'self'; object-src 'none'; img-src 'self' data: blob: https://img.clerk.com https://social-anchovy-20.clerk.accounts.dev https://lh3.googleusercontent.com https://avatars.githubusercontent.com https://i.ytimg.com https://s.ytimg.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://social-anchovy-20.clerk.accounts.dev https://challenges.cloudflare.com https://cdnjs.cloudflare.com https://www.youtube.com https://s.ytimg.com https://www.googletagmanager.com; connect-src 'self' https://*.clerk.accounts.dev https://clerk-telemetry.com https://www.youtube.com https://generativelanguage.googleapis.com https://text.pollinations.ai https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src 'self' https://social-anchovy-20.clerk.accounts.dev https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https://*.googlevideo.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests"
 
 # ---- Caching ----
 # HTML: always revalidate (Netlify ETags make this a cheap 304 when unchanged)
@@ -88,3 +88,10 @@
   from = "/courses/:id"
   to = "/course.html?c=:id"
   status = 301
+
+# The AI assistant page was renamed qi.html -> ai.html; keep old links alive
+[[redirects]]
+  from = "/qi.html"
+  to = "/ai.html"
+  status = 301
+  force = true

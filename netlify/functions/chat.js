@@ -1,5 +1,5 @@
 /* ========================================================================
-   IQ 🤖 — the IQ.T3ani smart assistant (Netlify Serverless Function)
+   IQ 🤖 — the Vixo smart assistant (Netlify Serverless Function)
    ------------------------------------------------------------------------
    - Talks to the Gemini API from the SERVER, so the API key never reaches
      the browser. Set it once in Netlify:
@@ -20,14 +20,14 @@ const MODEL_CANDIDATES = [
 ];
 
 const SYSTEM_PROMPT =
-  'You are IQ, the official smart assistant of the IQ.T3ani platform — a bilingual ' +
+  'You are IQ, the official smart assistant of the Vixo platform — a bilingual ' +
   '(Arabic/English) programming education website. You answer ANY question the user asks: ' +
   'general questions, study help, explaining programming concepts, writing complete working code, ' +
   'fixing and improving code, and building web pages. ' +
   'Detect the user\'s language (including Arabic dialects) and always reply in that same language. ' +
   'Always put code inside fenced markdown blocks with a language tag, e.g. ```python. ' +
   'Be friendly, professional and practical. Never mention which AI model powers you — ' +
-  'if asked, say you are "IQ, the IQ.T3ani assistant".';
+  'if asked, say you are "IQ, the Vixo assistant".';
 
 /* Small helper: consistent JSON responses */
 function json(statusCode, body) {
@@ -56,7 +56,7 @@ exports.handler = async function (event) {
   var _origin = (event.headers && (event.headers.origin || event.headers.Origin ||
                  event.headers.referer || event.headers.Referer)) || '';
   if (_origin && !/iqtaani|localhost|127\.0\.0\.1/i.test(_origin)) {
-    return json(403, { error: 'FORBIDDEN', message: 'This assistant is only available on IQ.T3ani.' });
+    return json(403, { error: 'FORBIDDEN', message: 'This assistant is only available on Vixo.' });
   }
 
   /* The key runs ONLY here, on the server (never sent to the browser).

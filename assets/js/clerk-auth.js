@@ -1,4 +1,4 @@
-/* IQ.T3ani authentication — Clerk.
+/* Vixo authentication — Clerk.
    ------------------------------------------------------------------
    Clerk owns the accounts, so a sign-up on one device works everywhere and
    the users are visible in the Clerk dashboard. Only the Publishable Key

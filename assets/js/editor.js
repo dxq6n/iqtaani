@@ -62,7 +62,7 @@ btn.addEventListener("click", () => {
   count++;
   output.textContent = \`Clicked \${count} time\${count > 1 ? "s" : ""}!\`;
 });`}]},{id:"js-console",icon:"📜",name:"JavaScript",nameAr:"جافاسكربت",desc:"Console-only JS",descAr:"جافاسكربت بالـ console فقط",files:[{name:"main.js",lang:"javascript",code:`// JavaScript Playground
-console.log("Hello from IQ.T3ani! 🚀");
+console.log("Hello from Vixo! 🚀");
 
 const greet = (name) => \`Welcome, \${name}!\`;
 console.log(greet("Sara"));
@@ -70,7 +70,7 @@ console.log(greet("Sara"));
 for (let i = 1; i <= 5; i++) {
   console.log(\`Count: \${i}\`);
 }`}]},{id:"python",icon:"🐍",name:"Python",nameAr:"بايثون",desc:"Python with Skulpt",descAr:"بايثون مع Skulpt",files:[{name:"main.py",lang:"python",code:`# Python Playground
-print("Hello from IQ.T3ani! 🐍")
+print("Hello from Vixo! 🐍")
 
 def greet(name):
     return f"Welcome, {name}!"

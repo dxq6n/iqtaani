@@ -1,4 +1,4 @@
-/* IQ.T3ani — the playground's editor backend.
+/* Vixo — the playground's editor backend.
    ------------------------------------------------------------------
    Gives the playground a VS Code-grade editor by loading Monaco (the engine
    VS Code itself runs on) from a CDN, and exposes the small API that

@@ -1,4 +1,4 @@
-/* Gaming avatar picker for IQ.T3ani account page.
+/* Gaming avatar picker for Vixo account page.
    Shows a grid of pre-made gaming-style emoji avatars users can choose. */
 (function () {
   var AVATARS = [
