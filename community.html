@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community & Smart Debugger — Vixo</title>
   <meta name="description" content="Ask programming questions, share code and get answers from the Vixo community — plus a smart code debugger." />
-  <link rel="canonical" href="https://iqtaani.netlify.app/community.html" />
+  <link rel="canonical" href="https://vixo5.netlify.app/community.html" />
   <meta name="theme-color" content="#0b0f1a" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vixo" />
   <meta property="og:title" content="Community & Smart Debugger — Vixo" />
   <meta property="og:description" content="Ask programming questions, share code and get answers from the Vixo community — plus a smart code debugger." />
-  <meta property="og:url" content="https://iqtaani.netlify.app/community.html" />
-  <meta property="og:image" content="https://iqtaani.netlify.app/assets/img/og.png?v=81" />
+  <meta property="og:url" content="https://vixo5.netlify.app/community.html" />
+  <meta property="og:image" content="https://vixo5.netlify.app/assets/img/og.png?v=81" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -24,7 +24,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Community & Smart Debugger — Vixo" />
   <meta name="twitter:description" content="Ask programming questions, share code and get answers from the Vixo community — plus a smart code debugger." />
-  <meta name="twitter:image" content="https://iqtaani.netlify.app/assets/img/og.png?v=81" />
+  <meta name="twitter:image" content="https://vixo5.netlify.app/assets/img/og.png?v=81" />
   <link rel="icon" type="image/png" href="assets/img/logo-192.png?v=81" />
   <link rel="apple-touch-icon" href="assets/img/logo.png?v=81" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -242,13 +242,13 @@ print("The average is: " + result)</textarea>
         To connect a real AI backend (OpenAI, Gemini, etc.):
 
         1. Create a backend endpoint, e.g.:
-             POST https://api.iqtaani.netlify.app/v1/debug
+             POST https://api.vixo5.netlify.app/v1/debug
              Body: { "code": "...", "language": "python" }
 
         2. In community.js, replace the `mockAiCorrection()` call
            inside `runDebugger()` with a fetch() to your endpoint:
 
-             const res = await fetch('https://api.iqtaani.netlify.app/v1/debug', {
+             const res = await fetch('https://api.vixo5.netlify.app/v1/debug', {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',

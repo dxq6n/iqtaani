@@ -5,4 +5,4 @@ Disallow: /login.html
 Disallow: /register.html
 Disallow: /search.html
 
-Sitemap: https://iqtaani.netlify.app/sitemap.xml
+Sitemap: https://vixo5.netlify.app/sitemap.xml
