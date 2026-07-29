@@ -27,13 +27,14 @@
     } catch (e) {} })();
   </script>
   <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/auth-gate.js?v=79"></script>
   <script src="assets/js/supabase.min.js?v=78" defer></script>
   <script src="assets/js/auth-supabase.js?v=78" defer></script>
   <script src="assets/js/app.js?v=78" defer></script>
   <script src="assets/js/emoji.js?v=78" defer></script>
   <script src="assets/js/iq-engine.js?v=78" defer></script>
   <script src="assets/js/iq-widget.js?v=78" defer></script>
-  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=79" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -59,7 +60,7 @@
     </div>
   </header>
 
-  <section class="section" id="main">
+  <section class="section" id="main" data-auth-gate>
     <div class="container acct">
       <div class="section-head" style="text-align:start;margin-bottom:24px">
         <h1 data-ar="إعدادات الحساب">Account Settings</h1>
@@ -141,7 +142,16 @@
       set('acctMethod', method);
     }
     function guard(){
-      if (!authed()) { location.replace('login.html'); return; }
+      /* the session may still be resolving (Clerk / OAuth). Wait for it a
+         moment instead of bouncing a signed-in user back to the login page. */
+      if (!authed()) {
+        var tries = 0;
+        var t = setInterval(function () {
+          if (authed()) { clearInterval(t); guard(); return; }
+          if (++tries >= 10) { clearInterval(t); location.replace('login.html'); }
+        }, 300);
+        return;
+      }
       fill();
       setupAvatarUpload();
     }

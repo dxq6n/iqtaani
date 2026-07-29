@@ -50,19 +50,20 @@
       var tries = 0;
       var t = setInterval(function () {
         if (authed()) { clearInterval(t); return; }
-        if (++tries >= 7) { clearInterval(t); location.replace('login.html'); }
+        if (++tries >= 14) { clearInterval(t); location.replace('login.html'); }
       }, 300);
     })();
   </script>
   <script src="assets/js/courses.js?v=78" defer></script>
   <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/auth-gate.js?v=79"></script>
   <script src="assets/js/supabase.min.js?v=78" defer></script>
   <script src="assets/js/auth-supabase.js?v=78" defer></script>
   <script src="assets/js/app.js?v=78" defer></script>
   <script src="assets/js/emoji.js?v=78" defer></script>
   <script src="assets/js/iq-engine.js?v=78" defer></script>
   <script src="assets/js/iq-widget.js?v=78" defer></script>
-  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=79" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-ar="تخطَّ إلى المحتوى">Skip to content</a>
@@ -87,7 +88,7 @@
     </div>
   </header>
 
-  <div class="dash" id="main">
+  <div class="dash" id="main" data-auth-gate>
     <aside class="side">
       <a href="dashboard.html" class="active">📊 <span data-ar="نظرة عامة">Overview</span></a>
       <a href="courses.html">📚 <span data-ar="كورساتي">My courses</span></a>

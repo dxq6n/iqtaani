@@ -41,6 +41,7 @@
     } catch (e) {} })();
   </script>
   <link rel="stylesheet" href="assets/css/iq-widget.css?v=78" />
+  <script src="assets/js/auth-gate.js?v=79"></script>
   <script src="assets/js/supabase.min.js?v=78" defer></script>
   <script src="assets/js/auth-supabase.js?v=78" defer></script>
   <script src="assets/js/app.js?v=78" defer></script>
@@ -87,7 +88,8 @@
 
     <main class="auth-main">
       <div class="auth-card">
-        <div id="clerk-signin"></div>
+        <div id="clerk-signin"><div class="clerk-boot-spinner"><i></i></div></div>
+        <div data-auth-fallback>
         <h1 data-ar="تسجيل الدخول">Sign in</h1>
         <p class="sub" data-ar="ما عندك حساب؟ <a class='link' href='register.html'>أنشئ حساب مجاني</a>">Don't have an account? <a class="link" href="register.html">Create one free</a></p>
         <form data-auth novalidate>
@@ -120,10 +122,11 @@
           <button type="button" class="btn btn-ghost btn-block social-btn" data-oauth="github" style="margin-bottom:10px"><svg class="social-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.7 18 5 18 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg> <span data-ar="المتابعة باستخدام GitHub">Continue with GitHub</span></button>
           <button type="button" class="btn btn-ghost btn-block social-btn" data-oauth="facebook"><svg class="social-ic" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1877F2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.4 0-1.9.9-1.9 1.8V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg> <span data-ar="المتابعة باستخدام Facebook">Continue with Facebook</span></button>
         </form>
+        </div>
       </div>
     </main>
   </div>
 
-  <script src="assets/js/clerk-auth.js?v=78" defer></script>
+  <script src="assets/js/clerk-auth.js?v=79" defer></script>
 </body>
 </html>
