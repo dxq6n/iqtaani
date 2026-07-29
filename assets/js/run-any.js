@@ -44,11 +44,22 @@
     haskell:    { lang: 'haskell',    file: 'main.hs' },
     elixir:     { lang: 'elixir',     file: 'main.exs' },
     julia:      { lang: 'julia',      file: 'main.jl' },
-    fsharp:     { lang: 'fsharp',     file: 'main.fs' }
+    fsharp:     { lang: 'fsharp',     file: 'main.fs' },
+    /* only used when Skulpt is unavailable — see below */
+    python:     { lang: 'python',     file: 'main.py' }
   };
 
   /* Left to the browser: instant and offline. */
-  var LOCAL = { html: 1, css: 1, javascript: 1, python: 1, plaintext: 1, markdown: 1, json: 1, xml: 1 };
+  var LOCAL = { html: 1, css: 1, javascript: 1, plaintext: 1, markdown: 1, json: 1, xml: 1 };
+
+  /* Python normally runs in the browser through Skulpt: instant and offline.
+     But Skulpt comes from a CDN, and if that is slow, blocked or the visitor
+     is offline, the old behaviour was a dead end reading "Skulpt not loaded".
+     When it genuinely is not there, fall through to the remote runner, which
+     is real CPython and handles the standard library besides. */
+  function skulptReady() {
+    return !!(window.Sk && window.Sk.importMainWithBody);
+  }
 
   function isAr() { return document.documentElement.getAttribute('data-lang') === 'ar'; }
   function t(en, ar) { return isAr() ? ar : en; }
@@ -176,6 +187,7 @@
     run.addEventListener('click', function (e) {
       var lang = activeLanguage();
       if (LOCAL[lang]) return;                 // browser handles it
+      if (lang === 'python' && skulptReady()) return;   // Skulpt has it covered
       if (!REMOTE[lang]) {
         showConsole(); clearConsole();
         write(t('Vixo cannot run "' + lang + '" yet — editing and highlighting still work.',
