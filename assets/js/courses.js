@@ -109,7 +109,7 @@ console.log("6 * 7 =", calc(6, 7, "*"));`}]},web:{title:{en:"Web — HTML & CSS"
 </div>`},{t:{en:"Final project",ar:"المشروع النهائي"},body:{en:"<p>Build a mini profile page. 🏆 Finish and get your certificate.</p>",ar:"<p>ابنِ صفحة تعريف صغيرة. 🏆 خلّص واحصل على شهادتك.</p>",cert:!0},code:`<div style="font-family:sans-serif;text-align:center;padding:24px;border:1px solid #ddd;border-radius:16px;max-width:300px;margin:auto">
   <div style="width:70px;height:70px;border-radius:50%;background:teal;margin:auto"></div>
   <h2>Sara Dev</h2>
-  <p style="color:#666">Front-end learner at IQ.T3ani</p>
+  <p style="color:#666">Front-end learner at Vixo</p>
   <button style="padding:10px 18px;border:0;border-radius:999px;background:teal;color:#fff">Follow</button>
 </div>`}]},sql:{title:{en:"SQL — from zero",ar:"SQL — من الصفر"},subtitle:{en:"SQL & Databases from Scratch",ar:"SQL وقواعد البيانات من الصفر"},icon:"🗄️",level:{en:"Beginner",ar:"مبتدئ"},run:"none",lessons:[{t:{en:"What is SQL?",ar:"ما هي SQL؟"},body:{en:"<p>SQL is the language for talking to databases — tables made of rows and columns.</p>",ar:"<p>SQL هي لغة التخاطب مع قواعد البيانات — جداول من صفوف وأعمدة.</p>"},code:`-- A "users" table:
 -- id | name  | age
@@ -122,7 +122,7 @@ FROM users
 JOIN orders ON orders.user_id = users.id;`}]},react:{title:{en:"React — from zero",ar:"React — من الصفر"},subtitle:{en:"React for Beginners",ar:"React للمبتدئين"},icon:"⚛️",level:{en:"Intermediate",ar:"متوسط"},run:"none",lessons:[{t:{en:"What is React?",ar:"ما هي React؟"},body:{en:"<p>React is a JavaScript library for building user interfaces from reusable <b>components</b>.</p>",ar:"<p>React مكتبة جافاسكربت لبناء واجهات من <b>مكوّنات</b> قابلة لإعادة الاستخدام.</p>"},code:`function App() {
   return <h1>Hello, React!</h1>;
 }`},{t:{en:"Components",ar:"المكوّنات"},body:{en:"<p>A component is a function that returns UI (JSX).</p>",ar:"<p>المكوّن دالة بترجع واجهة (JSX).</p>"},code:`function Welcome() {
-  return <p>Welcome to IQ.T3ani 👋</p>;
+  return <p>Welcome to Vixo 👋</p>;
 }`},{t:{en:"Props",ar:"الخصائص (Props)"},body:{en:"<p>Props pass data into a component.</p>",ar:"<p>الـ props بتمرّر بيانات للمكوّن.</p>"},code:`function Hello(props) {
   return <h2>Hello, {props.name}!</h2>;
 }
@@ -182,7 +182,7 @@ for n in nums:
         biggest = n
 print("Max is", biggest)`}]},mobile:{title:{en:"Flutter — from zero",ar:"Flutter — من الصفر"},subtitle:{en:"Flutter Mobile Apps",ar:"تطبيقات موبايل بـ Flutter"},icon:"📱",level:{en:"Intermediate",ar:"متوسط"},run:"none",lessons:[{t:{en:"What is Flutter?",ar:"ما هي Flutter؟"},body:{en:"<p>Flutter builds Android & iOS apps from one codebase using the Dart language.</p>",ar:"<p>Flutter بتبني تطبيقات أندرويد وiOS من كود واحد بلغة Dart.</p>"},code:`void main() {
   print("Hello from Flutter 📱");
-}`},{t:{en:"Widgets",ar:"الودجت (Widgets)"},body:{en:"<p>Everything in Flutter is a widget — text, buttons, layout.</p>",ar:"<p>كل شي في Flutter widget — نص، أزرار، تخطيط.</p>"},code:'Text("Welcome to IQ.T3ani")'},{t:{en:"Layout",ar:"التخطيط"},body:{en:"<p>Arrange widgets with Column (vertical) and Row (horizontal).</p>",ar:"<p>رتّب الودجت بـ Column (عمودي) وRow (أفقي).</p>"},code:`Column(
+}`},{t:{en:"Widgets",ar:"الودجت (Widgets)"},body:{en:"<p>Everything in Flutter is a widget — text, buttons, layout.</p>",ar:"<p>كل شي في Flutter widget — نص، أزرار، تخطيط.</p>"},code:'Text("Welcome to Vixo")'},{t:{en:"Layout",ar:"التخطيط"},body:{en:"<p>Arrange widgets with Column (vertical) and Row (horizontal).</p>",ar:"<p>رتّب الودجت بـ Column (عمودي) وRow (أفقي).</p>"},code:`Column(
   children: [
     Text("Line 1"),
     Text("Line 2"),
@@ -1541,7 +1541,7 @@ git push -u origin main`}]}};Object.keys(e).forEach(function(n){var o=e[n];windo
   p { color: green; font-size: 18px; }
 </style>
 <p>Styled text</p>`,sec:{en:"Styling (CSS)",ar:"التنسيق CSS"}},{t:{en:"Colors & text",ar:"الألوان والنصوص"},body:{en:"<p>Set text color, background, size and alignment with CSS properties.</p>",ar:"<p>حدّد لون النص والخلفية والحجم والمحاذاة بخصائص CSS.</p>"},code:`h1 {
-  color: #059669;
+  color: #1b1f27;
   text-align: center;
   font-family: sans-serif;
 }`},{t:{en:"The box model",ar:"نموذج الصندوق"},body:{en:"<p>Every element is a box with content, padding, border and margin.</p>",ar:"<p>كل عنصر عبارة عن صندوق فيه محتوى وحشو وحدود وهامش.</p>"},code:`.card {
@@ -1562,7 +1562,7 @@ git push -u origin main`}]}};Object.keys(e).forEach(function(n){var o=e[n];windo
 }`},{t:{en:"Responsive design",ar:"التصميم المتجاوب"},body:{en:"<p>Media queries adapt your layout to phones, tablets and desktops.</p>",ar:"<p>استعلامات الوسائط بتكيّف التخطيط للجوال والتابلت والحاسوب.</p>"},code:`@media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; }
 }`},{t:{en:"Position & hover",ar:"الموضع والتحويم"},body:{en:"<p>Position elements precisely and react to the mouse with :hover.</p>",ar:"<p>ثبّت العناصر بدقّة وتفاعل مع الماوس بـ :hover.</p>"},code:`.btn:hover {
-  background: #047857;
+  background: #111827;
   transition: 0.3s;
 }`},{t:{en:"JavaScript in a page",ar:"JavaScript بالصفحة"},body:{en:"<p>JavaScript makes pages interactive. Add it with a <script> tag.</p>",ar:"<p>JavaScript بتخلّي الصفحات تفاعلية. أضفها بوسم <script>.</p>"},code:`<script>
   console.log("Page loaded!");

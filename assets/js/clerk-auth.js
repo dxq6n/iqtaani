@@ -1,16 +1,66 @@
-/* Clerk authentication (vanilla @clerk/clerk-js) for the IQ.T3ani static site.
-   ------------------------------------------------------------------------
-   - Uses ONLY the public Publishable Key (safe to ship). The secret key is
-     never referenced here.
-   - Mounts Clerk's Sign in / Sign up on the auth pages and mirrors the Clerk
-     session into localStorage (iqt_auth / iqt_user) so the rest of the site
-     (nav avatar, dashboard, account page) keeps working unchanged.
-   - Graceful: if Clerk fails to load, the existing forms stay usable, so the
-     site is never left broken.
-   ------------------------------------------------------------------------ */
+/* Vixo authentication — Clerk.
+   ------------------------------------------------------------------
+   Clerk owns the accounts, so a sign-up on one device works everywhere and
+   the users are visible in the Clerk dashboard. Only the Publishable Key
+   lives here; it is designed to ship in the browser. The secret key is never
+   referenced.
+
+   Clerk's own components are mounted for sign-in / sign-up, themed through
+   its `appearance` API so they match the site instead of dropping a stock
+   white card onto a black page.
+
+   The rest of the site reads the signed-in user from localStorage
+   (iqt_auth="1" + iqt_user), so the Clerk session is mirrored there and
+   cleared on sign-out — Clerk stays the source of truth.
+   ------------------------------------------------------------------ */
 (function () {
+  'use strict';
+
   var PUBLISHABLE_KEY = 'pk_test_c29jaWFsLWFuY2hvdnktMjAuY2xlcmsuYWNjb3VudHMuZGV2JA';
-  var FRONTEND_API   = 'social-anchovy-20.clerk.accounts.dev';
+  var FRONTEND_API = 'social-anchovy-20.clerk.accounts.dev';
+
+  function isAr() { return document.documentElement.getAttribute('data-lang') === 'ar'; }
+
+  /* Match the site's near-black surfaces and white primary. */
+  var appearance = {
+    variables: {
+      colorPrimary: '#ffffff',
+      colorBackground: '#0d0f14',
+      colorText: '#f2f5fa',
+      colorTextSecondary: '#949bab',
+      colorInputBackground: '#14171e',
+      colorInputText: '#f2f5fa',
+      colorDanger: '#e5989b',
+      colorShimmer: 'rgba(255,255,255,.08)',
+      borderRadius: '12px',
+      fontFamily: '"Alexandria", "Segoe UI", system-ui, sans-serif'
+    },
+    elements: {
+      rootBox: { width: '100%' },
+      card: {
+        background: '#0d0f14',
+        border: '1px solid #23272f',
+        boxShadow: '0 30px 60px -20px rgba(0,0,0,.8)'
+      },
+      headerTitle: { color: '#ffffff' },
+      headerSubtitle: { color: '#949bab' },
+      socialButtonsBlockButton: {
+        background: '#14171e',
+        border: '1px solid #23272f',
+        color: '#f2f5fa'
+      },
+      formButtonPrimary: {
+        background: '#ffffff',
+        color: '#000000',
+        fontWeight: '700',
+        textTransform: 'none'
+      },
+      formFieldInput: { background: '#14171e', border: '1px solid #23272f' },
+      footerActionLink: { color: '#ffffff' },
+      dividerLine: { background: '#23272f' },
+      dividerText: { color: '#949bab' }
+    }
+  };
 
   function mirror(Clerk) {
     try {
@@ -30,39 +80,57 @@
     } catch (e) {}
   }
 
-  /* hide everything in the auth card except the Clerk mount node */
-  function soloMount(node) {
-    var card = node.closest ? node.closest('.auth-card') : null;
+  /* The page's own form is a fallback for when Clerk cannot load; once Clerk
+     has mounted its component the duplicate would be confusing, so hide it. */
+  function hideFallback(mountNode) {
+    var card = mountNode.closest ? mountNode.closest('.auth-card') : null;
     if (!card) return;
-    Array.prototype.forEach.call(card.children, function (ch) {
-      if (ch !== node) ch.style.display = 'none';
+    Array.prototype.forEach.call(card.children, function (child) {
+      if (child !== mountNode) child.style.display = 'none';
     });
   }
 
   function start(Clerk) {
-    Clerk.load().then(function () {
+    Clerk.load({ appearance: appearance }).then(function () {
       mirror(Clerk);
       try { Clerk.addListener(function () { mirror(Clerk); }); } catch (e) {}
-      // let the logout button also end the Clerk session
-      window.__clerkSignOut = function () { try { return Clerk.signOut(); } catch (e) {} };
+
+      /* app.js routes every logout button through this */
+      window.__IQ_signOut = function (done) {
+        try { localStorage.removeItem('iqt_auth'); localStorage.removeItem('iqt_user'); } catch (e) {}
+        var fired = false;
+        function finish() { if (!fired) { fired = true; if (done) done(); } }
+        try {
+          Clerk.signOut().then(finish, finish);
+          setTimeout(finish, 1800);   // never strand the user if the network stalls
+        } catch (e) { finish(); }
+      };
 
       var signin = document.getElementById('clerk-signin');
       var signup = document.getElementById('clerk-signup');
-      var isDash = /dashboard\.html$/.test(location.pathname);
 
       if (signin) {
-        if (Clerk.user) { location.replace('dashboard.html'); return; }
-        soloMount(signin);
-        Clerk.mountSignIn(signin, { fallbackRedirectUrl: '/dashboard.html', signUpUrl: '/register.html' });
+        hideFallback(signin);
+        Clerk.mountSignIn(signin, {
+          appearance: appearance,
+          fallbackRedirectUrl: '/dashboard.html',
+          signUpUrl: '/register.html'
+        });
       }
       if (signup) {
-        if (Clerk.user) { location.replace('dashboard.html'); return; }
-        soloMount(signup);
-        Clerk.mountSignUp(signup, { fallbackRedirectUrl: '/dashboard.html', signInUrl: '/login.html' });
+        hideFallback(signup);
+        Clerk.mountSignUp(signup, {
+          appearance: appearance,
+          fallbackRedirectUrl: '/dashboard.html',
+          signInUrl: '/login.html'
+        });
       }
-      // protected page: if Clerk resolves with no user, send to sign in
-      if (isDash && !Clerk.user) { location.replace('login.html'); }
-    }).catch(function () { /* keep the fallback form usable */ });
+
+      /* dashboard is members-only */
+      if (/dashboard\.html$/.test(location.pathname) && !Clerk.user) {
+        location.replace('login.html');
+      }
+    }).catch(function () { /* leave the fallback form usable */ });
   }
 
   var s = document.createElement('script');

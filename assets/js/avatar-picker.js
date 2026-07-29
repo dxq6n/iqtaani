@@ -1,4 +1,4 @@
-/* Gaming avatar picker for IQ.T3ani account page.
+/* Gaming avatar picker for Vixo account page.
    Shows a grid of pre-made gaming-style emoji avatars users can choose. */
 (function () {
   var AVATARS = [
@@ -59,7 +59,7 @@
       var av = document.getElementById('acctAvatar');
       if (av) { av.textContent = selected; }
       var msg = document.getElementById('avatarMsg');
-      if (msg) { msg.hidden = false; msg.textContent = isAr() ? 'تم حفظ الأفاتار ✓' : 'Avatar saved ✓'; msg.style.color = 'var(--brand,#10b981)'; }
+      if (msg) { msg.hidden = false; msg.textContent = isAr() ? 'تم حفظ الأفاتار ✓' : 'Avatar saved ✓'; msg.style.color = 'var(--brand,#c8cedb)'; }
       overlay.classList.remove('open');
       if (typeof window.dispatchEvent === 'function') {
         window.dispatchEvent(new Event('storage'));
