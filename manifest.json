@@ -12,7 +12,7 @@
   "dir": "auto",
   "categories": ["education", "productivity"],
   "icons": [
-    { "src": "assets/img/logo-192.png?v=81", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "assets/img/logo.png?v=81", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "assets/img/logo-192.png?v=82", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/logo.png?v=82", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }

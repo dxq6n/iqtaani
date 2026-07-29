@@ -11,7 +11,10 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
+    # SAMEORIGIN, not DENY: the course pages open the playground beside the
+    # lesson in a same-origin iframe, and DENY blocks that even though the
+    # CSP already restricts framing to 'self'.
+    X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"

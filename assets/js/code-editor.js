@@ -113,11 +113,18 @@
         var p = ed.getPosition();
         return { line: p.lineNumber - 1, ch: p.column - 1 };
       },
-      /* editor.js calls this to format; Monaco has a real formatter */
-      indentLine: function () {
-        if (ed) ed.getAction('editor.action.formatDocument') &&
-                ed.getAction('editor.action.formatDocument').run();
+      /* Formats the whole document in one pass. Monaco has a real formatter;
+         without it there is nothing to run, and the caller is told so rather
+         than being shown a "Formatted!" that did nothing. */
+      format: function () {
+        if (!ed) return false;
+        var act = ed.getAction('editor.action.formatDocument');
+        if (!act) return false;
+        act.run();
+        return true;
       },
+      /* kept for callers written against the old CodeMirror API */
+      indentLine: function () { return api.format(); },
       setMode: function (m) {
         mode = m;
         if (ed && window.monaco) {
